@@ -15,7 +15,6 @@ class Karyawan_login extends CI_controller {
     public function login() {
         $this->form_validation->set_rules('NIK', 'NIK', 'required|trim|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'required|trim|xss_clean');
-        $this->form_validation->set_error_delimiters('<span class="error">', '</span>');
 
         if ($this->form_validation->run() == TRUE) {
             $data = array('NIK' => $this->input->post('NIK'),

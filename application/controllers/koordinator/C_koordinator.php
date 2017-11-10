@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class C_koordinator extends CI_controller {
 public function __construct() {
         parent::__construct();
-        if ($this->session->userdata('username')=="") {
+        if ($this->session->userdata('status')=="") {
             redirect('karyawan_login');
         }
         $this->load->helper('text');
