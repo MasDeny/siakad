@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class C_admin extends CI_controller {
+class Dashboard extends CI_controller {
 public function __construct() {
         parent::__construct();
         if ($this->session->userdata('status')=="") {
@@ -9,6 +9,8 @@ public function __construct() {
         $this->load->helper('text');
     }
     public function index() {
-        $this->load->view('administrasi/index');
+        $data['title'] = "Koordinator Panel System - Dashboard";
+        $data['heading'] = "Dashboard";
+        $this->load->view('koordinator/index', $data);
     }
 }
