@@ -9,12 +9,20 @@ class Karyawan_login extends CI_controller {
     }
 
     public function index() {
+        $session = $this->session->userdata('status');
+        if ($session == '') {
         $this->load->view('login_karyawan');
+    }
     }
 
     public function login() {
-        $this->form_validation->set_rules('NIK', 'NIK', 'required|trim|xss_clean');
-        $this->form_validation->set_rules('password', 'Password', 'required|trim|xss_clean');
+        $this->form_validation->set_rules('NIK', 'NIK', 'required|max_length[20]');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+        $session = $this->session->userdata('status');
+        if ($session == '') {
+        $this->load->view('login_karyawan');
+        }   
 
         if ($this->form_validation->run() == TRUE) {
             $data = array('NIK' => $this->input->post('NIK'),

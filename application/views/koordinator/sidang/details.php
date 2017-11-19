@@ -4,7 +4,6 @@
     <?php $this->load->view('koordinator/header'); ?>
 <body>
 <div class="wrapper">
-    <?php $this->load->view('koordinator/sidang/sidebar'); ?>
 <div class="main-panel">
     <?php $this->load->view('koordinator/navbar'); ?>
          <div class="content">
@@ -32,13 +31,14 @@
                                         $no = 1 ;
                                         foreach ($user as $data) {
                                             
+                                        }
                                         ?>
                                         <tr>
-                                            <td><?php echo $no++; ?></td>
-                                            <td><?php echo $data->NIM; ?></td>
-                                            <td><?php echo $data->nama; ?></td>
-                                            <td><?php echo $data->judul; ?></td>
-                                            <td><?php echo $data->dospem; ?></td>
+                                            <td><?php echo $no++ ?></td>
+                                            <td>E31150078</td>
+                                            <td>Bagus Firmansyah</td>
+                                            <td>Panduan Ternak Lele berbasis Android</td>
+                                            <td>Dr. Juan Macollo, S.Tl</td>
                                             <td>
                                                 <div class="col-xs-3 text-right">
                                                     <btn class="btn btn-md btn-info btn-icon">
@@ -46,7 +46,6 @@
                                                     </btn>
                                                 </div>
                                             </td>
-                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -58,6 +57,5 @@
             </div>
         </div>
 </div>
-<script>document.body.style.overflow = "hidden";</script>
 </div>
-    <?php $this->load->view('/koordinator/footer');
+<?php $this->load->view('/koordinator/footer');

@@ -1,3 +1,4 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <!doctype html>
 <html lang="en">
     <?php $this->load->view('koordinator/header'); ?>
@@ -16,8 +17,6 @@
                                 <br><br><br><br>
                                 <p class="category">In Here You Can Do EveryThing What You Want</p>
                             </div>
-                            
-
                             </div>
                         </div>
                     </div>
