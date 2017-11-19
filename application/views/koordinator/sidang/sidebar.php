@@ -20,13 +20,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
-                        <i class="ti-user"></i>
-                        <p>User Profile</p>
+                    <a href="<?php echo base_url(); ?>koordinator/Pendaftar_senpro">
+                        <i class="ti-view-list-alt"></i>
+                        <p>Pendaftar Senpro</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="<?php echo base_url(); ?>Jadwal_sidang">
+                    <a href="<?php echo base_url(); ?>koordinator/Jadwal_sidang">
                         <i class="ti-view-list-alt"></i>
                         <p>Jadwal Sidang</p>
                     </a>
