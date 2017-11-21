@@ -12,18 +12,10 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema mydb
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+-- -----------------------------------------------------
+-- Schema new_schema1
+-- -----------------------------------------------------
 USE `mydb` ;
-
--- -----------------------------------------------------
--- Table `mydb`.`notification`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`notification` (
-  `id_notification` INT NOT NULL AUTO_INCREMENT,
-  `pesan` VARCHAR(45) NULL,
-  `timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_notification`))
-ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `mydb`.`bukti_spp_terakhir`
@@ -33,6 +25,14 @@ CREATE TABLE IF NOT EXISTS `mydb`.`bukti_spp_terakhir` (
   `berkas_spp` VARCHAR(100) NULL,
   PRIMARY KEY (`id_bukti`))
 ENGINE = InnoDB;
+
+INSERT INTO `bukti_spp_terakhir` (`id_bukti`, `berkas_spp`) VALUES
+(1, 'asfasf'),
+(2, 'asfasf'),
+(3, 'asfasf'),
+(4, 'asfasf'),
+(5, 'asfasf');
+
 
 
 -- -----------------------------------------------------
@@ -45,16 +45,52 @@ CREATE TABLE IF NOT EXISTS `mydb`.`login_mhs` (
   PRIMARY KEY (`id_mhs`))
 ENGINE = InnoDB;
 
+INSERT INTO `login_mhs` (`id_mhs`, `NIM`, `password`) VALUES
+(1, 'E31150678', 'E31150678'),
+(2, 'E31150778', 'E31150778'),
+(3, 'E31150677', 'E31150677'),
+(4, 'E31150669', 'E31150669'),
+(5, 'E31150679', 'E31150679');
 
 -- -----------------------------------------------------
 -- Table `mydb`.`dokumen_tugas_akhir`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`dokumen_tugas_akhir` (
-  `id_dokumen` INT NOT NULL,
+  `id_dokumen` INT NOT NULL AUTO_INCREMENT,
   `berkas_dokumen` VARCHAR(45) NULL,
   `verifikasi_tugas_akhir` VARCHAR(45) NULL,
   PRIMARY KEY (`id_dokumen`))
 ENGINE = InnoDB;
+
+INSERT INTO `dokumen_tugas_akhir` (`id_dokumen`, `berkas_dokumen`, `verifikasi_tugas_akhir`) VALUES
+(1, 'asfasf', 'belum'),
+(2, 'asfasf', 'belum'),
+(3, 'asfasf', 'belum'),
+(4, 'asfasf', 'belum'),
+(5, 'asfasf', 'belum');
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`rumpun`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`rumpun` (
+  `id_rumpun` INT(3) NOT NULL AUTO_INCREMENT,
+  `nm_rumpun` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_rumpun`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`dp1`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`dp1` (
+  `id_dp1` INT(3) NOT NULL AUTO_INCREMENT,
+  `nm_dosen` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id_dp1`))
+ENGINE = InnoDB;
+
+INSERT INTO `mydb`.`dp1` (`id_dp1`, `nm_dosen`) VALUES ('1', 'rudi Setiarudi, S.kom, M.cs');
+INSERT INTO `mydb`.`dp1` (`id_dp1`, `nm_dosen`) VALUES ('2', 'Donny Saputro, S.Kom, M.tech');
 
 
 -- -----------------------------------------------------
@@ -63,18 +99,20 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`mahasiswa` (
   `NIM` VARCHAR(9) NOT NULL,
   `id_mhs` INT NOT NULL,
-  `id_dokumen` INT NOT NULL,
+  `id_dokumen` INT NULL,
   `nama_mahasiswa` VARCHAR(120) NULL,
   `program_studi` VARCHAR(55) NULL,
-  `dospem_1` VARCHAR(120) NULL,
   `dospem_2` VARCHAR(120) NULL,
   `judul_TA` VARCHAR(120) NULL,
   `deskripsi` VARCHAR(200) NULL,
-  `rumpun_matkul` VARCHAR(45) NULL,
   `refrensi` VARCHAR(45) NULL,
-  PRIMARY KEY (`NIM`, `id_mhs`, `id_dokumen`),
+  `rumpun_id_rumpun` INT(3) NOT NULL,
+  `dp1_id_dp1` INT(3) NOT NULL,
+  PRIMARY KEY (`NIM`, `id_mhs`, `id_dokumen`, `rumpun_id_rumpun`, `dp1_id_dp1`),
   INDEX `fk_mahasiswa_login_mhs1_idx` (`id_mhs` ASC),
   INDEX `fk_mahasiswa_dokumen_tugas_akhir1_idx` (`id_dokumen` ASC),
+  INDEX `fk_mahasiswa_rumpun1_idx` (`rumpun_id_rumpun` ASC),
+  INDEX `fk_mahasiswa_dp11_idx` (`dp1_id_dp1` ASC),
   CONSTRAINT `fk_mahasiswa_login_mhs1`
     FOREIGN KEY (`id_mhs`)
     REFERENCES `mydb`.`login_mhs` (`id_mhs`)
@@ -84,9 +122,31 @@ CREATE TABLE IF NOT EXISTS `mydb`.`mahasiswa` (
     FOREIGN KEY (`id_dokumen`)
     REFERENCES `mydb`.`dokumen_tugas_akhir` (`id_dokumen`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_mahasiswa_rumpun1`
+    FOREIGN KEY (`rumpun_id_rumpun`)
+    REFERENCES `mydb`.`rumpun` (`id_rumpun`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_mahasiswa_dp11`
+    FOREIGN KEY (`dp1_id_dp1`)
+    REFERENCES `mydb`.`dp1` (`id_dp1`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+--
+-- Dumping data for table `mahasiswa`
+--
+
+INSERT INTO `mahasiswa` (`NIM`, `id_mhs`, `id_dokumen`, `nama_mahasiswa`, `program_studi`, `dospem_2`, `judul_TA`, `deskripsi`, `refrensi`, `rumpun_id_rumpun`, `dp1_id_dp1`) VALUES
+('E31150669', 4, 4, 'Dolly Setiawan', 'MIF', 'Setiadi Suryansyah. S.t', 'Web Profile SDN KarangAsem', 'asfagds', 'oojojp', '1', '2'),
+('E31150677', 3, 3, 'Doni Setiawan', 'MIF', 'Setiadi Suryansyah. S.t', 'Sistem Informasi Komunikatif', 'fgsdg', 'adfggd', '1', '1'),
+('E31150678', 1, 1, 'Deny Prayantoro', 'MIF', 'Setiadi Suryansyah. S.t', 'Web Maker Dengan Codeigniter', 'afyhagsf', 'aefhf', '1', '1'),
+('E31150679', 5, 5, 'Andri Susilo', 'MIF', 'Susi Adila, S.kom', 'POS allcafe berbasis adroid', 'asfguyi', 'mom', '1', '1'),
+('E31150778', 2, 2, 'Amirudin Ihsan', 'MIF', 'Susi Adila, S.kom', 'Pengambangan web Service', 'ewegweg', 'sdgsdg', '2', '2');
+
+-- --------------------------------------------------------
 
 -- -----------------------------------------------------
 -- Table `mydb`.`login_karyawan`
@@ -98,6 +158,10 @@ CREATE TABLE IF NOT EXISTS `mydb`.`login_karyawan` (
   `status` VARCHAR(45) NULL,
   PRIMARY KEY (`id_karyawan`))
 ENGINE = InnoDB;
+
+INSERT INTO `login_karyawan` (`id_karyawan`, `NIK`, `password`, `status`) VALUES
+(1, '12345', 'rini', 'admin'),
+(2, '12354', 'taufik', 'koordinator');
 
 
 -- -----------------------------------------------------
@@ -111,12 +175,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`penguji` (
   `tanggal` VARCHAR(45) NULL,
   `jam` VARCHAR(45) NULL DEFAULT 'current_time',
   `ruangan` INT(1) NULL,
-  `login_karyawan_id_karyawan` INT NOT NULL,
-  PRIMARY KEY (`id_penguji`, `login_karyawan_id_karyawan`),
-  INDEX `fk_penguji_login_karyawan1_idx` (`login_karyawan_id_karyawan` ASC),
-  CONSTRAINT `fk_penguji_login_karyawan1`
-    FOREIGN KEY (`login_karyawan_id_karyawan`)
-    REFERENCES `mydb`.`login_karyawan` (`id_karyawan`)
+  `status_sidang_id_statussidang` INT NOT NULL,
+  PRIMARY KEY (`id_penguji`, `status_sidang_id_statussidang`),
+  INDEX `fk_penguji_status_sidang1_idx` (`status_sidang_id_statussidang` ASC),
+  CONSTRAINT `fk_penguji_status_sidang1`
+    FOREIGN KEY (`status_sidang_id_statussidang`)
+    REFERENCES `mydb`.`status_sidang` (`id_statussidang`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -138,48 +202,59 @@ CREATE TABLE IF NOT EXISTS `mydb`.`berkas` (
 ENGINE = InnoDB;
 
 
+INSERT INTO `berkas` (`id_berkas_kelengkapan`, `khs_semester_1`, `khs_semester_2`, `khs_semester_3`, `khs_semester_4`, `khs_semester_5`, `laporan_proposal`, `lembar_revisi`) VALUES
+(1, 'asfasf', 'asfsaf', 'asfasf', 'asfasf', 'asfsfa', 'asfasf', 'asfsa'),
+(2, 'asfasfasf', 'asfasf', 'asfasf', 'asfasf', 'asfasf', 'asfasf', 'asfasf'),
+(3, 'asfasf', 'asfasf', 'asfasf', 'asfasf', 'asfasf', 'asfasf', 'asfasf'),
+(4, 'asfasf', 'asfasf', 'asfasf', 'asfasf', 'asfasf', 'asfasf', 'asfasf'),
+(5, 'asfasf', 'asfasf', 'asfasf', 'asfasf', 'asfasf', 'asfasf', 'asfasf');
+
+
 -- -----------------------------------------------------
 -- Table `mydb`.`status_sidang`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`status_sidang` (
   `id_statussidang` INT NOT NULL AUTO_INCREMENT,
-  `mahasiswa_id_mhs` INT NOT NULL,
-  `penguji_id_penguji` INT NOT NULL,
-  `notification_id_notification` INT NOT NULL,
   `bukti_spp_terakhir_id_bukti` INT NOT NULL,
   `mahasiswa_NIM` VARCHAR(9) NOT NULL,
   `create_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `status` INT(1) NULL DEFAULT 0,
   `berkas_id_berkas_kelengkapan` INT NOT NULL,
-  PRIMARY KEY (`id_statussidang`, `mahasiswa_id_mhs`, `penguji_id_penguji`, `notification_id_notification`, `bukti_spp_terakhir_id_bukti`, `mahasiswa_NIM`, `berkas_id_berkas_kelengkapan`),
-  INDEX `fk_status_sidang_notification1_idx` (`notification_id_notification` ASC),
+  PRIMARY KEY (`id_statussidang`, `bukti_spp_terakhir_id_bukti`, `mahasiswa_NIM`, `berkas_id_berkas_kelengkapan`),
   INDEX `fk_status_sidang_bukti_spp_terakhir1_idx` (`bukti_spp_terakhir_id_bukti` ASC),
-  INDEX `fk_status_sidang_mahasiswa1_idx` (`mahasiswa_NIM` ASC, `mahasiswa_id_mhs` ASC),
-  INDEX `fk_status_sidang_penguji1_idx` (`penguji_id_penguji` ASC),
+  INDEX `fk_status_sidang_mahasiswa1_idx` (`mahasiswa_NIM` ASC),
   INDEX `fk_status_sidang_berkas1_idx` (`berkas_id_berkas_kelengkapan` ASC),
-  CONSTRAINT `fk_status_sidang_notification1`
-    FOREIGN KEY (`notification_id_notification`)
-    REFERENCES `mydb`.`notification` (`id_notification`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_status_sidang_bukti_spp_terakhir1`
     FOREIGN KEY (`bukti_spp_terakhir_id_bukti`)
     REFERENCES `mydb`.`bukti_spp_terakhir` (`id_bukti`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_status_sidang_mahasiswa1`
-    FOREIGN KEY (`mahasiswa_NIM` , `mahasiswa_id_mhs`)
-    REFERENCES `mydb`.`mahasiswa` (`NIM` , `id_mhs`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_status_sidang_penguji1`
-    FOREIGN KEY (`penguji_id_penguji`)
-    REFERENCES `mydb`.`penguji` (`id_penguji`)
+    FOREIGN KEY (`mahasiswa_NIM`)
+    REFERENCES `mydb`.`mahasiswa` (`NIM`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_status_sidang_berkas1`
     FOREIGN KEY (`berkas_id_berkas_kelengkapan`)
     REFERENCES `mydb`.`berkas` (`id_berkas_kelengkapan`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`notification`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`notification` (
+  `id_notification` INT NOT NULL AUTO_INCREMENT,
+  `pesan` VARCHAR(45) NULL,
+  `timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_statussidang` INT NOT NULL,
+  PRIMARY KEY (`id_notification`, `id_statussidang`),
+  INDEX `fk_notification_status_sidang1_idx` (`id_statussidang` ASC),
+  CONSTRAINT `fk_notification_status_sidang1`
+    FOREIGN KEY (`id_statussidang`)
+    REFERENCES `mydb`.`status_sidang` (`id_statussidang`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
