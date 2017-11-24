@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 21, 2017 at 03:33 PM
+-- Generation Time: Nov 24, 2017 at 02:24 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.1.2
 
@@ -200,6 +200,25 @@ INSERT INTO `dokumen_tugas_akhir` (`id_dokumen`, `berkas_dokumen`, `verifikasi_t
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `dp1`
+--
+
+CREATE TABLE `dp1` (
+  `id_dp1` int(3) NOT NULL,
+  `nm_dosen` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `dp1`
+--
+
+INSERT INTO `dp1` (`id_dp1`, `nm_dosen`) VALUES
+(1, 'rudi Setiarudi, S.kom, M.cs'),
+(2, 'Donny Saputro, S.Kom, M.tech');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Jadwal`
 --
 
@@ -340,6 +359,25 @@ CREATE TABLE `riwayat_ipmhs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rumpun`
+--
+
+CREATE TABLE `rumpun` (
+  `id_rumpun` int(3) NOT NULL,
+  `nm_rumpun` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `rumpun`
+--
+
+INSERT INTO `rumpun` (`id_rumpun`, `nm_rumpun`) VALUES
+(1, 'android'),
+(2, 'website');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Status_Sempro`
 --
 
@@ -371,11 +409,11 @@ CREATE TABLE `status_sidang` (
 --
 
 INSERT INTO `status_sidang` (`id_statussidang`, `bukti_spp_terakhir_id_bukti`, `mahasiswa_NIM`, `create_at`, `status`, `berkas_id_berkas_kelengkapan`) VALUES
-(2, 1, 'E31150678', '2017-11-19 19:47:11', 1, 1),
-(3, 2, 'E31150778', '2017-11-19 19:47:11', 1, 2),
-(4, 3, 'E31150677', '2017-11-19 19:47:11', 1, 3),
-(5, 4, 'E31150669', '2017-11-19 19:47:11', 1, 4),
-(6, 5, 'E31150679', '2017-11-19 19:47:11', 1, 5);
+(1, 1, 'E31150678', '2017-11-19 19:47:11', 1, 1),
+(2, 2, 'E31150778', '2017-11-19 19:47:11', 1, 2),
+(3, 3, 'E31150677', '2017-11-19 19:47:11', 1, 3),
+(4, 4, 'E31150669', '2017-11-19 19:47:11', 1, 4),
+(5, 5, 'E31150679', '2017-11-19 19:47:11', 1, 5);
 
 -- --------------------------------------------------------
 
@@ -476,6 +514,12 @@ ALTER TABLE `dokumen_tugas_akhir`
   ADD PRIMARY KEY (`id_dokumen`);
 
 --
+-- Indexes for table `dp1`
+--
+ALTER TABLE `dp1`
+  ADD PRIMARY KEY (`id_dp1`);
+
+--
 -- Indexes for table `Jadwal`
 --
 ALTER TABLE `Jadwal`
@@ -523,6 +567,12 @@ ALTER TABLE `penguji`
 --
 ALTER TABLE `riwayat_ipmhs`
   ADD PRIMARY KEY (`idriwayat_ipmhs`);
+
+--
+-- Indexes for table `rumpun`
+--
+ALTER TABLE `rumpun`
+  ADD PRIMARY KEY (`id_rumpun`);
 
 --
 -- Indexes for table `Status_Sempro`
@@ -582,6 +632,11 @@ ALTER TABLE `bukti_spp_terakhir`
 ALTER TABLE `dokumen_tugas_akhir`
   MODIFY `id_dokumen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `dp1`
+--
+ALTER TABLE `dp1`
+  MODIFY `id_dp1` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `login_karyawan`
 --
 ALTER TABLE `login_karyawan`
@@ -602,10 +657,15 @@ ALTER TABLE `notification`
 ALTER TABLE `penguji`
   MODIFY `id_penguji` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `rumpun`
+--
+ALTER TABLE `rumpun`
+  MODIFY `id_rumpun` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `status_sidang`
 --
 ALTER TABLE `status_sidang`
-  MODIFY `id_statussidang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_statussidang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
