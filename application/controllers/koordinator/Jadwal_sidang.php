@@ -16,4 +16,11 @@ public function __construct() {
         $data['user'] = $this->M_jadwal_sidang->get_data();
         $this->load->view('koordinator/sidang/index', $data);
     }
+
+    public function view($id = NULL) {
+        $data['title'] = "Koordinator Panel System - Detail Jadwal ";
+        $data['heading'] = "Detail Jadwal";
+        $data['user_details'] = $this->M_jadwal_sidang->get_data($id);
+        $this->load->view('koordinator/sidang/details', $data);
+    }
 }

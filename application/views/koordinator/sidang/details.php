@@ -12,50 +12,81 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Berikut Adalah 15 Mahasiswa yang terverifikasi : </h4>
+                                <h4 class="title">Mahasiswa ini Adalah 15 Mahasiswa yang terverifikasi : </h4>
                                 <p class="category"> -- Mahasiswa yang ada didaftar berikut bebas menentukan dosen
                                 yang hadir dalam sidangnya -- </p>
                             </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <th>No</th>
-                                        <th>NIM</th>
-                                        <th>Nama</th>
-                                        <th>Judul Tugas Akhir</th>
-                                        <th>Pembimbing 1</th>
-                                        <th></th>
-                                    </thead>
-                                    <tbody>
-                                        <?php 
-                                        $no = 1 ;
-                                        foreach ($user as $data) {
-                                            
-                                        }
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $no++ ?></td>
-                                            <td>E31150078</td>
-                                            <td>Bagus Firmansyah</td>
-                                            <td>Panduan Ternak Lele berbasis Android</td>
-                                            <td>Dr. Juan Macollo, S.Tl</td>
-                                            <td>
-                                                <div class="col-xs-3 text-right">
-                                                    <btn class="btn btn-md btn-info btn-icon">
-                                                        <i class="fa fa-check" aria-hidden="true"></i>
-                                                    </btn>
-                                                </div>
-                                            </td>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-
+                            <div class="content">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>NIM</label>
+                                                <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php echo $user_details->NIM; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Nama Mahasiswa</label>
+                                                <input type="text" class="form-control border-input" disabled placeholder="Nama" value="<?php echo $user_details->nama; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Judul Tugas Akhir</label>
+                                                <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php echo $user_details->judul; ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="penguji">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Ketua</label>
+                                                <input type="text" class="form-control border-input" disabled placeholder="ketua" name="ketua" value="<?php echo $user_details->dospem; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Sekertaris</label>
+                                                <input type="text" class="form-control border-input" placeholder="sekertaris" name="sekertaris">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Anggota</label>
+                                                <input type="text" class="form-control border-input" placeholder="anggota" name="anggota">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Tanggal</label>
+                                                <input type="text" class="form-control border-input" placeholder="tanggal" name="tanggal">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Jam</label>
+                                                <input type="text" class="form-control border-input" placeholder="jam" name="jam" >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Ruangan</label>
+                                                <input type="text" class="form-control border-input" placeholder="ruangan" name="ruangan">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
+                         </div>   
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 </div>
+<script>document.body.style.overflow = "hidden";</script>
 </div>
 <?php $this->load->view('/koordinator/footer');

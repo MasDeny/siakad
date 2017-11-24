@@ -17,7 +17,7 @@
                                 <p>Settings</p>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Log Out</a></li>
+                                <li><a href="<?php echo base_url(); ?>karyawan_login/logout">Log Out</a></li>
                               </ul>
                         </li>
                     </ul>

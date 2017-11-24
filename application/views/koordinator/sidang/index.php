@@ -42,7 +42,9 @@
                                             <td>
                                                 <div class="col-xs-3 text-right">
                                                     <btn class="btn btn-md btn-info btn-icon">
-                                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                                        <a href="<?php echo base_url()."koordinator/jadwal_sidang/view/". $data->id; ?>">
+                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                        </a>
                                                     </btn>
                                                 </div>
                                             </td>
