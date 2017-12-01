@@ -22,19 +22,19 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>NIM</label>
-                                                <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php echo $user_details->NIM; ?>">
+                                                <input type="text" class="form-control border-input text-center" disabled placeholder="Judul" value="<?php echo $user_details->NIM; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Nama Mahasiswa</label>
-                                                <input type="text" class="form-control border-input" disabled placeholder="Nama" value="<?php echo $user_details->nama; ?>">
+                                                <input type="text" class="form-control border-input text-center" disabled placeholder="Nama" value="<?php echo $user_details->nama; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Judul Tugas Akhir</label>
-                                                <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php echo $user_details->judul; ?>">
+                                                <input type="text" class="form-control border-input text-center" disabled placeholder="Judul" value="<?php echo $user_details->judul; ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -42,19 +42,19 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Ketua</label>
-                                                <input type="text" class="form-control border-input" disabled placeholder="ketua" name="ketua" value="<?php echo $user_details->dospem; ?>">
+                                                <input type="text" class="form-control border-input text-center" disabled placeholder="ketua" name="ketua" value="<?php echo $user_details->dospem; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Sekertaris</label>
-                                                <input type="text" class="form-control border-input" placeholder="sekertaris" name="sekertaris">
+                                                <input type="text" class="form-control border-input text-center" id="dosen" placeholder="sekertaris" name="sekertaris">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Anggota</label>
-                                                <input type="text" class="form-control border-input" placeholder="anggota" name="anggota">
+                                                <input type="text" class="form-control border-input text-center" id="dosen" placeholder="anggota" name="anggota">
                                             </div>
                                         </div>
                                     </div>
@@ -62,20 +62,24 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Tanggal</label>
-                                                <input type="text" class="form-control border-input" placeholder="tanggal" name="tanggal">
+                                                <input type="text" class="form-control border-input text-center" id="tanggal" placeholder="tanggal" name="tanggal" >
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Jam</label>
-                                                <input type="text" class="form-control border-input" placeholder="jam" name="jam" >
+                                                <input type="text" class="form-control border-input text-center" id="jam" placeholder="jam" name="jam">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Ruangan</label>
-                                                <input type="text" class="form-control border-input" placeholder="ruangan" name="ruangan">
+                                                <input type="text" class="form-control border-input text-center" placeholder="ruangan" name="ruangan">
                                             </div>
+                                        </div>
+                                        <div class="col-md-4 text-right pull-right">
+                                            <a href="<?php echo base_url(); ?>koordinator/Jadwal_sidang" class="btn btn-md btn-danger btn-flat">Batal</a>
+                                            <button type="submit" class="btn btn-md btn-success btn-flat">Simpan</button>
                                         </div>
                                     </div>
                                 </form>
@@ -84,9 +88,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-</div>
+            </div> 
 <script>document.body.style.overflow = "hidden";</script>
-</div>
 <?php $this->load->view('/koordinator/footer');

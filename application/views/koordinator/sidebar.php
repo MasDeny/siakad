@@ -13,7 +13,7 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li class="satu active">
                     <a href="dashboard">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
@@ -25,7 +25,7 @@
                         <p>Pendaftar Senpro</p>
                     </a>
                 </li>
-                <li>
+                <li class="tiga">
                     <a href="<?php echo base_url(); ?>koordinator/Jadwal_sidang">
                         <i class="ti-view-list-alt"></i>
                         <p>Jadwal Sidang</p>

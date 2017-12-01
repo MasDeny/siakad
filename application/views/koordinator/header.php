@@ -12,6 +12,7 @@
 
     <!-- Bootstrap core CSS     -->
     <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/eksternal/datetimepicker/css/datetimepicker.css" rel="stylesheet"/>
 
     <!-- Animation library for notifications   -->
     <link href="<?php echo base_url(); ?>assets/eksternal/animate.min.css" rel="stylesheet"/>
@@ -24,6 +25,10 @@
     <!--  Fonts and icons     -->
     <link href="<?php echo base_url(); ?>assets/eksternal/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/eksternal/themify-icons.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-ui.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-ui.theme.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/plugins/jQuery/jquery.autocomplete.css" rel="stylesheet">
 
 </head>

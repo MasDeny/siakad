@@ -31,6 +31,19 @@ class M_jadwal_sidang extends CI_Model {
         ->where('status_sidang.id_statussidang', $id);
         return $this->db->get()->row();
     }
+    public function show_dosen($nama)
+    {
+        $this->db->like('nm_dosen',$nama);
+        $query=$this->db->get('dp1');
+        return $query->result();
+    }
+
+    public function save_data($id)
+    {
+        
+    }
 }
+
+    
 
 // ini adalah model untuk controller C_koordinator

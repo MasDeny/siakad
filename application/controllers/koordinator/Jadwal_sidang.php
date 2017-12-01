@@ -23,4 +23,29 @@ public function __construct() {
         $data['user_details'] = $this->M_jadwal_sidang->get_data($id);
         $this->load->view('koordinator/sidang/details', $data);
     }
+
+    public function get_dosen() {    
+        $nama=$this->input->post('nama',TRUE);
+        $query=$this->M_jadwal_sidang->show_dosen($nama);         
+        $json_array = array();
+        foreach($query as $row)
+        {
+            $json_array[] = $row->nm_dosen;
+            echo json_encode($json_array);
+        }
+    }
+
+    public function select_mhs($id)
+    {
+        $this->$this->form_validation->set_rules('tanggal', 'tanggal', 'required');
+        $this->$this->form_validation->set_rules('jam', 'jam', 'required');
+        $this->$this->form_validation->set_rules('ruangan', 'ruangan', 'required');
+
+        if ($this->form_validation->run() == TRUE) {
+            
+        } else {
+            
+        }
+        
+    }
 }

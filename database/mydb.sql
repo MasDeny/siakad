@@ -335,7 +335,7 @@ CREATE TABLE `penguji` (
   `anggota` varchar(120) DEFAULT NULL,
   `tanggal` varchar(45) DEFAULT NULL,
   `jam` varchar(45) DEFAULT 'current_time',
-  `ruangan` int(1) DEFAULT NULL,
+  `ruangan` varchar(45) DEFAULT NULL,
   `status_sidang_id_statussidang` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
