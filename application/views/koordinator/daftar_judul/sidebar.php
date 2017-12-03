@@ -19,13 +19,13 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="<?php echo base_url(); ?>koordinator/Pendaftar_senpro">
                         <i class="ti-view-list-alt"></i>
                         <p>Pendaftar Senpro</p>
                     </a>
                 </li>
-				 <li>
+				 <li class="active">
                     <a href="<?php echo base_url(); ?>koordinator/Pengajuan">
                         <i class="ti-view-list-alt"></i>
                         <p>Pengajuan Judul Tugas Akhir</p>

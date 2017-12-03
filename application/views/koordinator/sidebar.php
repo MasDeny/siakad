@@ -25,6 +25,12 @@
                         <p>Pendaftar Senpro</p>
                     </a>
                 </li>
+				 <li>
+                    <a href="<?php echo base_url(); ?>koordinator/Pengajuan">
+                        <i class="ti-view-list-alt"></i>
+                        <p>Pengajuan Judul Tugas Akhir</p>
+                    </a>
+                </li>
                 <li class="tiga">
                     <a href="<?php echo base_url(); ?>koordinator/Jadwal_sidang">
                         <i class="ti-pencil-alt2"></i>

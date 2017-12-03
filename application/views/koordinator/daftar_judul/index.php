@@ -3,7 +3,7 @@
     <?php $this->load->view('koordinator/header'); ?>
 <body>
 <div class="wrapper">
-    <?php $this->load->view('koordinator/Pendaftar_senpro/sidebar'); ?>
+    <?php $this->load->view('koordinator/Daftar_judul/sidebar'); ?>
 <div class="main-panel">
     <?php $this->load->view('koordinator/navbar'); ?>
          <div class="content">
