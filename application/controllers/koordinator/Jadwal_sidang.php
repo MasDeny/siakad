@@ -21,18 +21,8 @@ public function __construct() {
         $data['title'] = "Koordinator Panel System - Detail Jadwal ";
         $data['heading'] = "Detail Jadwal";
         $data['user_details'] = $this->M_jadwal_sidang->get_data($id);
+        $data['dosen'] = $this->M_jadwal_sidang->show_dosen();   
         $this->load->view('koordinator/sidang/details', $data);
-    }
-
-    public function get_dosen() {    
-        $nama=$this->input->post('nama',TRUE);
-        $query=$this->M_jadwal_sidang->show_dosen($nama);         
-        $json_array = array();
-        foreach($query as $row)
-        {
-            $json_array[] = $row->nm_dosen;
-            echo json_encode($json_array);
-        }
     }
 
     public function select_mhs($id)

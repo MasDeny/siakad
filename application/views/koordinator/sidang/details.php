@@ -12,9 +12,8 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Mahasiswa ini Adalah 15 Mahasiswa yang terverifikasi : </h4>
-                                <p class="category"> -- Mahasiswa yang ada didaftar berikut bebas menentukan dosen
-                                yang hadir dalam sidangnya -- </p>
+                                <h4 class="title">Tentukan Jadwal Sidang Dari Mahasiswa Terpilih : </h4>
+                                <br>
                             </div>
                             <div class="content">
                                 <form>
@@ -48,13 +47,23 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Sekertaris</label>
-                                                <input type="text" class="form-control border-input text-center" id="dosen" placeholder="sekertaris" name="sekertaris">
+                                                <select name="sekertaris" class="form-control border-input text-center" required>
+                                                    <option disabled selected>Pilih Dosen</option>
+                                                    <?php foreach($dosen as $row) { ?>
+                                                    <option value="<?php echo $row->nm_dosen;?>"><?php echo $row->nm_dosen;?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Anggota</label>
-                                                <input type="text" class="form-control border-input text-center" id="dosen" placeholder="anggota" name="anggota">
+                                                <select name="Anggota" class="form-control border-input text-center" required>
+                                                    <option disabled selected>Pilih Dosen</option>
+                                                    <?php foreach($dosen as $row) { ?>
+                                                    <option value="<?php echo $row->nm_dosen;?>"><?php echo $row->nm_dosen;?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -74,7 +83,12 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Ruangan</label>
-                                                <input type="text" class="form-control border-input text-center" placeholder="ruangan" name="ruangan">
+                                                <select name="ruangan" class="form-control border-input text-center">
+                                                    <option value="R.Sidang 1">Ruang Sidang 1</option>
+                                                    <option value="R.Sidang 2">Ruang Sidang 2</option>
+                                                    <option value="R.Sidang 3">Ruang Sidang 3</option>
+                                                    <option value="R.Sidang 4">Ruang Sidang 4</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4 text-right pull-right">

@@ -31,11 +31,12 @@ class M_jadwal_sidang extends CI_Model {
         ->where('status_sidang.id_statussidang', $id);
         return $this->db->get()->row();
     }
-    public function show_dosen($nama)
+    public function show_dosen()
     {
-        $this->db->like('nm_dosen',$nama);
-        $query=$this->db->get('dp1');
-        return $query->result();
+        $this->db->select('nm_dosen')
+        ->from('dp1')
+        ->order_by('nm_dosen','asc');
+        return $this->db->get()->result();
     }
 
     public function save_data($id)

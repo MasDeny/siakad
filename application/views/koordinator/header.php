@@ -20,7 +20,8 @@
     <!--  Paper Dashboard core CSS    -->
     <link href="<?php echo base_url(); ?>assets/eksternal/paper-dashboard.css" rel="stylesheet"/>
 
-    
+    <!-- select2 -->
+    <link href="<?php echo base_url(); ?>assets/plugins/select2/select2.css" rel="stylesheet"/>
 
     <!--  Fonts and icons     -->
     <link href="<?php echo base_url(); ?>assets/eksternal/font-awesome.min.css" rel="stylesheet">

@@ -21,6 +21,9 @@
     <script src="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-ui.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/jQuery/jquery.autocomplete.js"></script>
 
+    <!-- JS select2 -->
+    <script src="<?php echo base_url(); ?>assets/plugins/select2/select2.js"></script>    
+
     <!--  Checkbox, Radio & Switch Plugins -->
     <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap-checkbox-radio.js"></script>
 

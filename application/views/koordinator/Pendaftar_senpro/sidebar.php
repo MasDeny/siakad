@@ -27,7 +27,7 @@
                 </li>
                 <li>
                     <a href="<?php echo base_url(); ?>koordinator/Jadwal_sidang">
-                        <i class="ti-view-list-alt"></i>
+                        <i class="ti-pencil-alt2"></i>
                         <p>Jadwal Sidang</p>
                     </a>
                 </li>
