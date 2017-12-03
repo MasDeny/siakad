@@ -4,6 +4,7 @@ class Pendaftar_senpro extends CI_controller {
 public function __construct() {
         parent::__construct();
         $this->load->model('M_pendaftaran_senpro');
+        $this->load->model('M_jadwal_sidang');
         $this->load->database();
         if ($this->session->userdata('status')=="") {
             redirect('karyawan_login');
@@ -21,6 +22,7 @@ public function __construct() {
         $data['title'] = "Koordinator Panel System - Detail Jadwal ";
         $data['heading'] = "Detail Jadwal";
         $data['user_details'] = $this->M_pendaftaran_senpro->get_data($id);
+        $data['dosen'] = $this->M_jadwal_sidang->show_dosen();
         $this->load->view('koordinator/Pendaftar_senpro/detail', $data);
     }
 
