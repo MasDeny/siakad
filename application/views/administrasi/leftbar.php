@@ -16,6 +16,7 @@
         <li class="header">MENU</li>
        
         <li><a href="<?php echo base_url('admin/c_admin/tampil_mhs'); ?> "><i class=""></i> <span>Mahasiswa Sidang</span></a></li>
+        <li><a href="<?php echo base_url('admin/upload_berkas'); ?> "><i class=""></i> <span>Upload Berkas TA</span></a></li>
           <li><a href="<?php echo base_url('admin/c_admin/logout'); ?> "><i class=""></i> <span>Logout</span></a></li>
       </ul>
     </section>
