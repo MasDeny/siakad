@@ -14,20 +14,20 @@ class Index_mahasiswa extends CI_Controller{
 		}
 	}
 
-	function index(){
+	public function index(){
         $data['username'] = $this->session->userdata('username');
 		$this->load->view('mahasiswa/v_beranda', $data);
 	}
 
-	function getsidang(){
+	public function getsidang(){
 		$this->load->view('mahasiswa/v_sidang');
 	}
 
-	function getberkas(){
+	public function getberkas(){
 		$this->load->view('mahasiswa/v_upload');
 	}
 
-	function getyudisium(){
+	public function getyudisium(){
 		$NIM = $this->session->userdata("nama");
 		$where = array(
 			'mahasiswa_NIM' => $NIM
@@ -41,7 +41,7 @@ class Index_mahasiswa extends CI_Controller{
 		}
 	}
 	
-	function getstudytracer(){
+	public function getstudytracer(){
 		//$this->load->view('v_studytracer');
 		$NIM = $this->session->userdata("nama");
 		$where = array(
@@ -63,7 +63,7 @@ class Index_mahasiswa extends CI_Controller{
             $this->load->view('mahasiswa/v_cetak_yudisium', $data); //untuk menampilkan form edit mobil}
         }
 
-  function multiple_upload(){
+  public function multiple_upload(){
         $config['upload_path']   = './upload/'; 
         $config['allowed_types'] = 'pdf'; 
         $config['max_size']      = 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999; 
