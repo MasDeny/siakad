@@ -3,83 +3,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class login extends CI_Controller {
 	
-	public function __construct()
-    {
-        parent::__construct();			
-		$this->load->library('Commonfunction','','fn');
-		
+	public function __construct(){
+		parent::__construct();		
+		$this->load->model('m_login');
     }
 		 
-	public function index()
-	{
-		if(!isset($this->session->userdata['codeUser']))
-		{
-			$this->load->view('page_login');
-		}
-		else
-		{
-			redirect('admin', 'refresh');
-			
-		}
+	public function index(){
+		$this->load->view('v_login');
 	}
 	
-	public function logon()
-	{
-		
-		$username=$this->input->post("username");
-		$password=$this->input->post("password");
-		$jenis=$this->input->post("jenis");
-		//$this->load->model('Mlogin');
-		
-		//check login
-		$this->load->database();
-		$this->load->model('Mmain');
-		$userdata="";
-		$halaman="";
-		$nama="";
-		$kode="";
-	
-		$tb=" login_mhs 
-			WHERE NIM = ".$this->db->escape($username)."  AND password ='".$password."' ";
-			$halaman="mahasiswa/Index_mahasiswa";
-		
-		$sel="";
-		$query=$this->Mmain->qRead($tb,$sel,"");
-		$loginSuccess=0;
-		
-		
-		if($query->num_rows() > 0)
-		{		    
-			
-			$row=$query->row();
-			
-				
-			$this->session->set_userdata(array(
-				'name' => $row->id_mhs,
-				'codeUser' => $row->NIM,
-				'picUser' => '',
-				'accUser' => ''
-				
-			));
-			
-			
-		
-			$this->session->sess_expiration = '32140800'; //~ one year
-			$this->session->sess_expire_on_close = 'false';
+	function aksi_login(){
+		$NIM = $this->input->post('NIM');
+		$password = $this->input->post('password');
+		$where = array(
+			'NIM' => $NIM,
+			'password' => $password
+			);
+		$cek = $this->m_login->cek_login("login_mhs",$where)->num_rows();
+		$NIK = $this->input->post('NIM');
+		$passwordkaryawan = $this->input->post('password');
+		$where = array(
+			'NIK' => $NIK,
+			'password' => $passwordkaryawan
+			);
+		$cek2 = $this->m_login->cek_login("login_karyawan",$where)->num_rows();
+		if($cek > 0){
+			$data_session = array(
+				'nama' => $NIM,
+				'status' => "login"
+				);
+			$this->session->set_userdata($data_session);
+			redirect(base_url("mahasiswa/Index_mahasiswa"));
+		}else if($cek2 > 0){
+			$data_session = array(
+				'namakaryawan' => $NIK,
+				'status' => "login"
+				);
+			$this->session->set_userdata($data_session);
+			redirect(base_url("index.php/panelkaryawan"));
+		}else{
+			echo "Username dan password salah !";
+		}
+	}
 
-			redirect($halaman, 'refresh');
-		}
-		else
-		{
-			//echo $this->input->post("password");
-			$tes['errVar']=1;
-			$this->load->view('page_login',$tes);
-		}
-	}
-	
-	public function logout()
-	{
-			session_destroy();
-			redirect('main', 'refresh');
-	}
+    public function logout() {
+        $this->session->unset_userdata('nim');
+        $this->session->unset_userdata('status');
+        session_destroy();
+        redirect('login');
+        }
 }
