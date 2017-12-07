@@ -16,7 +16,8 @@
                                 <br>
                             </div>
                             <div class="content">
-                                <form>
+                                <form action="<?php echo base_url()."koordinator/jadwal_sidang/select_mhs/". 
+                                                $user_details->id; ?>" method="post">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -41,7 +42,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Ketua</label>
-                                                <input type="text" class="form-control border-input text-center" disabled placeholder="ketua" name="ketua" value="<?php echo $user_details->dospem; ?>">
+                                                <input type="text" class="form-control border-input text-center" placeholder="ketua" name="ketua" value="<?php echo $user_details->dospem; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -58,7 +59,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Anggota</label>
-                                                <select name="Anggota" class="form-control border-input text-center" required>
+                                                <select name="anggota" class="form-control border-input text-center" required>
                                                     <option disabled selected>Pilih Dosen</option>
                                                     <?php foreach($dosen as $row) { ?>
                                                     <option value="<?php echo $row->nm_dosen;?>"><?php echo $row->nm_dosen;?></option>

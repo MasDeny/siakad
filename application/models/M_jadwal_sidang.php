@@ -39,9 +39,36 @@ class M_jadwal_sidang extends CI_Model {
         return $this->db->get()->result();
     }
 
+    //fungsi ini berguna untuk menyimpan data di tabel penguji
+    //yang digunakan untuk penentuan jadwal sidang tugas akhir
+
     public function save_data($id)
     {
-        
+            $data = array(
+                'ketua'                         => $this->input->post('ketua'),
+                'sekertaris'                    => $this->input->post('sekertaris'),
+                'anggota'                       => $this->input->post('anggota'),
+                'tanggal'                       => $this->input->post('tanggal'),
+                'jam'                           => $this->input->post('jam'),
+                'ruangan'                       => $this->input->post('ruangan'),
+                'status_sidang_id_statussidang' => $id
+            );
+
+
+
+        return $this->db->insert('penguji', $data);
+    }
+
+    // fungsi ini berguna untuk mengupdate dari 1 menjadi 2
+    // yang sebelumnya telah terverifikasi oleh admin menjadi 1
+    // dan sekarang menjadi 2 karena telah terverifikasi oleh koordinator dan di tentukan jadwal nya
+
+    public function acc_sidang($id)
+    {
+        $this->db->set('status', 2)
+        ->where('id_statussidang', $id)
+        ->update('status_sidang');
+
     }
 }
 
