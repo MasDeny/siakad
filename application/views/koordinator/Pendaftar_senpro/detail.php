@@ -15,7 +15,8 @@
                                 <h4 class="title">Penentuan Jadwal Seminar Proposal : </h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form action="<?php echo base_url()."koordinator/pendaftar_senpro/save_mhs/". 
+                                                $user_details->id; ?>" method="post">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -40,13 +41,13 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Panelis 1</label>
-                                                <input type="text" class="form-control border-input" disabled placeholder="ketua" name="ketua" value="<?php echo $user_details->dospem; ?>">
+                                                <input type="text" class="form-control border-input" placeholder="ketua" name="panelis_1" value="<?php echo $user_details->dospem; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Panelis 2</label>
-                                                <select name="sekertaris" class="form-control border-input text-center" required>
+                                                <select name="panelis_2" class="form-control border-input text-center" required>
                                                     <option disabled selected>Pilih Dosen</option>
                                                     <?php foreach($dosen as $row) { ?>
                                                     <option value="<?php echo $row->nm_dosen;?>"><?php echo $row->nm_dosen;?></option>
@@ -57,7 +58,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Panelis 3</label>
-                                                <select name="sekertaris" class="form-control border-input text-center" required>
+                                                <select name="panelis_3" class="form-control border-input text-center" required>
                                                     <option disabled selected>Pilih Dosen</option>
                                                     <?php foreach($dosen as $row) { ?>
                                                     <option value="<?php echo $row->nm_dosen;?>"><?php echo $row->nm_dosen;?></option>
@@ -84,6 +85,11 @@
                                                 <label>Ruangan</label>
                                                 <input type="text" class="form-control border-input" placeholder="ruangan" name="ruangan">
                                             </div>
+
+                                        </div>
+                                         <div class="col-md-4 text-right pull-right">
+                                            <a href="<?php echo base_url(); ?>koordinator/pendaftar_senpro" class="btn btn-md btn-danger btn-flat">Batal</a>
+                                            <button type="submit" class="btn btn-md btn-success btn-flat">Simpan</button>
                                         </div>
                                     </div>
                                 </form>
