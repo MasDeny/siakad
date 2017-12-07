@@ -37,15 +37,15 @@
     <li><div class="divider"></div></li>
     <li><a href="#!">Pendaftaran Seminar Proposal</a></li>
     <li><div class="divider"></div></li>
-    <li><a href="<?php echo base_url(); ?>mahasiswa/Index_mahasiswa/getsidang">Pendaftaran Sidang TA</a></li>
+    <li><a href="<?php echo base_url('mahasiswa/C_sidang'); ?>">Pendaftaran Sidang TA</a></li>
     <li><div class="divider"></div></li>
-    <li><a href="<?php echo base_url(); ?>mahasiswa/Index_mahasiswa/getberkas">Upload Berkas TA</a></li>
+    <li><a href="<?php echo base_url('mahasiswa/C_berkas'); ?>">Upload Berkas TA</a></li>
     <li><div class="divider"></div></li>
     <li><a class="waves-effect" href="#!">Pendaftaran Wisuda</a></li>
     <li><div class="divider"></div></li>
-    <li><a href="<?php echo base_url(); ?>mahasiswa/Index_mahasiswa/getstudytracer">Pendaftaran Tracer Study</a></li>
+    <li><a href="<?php echo base_url('mahasiswa/C_studytracer'); ?>">Pendaftaran Tracer Study</a></li>
     <li><div class="divider"></div></li>
-    <li><a href="<?php echo base_url(); ?>mahasiswa/Index_mahasiswa/getyudisium">Pendaftaran Yudisium</a></li>
+    <li><a href="<?php echo base_url('mahasiswa/C_yudisium'); ?>">Pendaftaran Yudisium</a></li>
     <li><div class="divider"></div></li>
   </ul>
   <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -69,12 +69,12 @@
 
       <div class="row">
         <div class="input-field col s12">
-          <input value="Aplikasi Diagnosis Penyakit Utama Tanaman Kopi dengan Metode Naive Bayes Berbasis Android" id="Judul" type="text" class="validate" disabled>
-          <label class="active" for="Judul">Judul</label>
+        <label class="active" for="Judul">Judul :  </label>
+          <input id="Judul" type="text" class="validate" value="<?php echo $this->session->userdata("nama") ?>" readonly>
         </div>
       </div>
 
-      <?php echo form_open_multipart('Upload/multiple_upload'); ?>
+      <?php echo form_open_multipart('mahasiswa/C_berkas/multiple_upload'); ?>
       <table class="bordered highlight">
         <tbody>
           <tr>

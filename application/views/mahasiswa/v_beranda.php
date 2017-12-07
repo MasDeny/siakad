@@ -37,15 +37,15 @@
     <li><div class="divider"></div></li>
     <li><a href="#!">Pendaftaran Seminar Proposal</a></li>
     <li><div class="divider"></div></li>
-    <li><a href="<?php echo base_url(); ?>mahasiswa/Index_mahasiswa/getsidang">Pendaftaran Sidang TA</a></li>
+    <li><a href="<?php echo base_url('mahasiswa/C_sidang'); ?>">Pendaftaran Sidang TA</a></li>
     <li><div class="divider"></div></li>
-    <li><a href="<?php echo base_url(); ?>mahasiswa/Index_mahasiswa/getberkas">Upload Berkas TA</a></li>
+    <li><a href="<?php echo base_url('mahasiswa/C_berkas'); ?>">Upload Berkas TA</a></li>
     <li><div class="divider"></div></li>
     <li><a class="waves-effect" href="#!">Pendaftaran Wisuda</a></li>
     <li><div class="divider"></div></li>
-    <li><a href="<?php echo base_url(); ?>mahasiswa/Index_mahasiswa/getstudytracer">Pendaftaran Tracer Study</a></li>
+    <li><a href="<?php echo base_url('mahasiswa/C_studytracer'); ?>">Pendaftaran Tracer Study</a></li>
     <li><div class="divider"></div></li>
-    <li><a href="<?php echo base_url(); ?>mahasiswa/Index_mahasiswa/getyudisium">Pendaftaran Yudisium</a></li>
+    <li><a href="<?php echo base_url('mahasiswa/C_yudisium'); ?>">Pendaftaran Yudisium</a></li>
     <li><div class="divider"></div></li>
   </ul>
   <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>

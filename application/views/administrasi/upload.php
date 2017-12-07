@@ -27,13 +27,18 @@
     <div class="section">
     <label>Judul</label>
     <select>
-      <option value="" disabled selected>Silahkan pilih salah satu</option>
-      <option value="1">Aplikasi Diagnosis Penyakit Utama Tanaman Kopi Dengan Metode Naive Bayes Berbasis Android</option>
+      <option value="" disabled selected class="form-control">Silahkan pilih salah satu</option>
+<!--       <option value="1">Aplikasi Diagnosis Penyakit Utama Tanaman Kopi Dengan Metode Naive Bayes Berbasis Android</option>
       <option value="2">Aplikasi Manajemen Perkantoran Klinik Dokterku Taman Gading</option>
       <option value="3">Aplikasi Jasa Service Dan Penjualan Sparepart Berbasis Desktop</option>
       <option value="4">Aplikasi Media Pembelajaran Olaharaga Futsal Berbasis Android</option>
       <option value="5">Implementasi Web Service Restful Pada Website E-Commerce Distro Potlot 14 Jember</option>
-      <option value="6">Aplikasi Pembanding Algoritma Shortest Path Berbasis Dekstop</option>
+      <option value="6">Aplikasi Pembanding Algoritma Shortest Path Berbasis Dekstop</option> -->
+      <?php
+        foreach ($judul as $row) {
+          echo '<option value="'.$row->judul_TA.'">'.$row->judul_TA.'</option>';
+        }
+      ?>
     </select>
 
       <table class="bordered highlight">
