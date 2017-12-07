@@ -26,4 +26,18 @@ public function __construct() {
         $this->load->view('koordinator/Pendaftar_senpro/detail', $data);
     }
 
+    public function save_mhs($id)
+    {
+        $this->form_validation->set_rules('tanggal', 'tanggal', 'required');
+        $this->form_validation->set_rules('jam', 'jam', 'required');
+        $this->form_validation->set_rules('ruangan', 'ruangan', 'required');
+
+        if ($this->form_validation->run() == TRUE) {
+
+            $this->M_pendaftaran_senpro->save($id);
+            $this->M_pendaftaran_senpro->acc($id);
+            redirect('koordinator/pendaftar_senpro');
+        }
+        
+    }
 }
