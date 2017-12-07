@@ -1,275 +1,219 @@
-<?php
+<?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Index_mahasiswa extends CI_Controller 
-{
-	public function __construct()
-	{
+class Index_mahasiswa extends CI_Controller{
+	function __construct(){
 		parent::__construct();
-		$this->load->library('Commonfunction','','fn');
-				
-		if(!isset($this->session->userdata['name']))		
-			redirect("login","refresh");
+        $this->load->helper('url');
+        $this->load->helper(array('form'));
+        $this->load->helper(array('string'));
+        $this->load->library('form_validation');
+        $this->load->library('image_lib');
+		$this->load->model('m_datamahasiswa');
+		if($this->session->userdata('status') == ""){
+			redirect('login');
+		}
 	}
-	/*	
-		====================================================== Variable Declaration =========================================================
-	*/
-	
-	var $mainTable="mahasiswa";
-	var $mainPk="NIM";
-	var $viewLink="Index_mahasiswa";
-	var $breadcrumbTitle="Index_mahasiswa";
-	var $viewPage="mahasiswa/v_mahasiswa";
-	var $addPage="mahasiswa/v_daftarjudul";
-	
-	
-	//query
-	var $ordQuery=" ORDER BY id ";
-	var $tableQuery="
-						mahasiswa a 
-						inner join dp1 b on a.id_dp1=b.id_dp1
-						inner join rumpun c on a.id_rumpun=c.id_rumpun
-						inner join login_mhs d on a.id_mhs=d.id_mhs
-						inner join dokumen_tugas_akhir e on a.id_dokumen=e.id_dokumen";
-						
-						
-	var $fieldQuery="a.NIM as id,
-					 a.nama_mahasiswa,
-					 a.program_studi,
-					 b.nm_dosen,
-					 a.dospem_2,
-					 c.nm_rumpun,
-					 a.judul_TA,
-					 a.deskripsi,
-					 d.id_mhs,
-					 e.berkas_dokumen,
-					 a.status,
-					 CASE	 
-	WHEN a.status=0 then 'Belum Dikonfirmasi'
-	WHEN a.status=1 then 'Diterima'
-	When a.status=2 then 'Ditolak'
-	END as status,
-					a.status_mahasiswa";
-					
-					 
-					  //leave blank to show all field
-						
-	var $primaryKey="id";
-	var $updateKey="a.NIM";
-	
-	//auto generate id
-	var $defaultId="";
-	var $prefix="";
-	var $suffix="";	
-	
-	//view
-	var $viewFormTitle="Form Pendaftaran Pengajuan judul";
-	var $viewFormTableHeader=array(
-									"NIM",
-									"Nama",
-									"Program Studi",
-									"Dosen Pembimbing 1",
-									"Dosen Pembimbing 2",
-									"Rumpun Mata Kuliah",
-									"Judul Tugas Akhir",
-									"Deskripsi",
-									"ID Mahasiswa",
-									"Referensi",
-									"Status"
-									);
-	
-	//save
-	var $saveFormTitle="Tambah judul";
-	var $saveFormTableHeader=array(
-									"NIM",
-									"Nama",
-									"Program Studi",
-									"Dosen Pembimbing 1",
-									"Dosen Pembimbing 2",
-									"Rumpun Mata Kuliah",
-									"Judul Tugas Akhir",
-									"Deskripsi",
-									"ID Mahasiswa",
-									"Referensi",
-									"Status"
-									);
-	
-	//update
-	var $editFormTitle="Edit Judul";
-	
-	/*	
-		========================================================== General Function =========================================================
-	*/
-	
-	public function index()
-	{
-		//init modal
-		$this->load->database();
-		$this->load->model('Mmain');
-		
-			
-		
-		//init view
-		
-		$renderTemp=$this->Mmain->qRead($this->tableQuery." WHERE a.NIM='".$this->session->userdata('codeUser')."'".$this->ordQuery,$this->fieldQuery,"");
-		
-		$output['render']=$renderTemp;
-		//init view
-		$output['pageTitle']=$this->viewFormTitle;
-		$output['breadcrumbTitle']=$this->breadcrumbTitle;
-		$output['breadcrumbLink']=$this->viewLink;
-		$output['saveLink']=$this->viewLink."/add";
-		$output['deleteLink']=$this->viewLink."/delete";
-		$output['primaryKey']=$this->primaryKey;
-		$output['tableHeader']=$this->viewFormTableHeader;
-		
-		//render view
-		//$this->fn->getheader();
-		$this->load->view($this->viewPage,$output);
-		//$this->fn->getfooter();
-	}
-	
 
-	
-	public function add($isEdit="")
-	{
-		//init modal
-		$this->load->database();
-		$this->load->model('Mmain');
-		
-		
-		//init view
-		$output['pageTitle']=$this->saveFormTitle;
-		$output['breadcrumbTitle']=$this->breadcrumbTitle;
-		$output['breadcrumbLink']=$this->viewLink;
-		$output['saveLink']=$this->viewLink."/save";
-		$output['tableHeader']=$this->saveFormTableHeader;
-		$output['formLabel']=$this->saveFormTableHeader;
-		
-		$imgTemp="";
-		$codeTemp="";
-		if(!empty($isEdit))
-		{
-			$output['isedit']=1;
-			$output['pageTitle']=$this->editFormTitle;
-			$output['saveLink']=$this->viewLink."/update";
-			$pid=$isEdit;
-			//$this->fieldQuery="code_user,nm_user,pwd_user,ava_user,id_acc";
-			$render=$this->Mmain->qRead($this->tableQuery,$this->fieldQuery,$this->updateKey." = '".$pid."'");
-			foreach($render->result() as $row)
-			{
-				foreach($row as $col)
-				{
-					$txtVal[]= $col;
-				}
-			}
-				$txtVal[0]=$pid;
-				$cbodp1=$this->fn->createCbofromDb("dp1","id_dp1 as id,nm_dosen as nm","",$txtVal[3]);
-				$cborumpun=$this->fn->createCbofromDb("rumpun","id_rumpun as id,nm_rumpun as nm","",$txtVal[5]);
-				$cbodokumen=$this->fn->createCbofromDb("dokumen_tugas_akhir","id_dokumen as id,berkas_dokumen as nm","",$txtVal[9]);
-				//$cboloc=$this->fn->createCbofromDb("tb_loc","id_loc as id,nm_loc as nm","",$txtVal[6]);
-				$cbostat=$this->fn->createCbo(array(0),array("Belum diverifikasi"),$txtVal[10]);
-				
-				$output['datamhs']=Array(
-											$pid,
-											$txtVal[1],
-											$txtVal[2],
-											$cbodp1,
-											$txtVal[4],
-											$cborumpun,
-											$txtVal[6],
-											$txtVal[7],
-											$cbodokumen
-											);
-				
+	public function index(){
+        $data['username'] = $this->session->userdata('username');
+		$this->load->view('mahasiswa/v_beranda', $data);
+	}
+
+	public function getsidang(){
+		$this->load->view('mahasiswa/v_sidang');
+	}
+
+	public function getberkas(){
+		$this->load->view('mahasiswa/v_upload');
+	}
+
+	public function getyudisium(){
+		$NIM = $this->session->userdata("nama");
+		$where = array(
+			'mahasiswa_NIM' => $NIM
+			);
+		$cek = $this->m_datamahasiswa->cek_datastudytracer("yudisium",$where)->num_rows();
+		if($cek > 0){
+			$this->load->view('mahasiswa/v_terdaftar_yudisium');
+		}else{
+			$data['mahasiswa'] = $this->m_datamahasiswa->view_by($NIM);
+			$this->load->view('mahasiswa/v_yudisium1',$data);
 		}
-		else
-		{	
-				for($i=0;$i<count($this->saveFormTableHeader);$i++)
-				{
-					$txtVal[]="";
-				}	
-				
-				//generate id
-				$newId=$this->Mmain->autoId($this->mainTable,$this->mainPk,$this->prefix,$this->defaultId,$this->suffix);	
-				$txtVal[0]=$newId;
-				
-				$cbodp1=$this->fn->createCbofromDb("dp1","id_dp1 as id,nm_dosen as nm","","");
-				$cborumpun=$this->fn->createCbofromDb("rumpun","id_rumpun as id,nm_rumpun as nm","","");
-				$cbodokumen=$this->fn->createCbofromDb("dokumen_tugas_akhir","id_dokumen as id,berkas_dokumen as nm","","");
-				$cbostat=$this->fn->createCbo(array(0),array("Belum diverifikasi"),"");
-				//$cbostat=$this->fn->createCbo(array(1,0),array("Active","Inactive"),"");
-				$txtVal[0]=$this->session->userdata("codeUser");
-				$txtVal[8]=$this->session->userdata("name");
+	}
+	
+	public function getstudytracer(){
+		//$this->load->view('v_studytracer');
+		$NIM = $this->session->userdata("nama");
+		$where = array(
+			'mahasiswa_NIM' => $NIM
+			);
+		$cek = $this->m_datamahasiswa->cek_datastudytracer("tracer_study",$where)->num_rows();
+		if($cek > 0){
+			$this->load->view('mahasiswa/v_terdaftar');
+		}else{
+			$data['mahasiswa'] = $this->m_datamahasiswa->view_by($NIM);
+			$this->load->view('mahasiswa/v_studytracer',$data);
+			//redirect(base_url("index.php/admin"));
 		}
-		$output['formTxt']=array(
-								$codeTemp."<input type='text' class='form-control' id='txtid0' name=txt[] value='".$txtVal[0]."' readonly>",
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[1]."' required>",
-								"<input type='text' class='form-control' id='txtpass' name=txt[] value='".$txtVal[2]."' required>",
-								$cbodp1,							
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[4]."' required>",
-								$cborumpun,
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[6]."' required>",
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[7]."' required>",
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[8]."' readonly>",
-								$cbodokumen,
-								$cbostat,
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[11]."' readonly>",
-								);
-		
-		
-		//load view
-		//$this->fn->getheader();
-		$this->load->view($this->addPage,$output);
-		//$this->fn->getfooter();
-	}	
-	
-	public function save()
-	{
-		//retrieve values
-		$savValTemp=$this->input->post('txt');
-		
-		//save to database
-		$this->load->database();
-		$this->load->model('Mmain');
-	
-		//echo implode("<br>",$savEmp);
-		$this->Mmain->qIns($this->mainTable,$savValTemp);
-		
-		//redirect to form
-		redirect("mahasiswa/Index_mahasiswa",'refresh');		
 	}
 	
-	//delete record
-	public function delete($valId)
-	{		
-		//save to database
-		$this->load->database();
-		$this->load->model('Mmain');
-		$this->Mmain->qDel($this->mainTable,$this->mainPk,$valId);
-		
-		//redirect to form
-		redirect($this->viewLink,'refresh');		
-	}
-	
-	//update record
-	public function update()
-	{
-		//retrieve values
-		$savValTemp=$this->input->post('txt');
-		
-		//save to database
-		$this->load->database();
-		$this->load->model('Mmain');
-		
-							
-		//echo implode("<br>",$savValTemp);
-		$this->Mmain->qUpd("mahasiswa","NIM" ,$savValTemp[0],$savValTemp);
-		
-		//redirect to form
-		redirect($this->viewLink,'refresh');		
-	}
-	
+	public function cetak_pendaftaran_yudisium(){
+            $data['NIM']=$_SESSION['nama'];
+            $data['data_form_yudisium_mahasiswa'] = $this->m_datamahasiswa->select_data_form_yudisium_mahasiswa($data)->row();
+            $this->load->view('mahasiswa/v_cetak_yudisium', $data); //untuk menampilkan form edit mobil}
+        }
+
+  public function multiple_upload(){
+        $config['upload_path']   = './upload/'; 
+        $config['allowed_types'] = 'pdf'; 
+        $config['max_size']      = 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999; 
+        $config['max_width']     = 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999; 
+        $config['max_height']    = 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;  
+        $this->load->library('upload', $config);
+
+        // script upload file pertama
+        $this->upload->do_upload('file1');
+        $file1 = $this->upload->data();
+        echo "<pre>";
+        print_r($file1);
+        echo "</pre>";
+        
+        // script uplaod file kedua
+        $this->upload->do_upload('file2');
+        $file2 = $this->upload->data();
+        echo "<pre>";
+        print_r($file2);
+        echo "</pre>";
+
+        // script upload file ketiga
+        $this->upload->do_upload('file3');
+        $file3 = $this->upload->data();
+        echo "<pre>";
+        print_r($file3);
+        echo "</pre>";
+        
+        // script uplaod file keempat
+        $this->upload->do_upload('file4');
+        $file4 = $this->upload->data();
+        echo "<pre>";
+        print_r($file4);
+        echo "</pre>";
+
+        // script upload file kelima
+        $this->upload->do_upload('file5');
+        $file5 = $this->upload->data();
+        echo "<pre>";
+        print_r($file5);
+        echo "</pre>";
+        
+        // script uplaod file keenam
+        $this->upload->do_upload('file6');
+        $file6 = $this->upload->data();
+        echo "<pre>";
+        print_r($file6);
+        echo "</pre>";
+
+        // script upload file ketujuh
+        $this->upload->do_upload('file7');
+        $file7 = $this->upload->data();
+        echo "<pre>";
+        print_r($file7);
+        echo "</pre>";
+        
+        // script uplaod file kedelapan
+        $this->upload->do_upload('file8');
+        $file8 = $this->upload->data();
+        echo "<pre>";
+        print_r($file8);
+        echo "</pre>";
+
+        // script upload file kesembilan
+        $this->upload->do_upload('file9');
+        $file9 = $this->upload->data();
+        echo "<pre>";
+        print_r($file9);
+        echo "</pre>";
+        
+        // script uplaod file kesepuluh
+        $this->upload->do_upload('file10');
+        $file10 = $this->upload->data();
+        echo "<pre>";
+        print_r($file10);
+        echo "</pre>";
+
+        // script upload file kesebelas
+        $this->upload->do_upload('file11');
+        $file11 = $this->upload->data();
+        echo "<pre>";
+        print_r($file11);
+        echo "</pre>";
+        
+        // script uplaod file keduabelas
+        $this->upload->do_upload('file12');
+        $file12 = $this->upload->data();
+        echo "<pre>";
+        print_r($file12);
+        echo "</pre>";
+
+        // script upload file ketigabelas
+        $this->upload->do_upload('file13');
+        $file13 = $this->upload->data();
+        echo "<pre>";
+        print_r($file13);
+        echo "</pre>";
+        
+        // script uplaod file keempatbelas
+        $this->upload->do_upload('file14');
+        $file14 = $this->upload->data();
+        echo "<pre>";
+        print_r($file14);
+        echo "</pre>";
+
+        // script upload file kelimabelas
+        $this->upload->do_upload('file15');
+        $file15 = $this->upload->data();
+        echo "<pre>";
+        print_r($file15);
+        echo "</pre>";
+        
+        // script uplaod file keenambelas
+        $this->upload->do_upload('file16');
+        $file16 = $this->upload->data();
+        echo "<pre>";
+        print_r($file16);
+        echo "</pre>";
+
+        // script upload file ketujuhbelas
+        $this->upload->do_upload('file17');
+        $file17 = $this->upload->data();
+        echo "<pre>";
+        print_r($file17);
+        echo "</pre>";
+        
+        // script uplaod file kedelapanbelas
+        $this->upload->do_upload('file18');
+        $file18 = $this->upload->data();
+        echo "<pre>";
+        print_r($file18);
+        echo "</pre>";
+
+        // script upload file kesembilanbelas
+        $this->upload->do_upload('file19');
+        $file19 = $this->upload->data();
+        echo "<pre>";
+        print_r($file19);
+        echo "</pre>";
+        
+        // script uplaod file keduapuluh
+        $this->upload->do_upload('file20');
+        $file20 = $this->upload->data();
+        echo "<pre>";
+        print_r($file20);
+        echo "</pre>";
+  }
+
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect('login');
+    }
 }
-
-?>
