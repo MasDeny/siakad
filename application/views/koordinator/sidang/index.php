@@ -67,7 +67,7 @@
                                         <th>NIM</th>
                                         <th>Nama</th>
                                         <th>Judul Tugas Akhir</th>
-                                        <th>Status</th>
+                                        <th>Keterangan</th>
                                         <th></th>
                                     </thead>
                                     <tbody>
