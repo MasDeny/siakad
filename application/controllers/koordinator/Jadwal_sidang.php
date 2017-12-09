@@ -27,15 +27,20 @@ public function __construct() {
 
     public function select_mhs($id)
     {
-        $this->$this->form_validation->set_rules('tanggal', 'tanggal', 'required');
-        $this->$this->form_validation->set_rules('jam', 'jam', 'required');
-        $this->$this->form_validation->set_rules('ruangan', 'ruangan', 'required');
+        $this->form_validation->set_rules('tanggal', 'tanggal', 'required');
+        $this->form_validation->set_rules('jam', 'jam', 'required');
+        $this->form_validation->set_rules('ruangan', 'ruangan', 'required');
 
         if ($this->form_validation->run() == TRUE) {
-            
-        } else {
-            
+
+            $this->M_jadwal_sidang->save_data($id);
+            $this->M_jadwal_sidang->acc_sidang($id);
+            redirect('koordinator/jadwal_sidang');
         }
         
+    }
+    public function unselect_mhs($id)
+    {
+
     }
 }
