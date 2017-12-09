@@ -1,10 +1,10 @@
 <?php 
-$this->load->view('template/head');
+$this->load->view('administrasi/head');
 ?>
 <!--tambahkan custom css disini-->
 <?php
-$this->load->view('template/topbar');
-$this->load->view('template/sidebar');
+$this->load->view('administrasi/header');
+$this->load->view('administrasi/leftbar');
 ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -52,10 +52,10 @@ $this->load->view('template/sidebar');
     </div>
 <!-- /.content -->
 
-<?php 
-$this->load->view('template/js');
-?>
+<!--?php 
+$this->load->view('administrasi/js');
+?-->
 <!--tambahkan custom js disini-->
 <?php
-$this->load->view('template/foot');
+$this->load->view('administrasi/footer');
 ?>

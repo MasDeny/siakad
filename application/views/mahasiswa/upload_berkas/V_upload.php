@@ -14,8 +14,8 @@
 
       <div class="row">
         <div class="input-field col s12">
-        <label class="active" for="Judul">Judul :  </label>
-          <input id="Judul" type="text" class="validate" value="<?php echo $this->session->userdata("nama") ?>" readonly>
+        <label class="active" for="Judul">NIM :  </label>
+          <input id="Judul" type="text" class="validate" value="<?php echo $this->session->userdata("nama") ?>" disabled>
         </div>
       </div>
 

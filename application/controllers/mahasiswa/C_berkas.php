@@ -18,13 +18,24 @@ class C_berkas extends CI_Controller{
 	}
 
 	public function index(){
-        $nim =  $this->session->userdata("nama");
         $data['username'] = $this->session->userdata('username');
-        $judul['judul_TA'] = $this->M_datajudulberkas->tampiljudul($nim);
-        $this->load->view('mahasiswa/header', $data, $judul);
-        $this->load->view('mahasiswa/sidebar', $data, $judul);
-        $this->load->view('mahasiswa/upload_berkas/v_upload', $data, $judul);
-        $this->load->view('mahasiswa/footer', $data, $judul);
+        $NIM = $this->session->userdata("nama");
+        // $where = array(
+        //     'mahasiswa_NIM' => $NIM
+        //     );
+        // $cek = $this->m_datajudulberkas->cek_datajudulberkas("mahasiswa",$where)->num_rows();
+        // if($cek > 0){
+            $this->load->view('mahasiswa/header', $data);
+            $this->load->view('mahasiswa/sidebar', $data);
+            $this->load->view('mahasiswa/upload_berkas/v_upload', $data);
+            $this->load->view('mahasiswa/footer', $data);
+        // }else{
+        //     $this->load->view('mahasiswa/header', $data);
+        //     $this->load->view('mahasiswa/sidebar', $data);
+        //     $this->load->view('mahasiswa/upload_berkas/v_upload', $data);
+        //     $this->load->view('mahasiswa/footer', $data);
+        //     //redirect(base_url("index.php/admin"));
+        // }
 	}
 
   function multiple_upload(){

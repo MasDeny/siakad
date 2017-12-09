@@ -15,12 +15,12 @@ class C_versempro extends CI_Controller {
 	public function index()
 	{
         $data['mhs'] = $this->m_psmpro->tampil_regsempro();
-        $this->load->view('admin/v_versempro', $data);
+        $this->load->view('administrasi/v_versempro', $data);
     }
 
     public function konfirmasi($NIM = NULL) {
         $data['detail_mhs'] = $this->m_psmpro->tampil_regsempro($NIM);   
-        $this->load->view('admin/v_konfirsempro', $data);
+        $this->load->view('administrasi/v_konfirsempro', $data);
     }
 
     public function sempro_acc($NIM)

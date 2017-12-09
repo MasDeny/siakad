@@ -1,17 +1,21 @@
-<?php 
-$this->load->view('template/head');
-?>
-<!--tambahkan custom css disini-->
-<?php
-$this->load->view('template/topbar');
-$this->load->view('template/sidebar');
-?>
+<!DOCTYPE html>
+<html>
+<?php $this->load->view('administrasi/head') ?>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+<?php $this->load->view('administrasi/header') ?>
+  <!-- Left side column. contains the logo and sidebar -->
+<?php $this->load->view('administrasi/leftbar') ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <center><h1><b>
-        Upload berkas berkas Seminar Proposal
-    </b></h1></center>
-</section>
+      <h1>
+        Verifikasi Sempro
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="<?php echo base_url('#'); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+      </ol>
+    </section>
 
 <!-- Main content -->
         <div class="container">
@@ -46,10 +50,10 @@ $this->load->view('template/sidebar');
 </div>
 </section><!-- /.content -->
 
-<?php 
-$this->load->view('template/js');
-?>
+<!--?php 
+//$this->load->view('administrasi/js');
+?-->
 <!--tambahkan custom js disini-->
-<?php
-$this->load->view('template/foot');
-?>
+<?php $this->load->view('administrasi/footer') ?>
+</body>
+</html>
