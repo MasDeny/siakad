@@ -68,7 +68,7 @@
                                         <th>NIM</th>
                                         <th>Nama</th>
                                         <th>Judul Tugas Akhir</th>
-                                        <th>Pembimbing 1</th>
+                                        <th>Status</th>
                                         <th></th>
                                     </thead>
                                     <tbody>
@@ -82,14 +82,14 @@
                                             <td><?php echo $data->NIM; ?></td>
                                             <td><?php echo $data->nama; ?></td>
                                             <td><?php echo $data->judul; ?></td>
-                                            <td><?php echo $data->dospem; ?></td>
+                                            <td></td>
                                             <td>
-                                                <div class="col-xs-3 text-right">        
+                                                <div class="col-xs-3">        
                                                 <a href="<?php echo base_url()."koordinator/jadwal_sidang/view/". 
-                                                $data->id; ?>" class="btn btn-md btn-info btn-icon">
-                                                <i class="fa fa-check" aria-hidden="true"></i>
-                                                </a>
-                                                 
+                                                $data->id; ?>" class="btn btn-md btn-info btn-flat">Edit</a>
+                                                </div>
+                                                <div class="col-xs-3">
+                                                 <a href="<?php echo base_url(); ?>koordinator/Jadwal_sidang" class="btn btn-md btn-warning btn-flat">Hapus</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -105,4 +105,5 @@
         </div>
 </div>
 </div>
+<script>document.body.style.overflow = "hidden";</script>
     <?php $this->load->view('/koordinator/footer');
