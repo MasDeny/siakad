@@ -18,7 +18,7 @@
                                 <p class="category">Tabel ini untuk memilih mahasiswa yang akan disetujui melakukan sidang, sehingga nantinya akan di tentukan jadwal sidangnya</p>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <table class="table table-striped">
+                                <table class="table table-hover">
                                     <thead>
                                         <th>No</th>
                                         <th>NIM</th>
@@ -52,7 +52,6 @@
                                         <?php } ?>
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                         <div class="card">
@@ -62,19 +61,19 @@
                                 <p class="category">Pada tabel ini anda berhak untuk mengganti jadwal sidang ataupun menghapus mahasiswa dari jadwal sidang yang ditentukan</p>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <table class="table table-striped">
+                                <table class="table table-hover table-responsive">
                                     <thead>
                                         <th>No</th>
                                         <th>NIM</th>
                                         <th>Nama</th>
                                         <th>Judul Tugas Akhir</th>
-                                        <th>Status</th>
+                                        <th>Keterangan</th>
                                         <th></th>
                                     </thead>
                                     <tbody>
                                         <?php 
                                         $no = 1 ;
-                                        foreach ($user as $data) {
+                                        foreach ($user_acc as $data) {
                                             
                                         ?>
                                         <tr>
@@ -84,12 +83,12 @@
                                             <td><?php echo $data->judul; ?></td>
                                             <td></td>
                                             <td>
-                                                <div class="col-xs-3">        
+                                                <div class="button-group">        
+                                                <a href="<?php echo base_url()."koordinator/jadwal_sidang/view/". 
+                                                $data->id; ?>" class="btn btn-md btn-default btn-flat">Lihat</a>        
                                                 <a href="<?php echo base_url()."koordinator/jadwal_sidang/view/". 
                                                 $data->id; ?>" class="btn btn-md btn-info btn-flat">Edit</a>
-                                                </div>
-                                                <div class="col-xs-3">
-                                                 <a href="<?php echo base_url(); ?>koordinator/Jadwal_sidang" class="btn btn-md btn-warning btn-flat">Hapus</a>
+                                                 <a href="<?php echo base_url(); ?>koordinator/Jadwal_sidang" class="btn btn-md btn-danger btn-flat">Hapus</a>
                                                 </div>
                                             </td>
                                         </tr>
