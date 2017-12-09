@@ -14,6 +14,7 @@ public function __construct() {
         $data['title'] = "Koordinator Panel System - Jadwal Sidang";
         $data['heading'] = "Jadwal Sidang";
         $data['user'] = $this->M_jadwal_sidang->get_data();
+        $data['user_acc'] = $this->M_jadwal_sidang->acc_mhs();
         $this->load->view('koordinator/sidang/index', $data);
     }
 
@@ -39,6 +40,17 @@ public function __construct() {
         }
         
     }
+
+
+    public function view_acc($id = NULL)
+    {
+        $data['title'] = "Koordinator Panel System - Detail Jadwal ";
+        $data['heading'] = "Detail Jadwal";
+        $data['user_details'] = $this->M_jadwal_sidang->get_data($id);
+        $data['dosen'] = $this->M_jadwal_sidang->show_dosen();   
+        $this->load->view('koordinator/sidang/index', $data);
+    }
+
     public function unselect_mhs($id)
     {
         

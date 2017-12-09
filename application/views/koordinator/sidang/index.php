@@ -73,7 +73,7 @@
                                     <tbody>
                                         <?php 
                                         $no = 1 ;
-                                        foreach ($user as $data) {
+                                        foreach ($user_acc as $data) {
                                             
                                         ?>
                                         <tr>
