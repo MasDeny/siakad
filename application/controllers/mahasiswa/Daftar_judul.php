@@ -236,7 +236,7 @@ class Daftar_judul extends CI_Controller
 		$this->Mmain->qIns($this->mainTable,$savValTemp);
 		
 		//redirect to form
-		redirect("Index_mahasiswa",'refresh');		
+		redirect("mahasiswa/Index_mahasiswa",'refresh');		
 	}
 	
 	//delete record

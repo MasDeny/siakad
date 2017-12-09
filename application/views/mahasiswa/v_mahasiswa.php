@@ -87,15 +87,26 @@
 				<td><?= $row->dospem_2;?></td>
 				<td><?= $row->berkas_dokumen;?></td>
 				<td><?= $row->status;?></td>				
+				<?php
+				if($row->status == "Belum Dikonfirmasi")
+				{
+					?>
 				<td>
 				<a href="<?= site_url();?>mahasiswa/Index_mahasiswa/add/<?= $row->id;?>"  class="btn btn-success">Edit
 				</a>
 				</td>
-			
+				<?php
+				}
+				?>
 
 			</tr>
 			<?php
 		}
+		?>
+		<?php
+		
+		if($render->num_rows()==0)
+		{
 		?>
 		<tr>
 		<td colspan=8>
@@ -106,6 +117,9 @@
 		
 		</td>
 		</tr>
+		<?php
+		}
+		?>
 		</tbody>
 	
 		</table>

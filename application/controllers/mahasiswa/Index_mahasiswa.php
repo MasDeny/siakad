@@ -107,8 +107,6 @@ class Index_mahasiswa extends CI_Controller
 		$this->load->database();
 		$this->load->model('Mmain');
 		
-			
-		
 		//init view
 		
 		$renderTemp=$this->Mmain->qRead($this->tableQuery." WHERE a.NIM='".$this->session->userdata('codeUser')."'".$this->ordQuery,$this->fieldQuery,"");
@@ -267,7 +265,7 @@ class Index_mahasiswa extends CI_Controller
 		$this->Mmain->qUpd("mahasiswa","NIM" ,$savValTemp[0],$savValTemp);
 		
 		//redirect to form
-		redirect($this->viewLink,'refresh');		
+		redirect("mahasiswa/Index_mahasiswa",'refresh');		
 	}
 	
 }

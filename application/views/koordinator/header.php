@@ -31,5 +31,11 @@
     <link href="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-ui.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-ui.theme.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/plugins/jQuery/jquery.autocomplete.css" rel="stylesheet">
-
+	
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.14/css/jquery.dataTables.min.css" type="text/css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css" type="text/css">
+	
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.0/css/dataTables.responsive.css">
+	
 </head>
