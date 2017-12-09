@@ -25,7 +25,7 @@ class C_studytracer extends CI_Controller{
         if($cek > 0){
             $this->load->view('mahasiswa/header', $data);
             $this->load->view('mahasiswa/sidebar', $data);
-            $this->load->view('mahasiswa/studytracer/v_terdaftar');
+            $this->load->view('mahasiswa/studytracer/v_terdaftar', $data);
             $this->load->view('mahasiswa/footer', $data);
         }else{
             $data['mahasiswa'] = $this->m_datamahasiswa->view_by($NIM);

@@ -37,8 +37,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
 
-  <script src="<?php echo base_url('materialize/js/jquery-2.1.1.js'); ?>"></script>
-  <script src="<?php echo base_url('materialize/js/materialize.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/js/jquery-2.1.1.min.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/js/materialize.min.js'); ?>"></script>
   <script>
     (function($){
       $(function(){
@@ -62,7 +62,7 @@
     });
   </script>
 
-  <script src="<?php echo base_url('materialize/js/jquery.media.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/js/jquery.media.js'); ?>"></script>
   <script>
     $(function () {
         $('.media').media({width: 955});
