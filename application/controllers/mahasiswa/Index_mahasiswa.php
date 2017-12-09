@@ -8,8 +8,11 @@ class Index_mahasiswa extends CI_Controller
 		parent::__construct();
 		$this->load->library('Commonfunction','','fn');
 				
-		if(!isset($this->session->userdata['name']))		
-			redirect("login","refresh");
+		// if(!isset($this->session->userdata['name']))		
+		// 	redirect("login","refresh");
+		if ($this->session->userdata('status')=="") {
+            redirect('login');
+        }
 	}
 	/*	
 		====================================================== Variable Declaration =========================================================
@@ -101,183 +104,181 @@ class Index_mahasiswa extends CI_Controller
 		========================================================== General Function =========================================================
 	*/
 	
-	public function index()
-	{
-		//init modal
-		$this->load->database();
-		$this->load->model('Mmain');
+	// public function index()
+	// {
+	// 	//init modal
+	// 	$this->load->database();
+	// 	$this->load->model('Mmain');
 		
 			
 		
-		//init view
+	// 	//init view
 		
-		$renderTemp=$this->Mmain->qRead($this->tableQuery." WHERE a.NIM='".$this->session->userdata('codeUser')."'".$this->ordQuery,$this->fieldQuery,"");
+	// 	$renderTemp=$this->Mmain->qRead($this->tableQuery." WHERE a.NIM='".$this->session->userdata('codeUser')."'".$this->ordQuery,$this->fieldQuery,"");
 		
-		$output['render']=$renderTemp;
-		//init view
-		$output['pageTitle']=$this->viewFormTitle;
-		$output['breadcrumbTitle']=$this->breadcrumbTitle;
-		$output['breadcrumbLink']=$this->viewLink;
-		$output['saveLink']=$this->viewLink."/add";
-		$output['deleteLink']=$this->viewLink."/delete";
-		$output['primaryKey']=$this->primaryKey;
-		$output['tableHeader']=$this->viewFormTableHeader;
+	// 	$output['render']=$renderTemp;
+	// 	//init view
+	// 	$output['pageTitle']=$this->viewFormTitle;
+	// 	$output['breadcrumbTitle']=$this->breadcrumbTitle;
+	// 	$output['breadcrumbLink']=$this->viewLink;
+	// 	$output['saveLink']=$this->viewLink."/add";
+	// 	$output['deleteLink']=$this->viewLink."/delete";
+	// 	$output['primaryKey']=$this->primaryKey;
+	// 	$output['tableHeader']=$this->viewFormTableHeader;
 		
-		//render view
-		//$this->fn->getheader();
-		$this->load->view($this->viewPage,$output);
-		//$this->fn->getfooter();
-	}
+	// 	//render view
+	// 	//$this->fn->getheader();
+	// 	$this->load->view($this->viewPage,$output);
+	// 	//$this->fn->getfooter();
+	// }
 	
 
-<<<<<<< HEAD
+
 	public function index(){
         $data['username'] = $this->session->userdata('username');
         $this->load->view('mahasiswa/header', $data);
         $this->load->view('mahasiswa/sidebar', $data);
 		$this->load->view('mahasiswa/index', $data);
         $this->load->view('mahasiswa/footer', $data);
-=======
-	
-	public function add($isEdit="")
-	{
-		//init modal
-		$this->load->database();
-		$this->load->model('Mmain');
-		
-		
-		//init view
-		$output['pageTitle']=$this->saveFormTitle;
-		$output['breadcrumbTitle']=$this->breadcrumbTitle;
-		$output['breadcrumbLink']=$this->viewLink;
-		$output['saveLink']=$this->viewLink."/save";
-		$output['tableHeader']=$this->saveFormTableHeader;
-		$output['formLabel']=$this->saveFormTableHeader;
-		
-		$imgTemp="";
-		$codeTemp="";
-		if(!empty($isEdit))
-		{
-			$output['isedit']=1;
-			$output['pageTitle']=$this->editFormTitle;
-			$output['saveLink']=$this->viewLink."/update";
-			$pid=$isEdit;
-			//$this->fieldQuery="code_user,nm_user,pwd_user,ava_user,id_acc";
-			$render=$this->Mmain->qRead($this->tableQuery,$this->fieldQuery,$this->updateKey." = '".$pid."'");
-			foreach($render->result() as $row)
-			{
-				foreach($row as $col)
-				{
-					$txtVal[]= $col;
-				}
-			}
-				$txtVal[0]=$pid;
-				$cbodp1=$this->fn->createCbofromDb("dp1","id_dp1 as id,nm_dosen as nm","",$txtVal[3]);
-				$cborumpun=$this->fn->createCbofromDb("rumpun","id_rumpun as id,nm_rumpun as nm","",$txtVal[5]);
-				$cbodokumen=$this->fn->createCbofromDb("dokumen_tugas_akhir","id_dokumen as id,berkas_dokumen as nm","",$txtVal[9]);
-				//$cboloc=$this->fn->createCbofromDb("tb_loc","id_loc as id,nm_loc as nm","",$txtVal[6]);
-				$cbostat=$this->fn->createCbo(array(0),array("Belum diverifikasi"),$txtVal[10]);
-				
-				$output['datamhs']=Array(
-											$pid,
-											$txtVal[1],
-											$txtVal[2],
-											$cbodp1,
-											$txtVal[4],
-											$cborumpun,
-											$txtVal[6],
-											$txtVal[7],
-											$cbodokumen
-											);
-				
-		}
-		else
-		{	
-				for($i=0;$i<count($this->saveFormTableHeader);$i++)
-				{
-					$txtVal[]="";
-				}	
-				
-				//generate id
-				$newId=$this->Mmain->autoId($this->mainTable,$this->mainPk,$this->prefix,$this->defaultId,$this->suffix);	
-				$txtVal[0]=$newId;
-				
-				$cbodp1=$this->fn->createCbofromDb("dp1","id_dp1 as id,nm_dosen as nm","","");
-				$cborumpun=$this->fn->createCbofromDb("rumpun","id_rumpun as id,nm_rumpun as nm","","");
-				$cbodokumen=$this->fn->createCbofromDb("dokumen_tugas_akhir","id_dokumen as id,berkas_dokumen as nm","","");
-				$cbostat=$this->fn->createCbo(array(0),array("Belum diverifikasi"),"");
-				//$cbostat=$this->fn->createCbo(array(1,0),array("Active","Inactive"),"");
-				$txtVal[0]=$this->session->userdata("codeUser");
-				$txtVal[8]=$this->session->userdata("name");
-		}
-		$output['formTxt']=array(
-								$codeTemp."<input type='text' class='form-control' id='txtid0' name=txt[] value='".$txtVal[0]."' readonly>",
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[1]."' required>",
-								"<input type='text' class='form-control' id='txtpass' name=txt[] value='".$txtVal[2]."' required>",
-								$cbodp1,							
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[4]."' required>",
-								$cborumpun,
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[6]."' required>",
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[7]."' required>",
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[8]."' readonly>",
-								$cbodokumen,
-								$cbostat,
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[11]."' readonly>",
-								);
-		
-		
-		//load view
-		//$this->fn->getheader();
-		$this->load->view($this->addPage,$output);
-		//$this->fn->getfooter();
-	}	
-	
-	public function save()
-	{
-		//retrieve values
-		$savValTemp=$this->input->post('txt');
-		
-		//save to database
-		$this->load->database();
-		$this->load->model('Mmain');
-	
-		//echo implode("<br>",$savEmp);
-		$this->Mmain->qIns($this->mainTable,$savValTemp);
-		
-		//redirect to form
-		redirect("mahasiswa/Index_mahasiswa",'refresh');		
 	}
 	
-	//delete record
-	public function delete($valId)
-	{		
-		//save to database
-		$this->load->database();
-		$this->load->model('Mmain');
-		$this->Mmain->qDel($this->mainTable,$this->mainPk,$valId);
+	// public function add($isEdit="")
+	// {
+	// 	//init modal
+	// 	$this->load->database();
+	// 	$this->load->model('Mmain');
 		
-		//redirect to form
-		redirect($this->viewLink,'refresh');		
-	}
+		
+	// 	//init view
+	// 	$output['pageTitle']=$this->saveFormTitle;
+	// 	$output['breadcrumbTitle']=$this->breadcrumbTitle;
+	// 	$output['breadcrumbLink']=$this->viewLink;
+	// 	$output['saveLink']=$this->viewLink."/save";
+	// 	$output['tableHeader']=$this->saveFormTableHeader;
+	// 	$output['formLabel']=$this->saveFormTableHeader;
+		
+	// 	$imgTemp="";
+	// 	$codeTemp="";
+	// 	if(!empty($isEdit))
+	// 	{
+	// 		$output['isedit']=1;
+	// 		$output['pageTitle']=$this->editFormTitle;
+	// 		$output['saveLink']=$this->viewLink."/update";
+	// 		$pid=$isEdit;
+	// 		//$this->fieldQuery="code_user,nm_user,pwd_user,ava_user,id_acc";
+	// 		$render=$this->Mmain->qRead($this->tableQuery,$this->fieldQuery,$this->updateKey." = '".$pid."'");
+	// 		foreach($render->result() as $row)
+	// 		{
+	// 			foreach($row as $col)
+	// 			{
+	// 				$txtVal[]= $col;
+	// 			}
+	// 		}
+	// 			$txtVal[0]=$pid;
+	// 			$cbodp1=$this->fn->createCbofromDb("dp1","id_dp1 as id,nm_dosen as nm","",$txtVal[3]);
+	// 			$cborumpun=$this->fn->createCbofromDb("rumpun","id_rumpun as id,nm_rumpun as nm","",$txtVal[5]);
+	// 			$cbodokumen=$this->fn->createCbofromDb("dokumen_tugas_akhir","id_dokumen as id,berkas_dokumen as nm","",$txtVal[9]);
+	// 			//$cboloc=$this->fn->createCbofromDb("tb_loc","id_loc as id,nm_loc as nm","",$txtVal[6]);
+	// 			$cbostat=$this->fn->createCbo(array(0),array("Belum diverifikasi"),$txtVal[10]);
+				
+	// 			$output['datamhs']=Array(
+	// 										$pid,
+	// 										$txtVal[1],
+	// 										$txtVal[2],
+	// 										$cbodp1,
+	// 										$txtVal[4],
+	// 										$cborumpun,
+	// 										$txtVal[6],
+	// 										$txtVal[7],
+	// 										$cbodokumen
+	// 										);
+				
+	// 	}
+	// 	else
+	// 	{	
+	// 			for($i=0;$i<count($this->saveFormTableHeader);$i++)
+	// 			{
+	// 				$txtVal[]="";
+	// 			}	
+				
+	// 			//generate id
+	// 			$newId=$this->Mmain->autoId($this->mainTable,$this->mainPk,$this->prefix,$this->defaultId,$this->suffix);	
+	// 			$txtVal[0]=$newId;
+				
+	// 			$cbodp1=$this->fn->createCbofromDb("dp1","id_dp1 as id,nm_dosen as nm","","");
+	// 			$cborumpun=$this->fn->createCbofromDb("rumpun","id_rumpun as id,nm_rumpun as nm","","");
+	// 			$cbodokumen=$this->fn->createCbofromDb("dokumen_tugas_akhir","id_dokumen as id,berkas_dokumen as nm","","");
+	// 			$cbostat=$this->fn->createCbo(array(0),array("Belum diverifikasi"),"");
+	// 			//$cbostat=$this->fn->createCbo(array(1,0),array("Active","Inactive"),"");
+	// 			$txtVal[0]=$this->session->userdata("codeUser");
+	// 			$txtVal[8]=$this->session->userdata("name");
+	// 	}
+	// 	$output['formTxt']=array(
+	// 							$codeTemp."<input type='text' class='form-control' id='txtid0' name=txt[] value='".$txtVal[0]."' readonly>",
+	// 							"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[1]."' required>",
+	// 							"<input type='text' class='form-control' id='txtpass' name=txt[] value='".$txtVal[2]."' required>",
+	// 							$cbodp1,							
+	// 							"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[4]."' required>",
+	// 							$cborumpun,
+	// 							"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[6]."' required>",
+	// 							"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[7]."' required>",
+	// 							"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[8]."' readonly>",
+	// 							$cbodokumen,
+	// 							$cbostat,
+	// 							"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[11]."' readonly>",
+	// 							);
+		
+		
+	// 	//load view
+	// 	//$this->fn->getheader();
+	// 	$this->load->view($this->addPage,$output);
+	// 	//$this->fn->getfooter();
+	// }	
 	
-	//update record
-	public function update()
-	{
-		//retrieve values
-		$savValTemp=$this->input->post('txt');
+	// public function save()
+	// {
+	// 	//retrieve values
+	// 	$savValTemp=$this->input->post('txt');
 		
-		//save to database
-		$this->load->database();
-		$this->load->model('Mmain');
+	// 	//save to database
+	// 	$this->load->database();
+	// 	$this->load->model('Mmain');
+	
+	// 	//echo implode("<br>",$savEmp);
+	// 	$this->Mmain->qIns($this->mainTable,$savValTemp);
+		
+	// 	//redirect to form
+	// 	redirect("mahasiswa/Index_mahasiswa",'refresh');		
+	// }
+	
+	// //delete record
+	// public function delete($valId)
+	// {		
+	// 	//save to database
+	// 	$this->load->database();
+	// 	$this->load->model('Mmain');
+	// 	$this->Mmain->qDel($this->mainTable,$this->mainPk,$valId);
+		
+	// 	//redirect to form
+	// 	redirect($this->viewLink,'refresh');		
+	// }
+	
+	// //update record
+	// public function update() {
+	// 	//retrieve values
+	// 	$savValTemp=$this->input->post('txt');
+		
+	// 	//save to database
+	// 	$this->load->database();
+	// 	$this->load->model('Mmain');
 		
 							
-		//echo implode("<br>",$savValTemp);
-		$this->Mmain->qUpd("mahasiswa","NIM" ,$savValTemp[0],$savValTemp);
+	// 	//echo implode("<br>",$savValTemp);
+	// 	$this->Mmain->qUpd("mahasiswa","NIM" ,$savValTemp[0],$savValTemp);
 		
-		//redirect to form
-		redirect($this->viewLink,'refresh');		
->>>>>>> master
-	}
+	// 	//redirect to form
+	// 	redirect($this->viewLink,'refresh');
+	// }
 	
 }
 
