@@ -23,10 +23,16 @@ class C_studytracer extends CI_Controller{
             );
         $cek = $this->m_datamahasiswa->cek_datastudytracer("tracer_study",$where)->num_rows();
         if($cek > 0){
-            $this->load->view('mahasiswa/v_terdaftar');
+            $this->load->view('mahasiswa/header', $data);
+            $this->load->view('mahasiswa/sidebar', $data);
+            $this->load->view('mahasiswa/studytracer/v_terdaftar');
+            $this->load->view('mahasiswa/footer', $data);
         }else{
             $data['mahasiswa'] = $this->m_datamahasiswa->view_by($NIM);
-            $this->load->view('mahasiswa/v_studytracer',$data);
+            $this->load->view('mahasiswa/header', $data);
+            $this->load->view('mahasiswa/sidebar', $data);
+            $this->load->view('mahasiswa/studytracer/v_studytracer',$data);
+            $this->load->view('mahasiswa/footer', $data);
             //redirect(base_url("index.php/admin"));
         }
 	}

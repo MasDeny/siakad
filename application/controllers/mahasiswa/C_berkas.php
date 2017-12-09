@@ -21,7 +21,10 @@ class C_berkas extends CI_Controller{
         $nim =  $this->session->userdata("nama");
         $data['username'] = $this->session->userdata('username');
         $judul['judul_TA'] = $this->M_datajudulberkas->tampiljudul($nim);
-        $this->load->view('mahasiswa/v_upload', $data, $judul);
+        $this->load->view('mahasiswa/header', $data, $judul);
+        $this->load->view('mahasiswa/sidebar', $data, $judul);
+        $this->load->view('mahasiswa/upload_berkas/v_upload', $data, $judul);
+        $this->load->view('mahasiswa/footer', $data, $judul);
 	}
 
   function multiple_upload(){
