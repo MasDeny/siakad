@@ -37,5 +37,65 @@
 
     <!-- My style javascript -->
     <script src="<?php echo base_url(); ?>assets/eksternal/style.js"></script>
+	
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js" ></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js" ></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/pdfmake.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/vfs_fonts.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.js"></script>
+
+	
+	 <script type="text/javascript">
+	 
+		//setting datatable
+		$('.datatable').DataTable({
+			dom: 'Bfrtip',
+			buttons: 
+			[
+            {
+                extend:    'excelHtml5',
+                text:      '<i class="fa fa-file-excel-o"></i>',
+                titleAttr: 'Export to Excel'
+            },
+            {
+                extend:    'pdfHtml5',
+                text:      '<i class="fa fa-file-pdf-o"></i>',
+                titleAttr: 'Export to PDF'
+            },
+            {
+                extend:    'print',
+                text:      '<i class="fa fa-print"></i>',
+                titleAttr: 'Print'
+            }
+			],
+			fixedHeader:true,
+			"pageLength": 50,
+			 responsive: {
+        details: {
+            renderer: function ( api, rowIdx, columns ) {
+                var data = $.map( columns, function ( col, i ) {
+                    return col.hidden ?
+                        '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+                            '<td>'+col.title+':'+'</td> '+
+                            '<td>'+col.data+'</td>'+
+                        '</tr>' :
+                        '';
+                } ).join('');
+ 
+                return data ?
+                    $('<table/>').append( data ) :
+                    false;
+            }
+        }
+    }
+    
+		});
+	</script>
+	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.js"></script>
     
 </html>

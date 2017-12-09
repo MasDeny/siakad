@@ -14,7 +14,6 @@
                             <div class="header">
                                 <h4 class="title">Data Mahasiswa yang telah mengajukan judul Tugas Akhir </h4>
                             </div>
-                            <div class="content table-responsive table-full-width">
                                 <table class="table table-striped datatable">
                                     <thead>
                                         <th>No</th>
@@ -30,7 +29,6 @@
 										<th>Referensi</th>
 										<th>Status</th>
                                         <th>Option</th>
-                                        <th></th>
                                     </thead>
                                     <tbody>
 									<?php
@@ -66,7 +64,6 @@
 								</tbody>
                                 </table>
 
-                            </div>
                         </div>
                     </div>
                 </div>

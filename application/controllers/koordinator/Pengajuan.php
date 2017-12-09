@@ -283,7 +283,7 @@ class Pengajuan extends CI_Controller
 		$this->Mmain->qUpdPart("mahasiswa","NIM",$id,Array("status"),Array($status));
 		
 		//redirect to form
-		redirect("mahasiswa/Pengajuan",'refresh');		
+		redirect("koordinator/Pengajuan",'refresh');		
 	}
 	
 }
