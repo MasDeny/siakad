@@ -41,6 +41,11 @@ public function __construct() {
     }
     public function unselect_mhs($id)
     {
+        
+    }
 
+    public function edit_jadwal($id)
+    {
+        
     }
 }
