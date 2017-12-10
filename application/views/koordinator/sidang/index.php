@@ -6,7 +6,7 @@
 <div class="wrapper">
     <?php $this->load->view('koordinator/sidang/sidebar'); ?>
 <div class="main-panel">
-    <?php $this->load->view('koordinator/navbar'); ?>
+    <?php $this->load->view('koordinator/navbar'); ?> 
          <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -81,14 +81,19 @@
                                             <td><?php echo $data->NIM; ?></td>
                                             <td><?php echo $data->nama; ?></td>
                                             <td><?php echo $data->judul; ?></td>
-                                            <td></td>
+                                            <?php if ($data->sekertaris === NULL ): ?>
+                                                <td class="text-danger"> Belum Lengkap</td>
+                                            <?php else: ?>
+                                                <td class="text-success"> Lengkap</td>
+                                            <?php endif ?>
                                             <td>
                                                 <div class="button-group">        
-                                                <a href="<?php echo base_url()."koordinator/jadwal_sidang/view/". 
-                                                $data->id; ?>" class="btn btn-md btn-default btn-flat">Lihat</a>        
-                                                <a href="<?php echo base_url()."koordinator/jadwal_sidang/view/". 
-                                                $data->id; ?>" class="btn btn-md btn-info btn-flat">Edit</a>
-                                                 <a href="<?php echo base_url(); ?>koordinator/Jadwal_sidang" class="btn btn-md btn-danger btn-flat">Hapus</a>
+                                                <a href="<?php echo base_url()."koordinator/jadwal_sidang/view_acc/". 
+                                                $data->id; ?>" class="btn btn-md btn-default btn-flat" id="view">
+                                                Lihat</a>        
+                                                <a data-toogle="modal" data-target="#myModal" href="<?php echo base_url()."koordinator/jadwal_sidang/view/".$data->id; ?>" class="btn btn-md btn-info btn-flat" id="edit">
+                                                Edit</a>
+                                                <a href="<?php echo base_url()."koordinator/Jadwal_sidang/unselect_mhs/".$data->id; ?>" class="btn btn-md btn-danger btn-flat">Hapus</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -103,6 +108,7 @@
             </div>
         </div>
 </div>
+<?php $this->load->view('koordinator/sidang/view'); ?> 
 </div>
 <script>document.body.style.overflow = "hidden";</script>
     <?php $this->load->view('/koordinator/footer');

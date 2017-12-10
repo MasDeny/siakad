@@ -75,11 +75,11 @@ class M_jadwal_sidang extends CI_Model {
     public function acc_mhs($id = FALSE)
     {
         if ($id === FALSE) {
-            $this->db->select('status_sidang.id_statussidang as id,status_sidang.mahasiswa_NIM as NIM,
-            nama_mahasiswa as nama,judul_TA as judul')
-            ->from('mahasiswa')
-            ->join('status_sidang','status_sidang.mahasiswa_NIM=mahasiswa.NIM')
-            ->join('dp1','dp1.id_dp1=mahasiswa.dp1_id_dp1')
+            $this->db->select('id_statussidang as id,mahasiswa_NIM as NIM,
+            mahasiswa.nama_mahasiswa as nama,mahasiswa.judul_TA as judul, penguji.sekertaris')
+            ->from('status_sidang')
+            ->join('mahasiswa','mahasiswa.NIM=status_sidang.mahasiswa_NIM')
+            ->join('penguji', 'penguji.status_sidang_id_statussidang=status_sidang.id_statussidang')
             ->where('status_sidang.status', 2);
             return $this->db->get()->result();   
         }
@@ -94,6 +94,27 @@ class M_jadwal_sidang extends CI_Model {
         ->join('dp1','dp1.id_dp1=mahasiswa.dp1_id_dp1')
         ->where('status_sidang.id_statussidang', $id);
         return $this->db->get()->row();
+    }
+
+    public function jadwal_mhs($id)
+    {
+        
+        $this->db->select('*')
+        ->from('penguji')
+        ->where('status_sidang_id_statussidang', $id);
+        return $this->db->get()->row();
+    }
+
+    public function delete_jadwal($id)
+    {
+        $this->db->set('status', 1)
+        ->where('id_statussidang', $id)
+        ->update('status_sidang');
+
+        $this->db->where('status_sidang_id_statussidang', $id)
+        ->delete('penguji');
+
+        return TRUE;
     }
     
 }
