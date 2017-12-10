@@ -19,8 +19,8 @@ class Daftar_judul extends CI_Controller
 	var $mainPk="NIM";
 	var $viewLink="Daftar_judul";
 	var $breadcrumbTitle="Daftar_judul";
-	var $viewPage="mahasiswa/v_daftarjudul";
-	var $addPage="mahasiswa/v_daftarjudul";
+	var $viewPage="mahasiswa/daftar_judul/v_daftarjudul";
+	var $addPage="mahasiswa/daftar_judul/v_daftarjudul";
 	
 	
 	//query

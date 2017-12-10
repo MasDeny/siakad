@@ -16,7 +16,7 @@
     </span></a>
     </div></li>
     <li><div class="divider"></div></li>
-    <li><a class="waves-effect" href="<?php echo base_url('mahasiswa/C_judul'); ?>">Pengajuan Judul</a></li>
+    <li><a class="waves-effect" href="<?php echo base_url('mahasiswa/Index_mahasiswa'); ?>">Pengajuan Judul</a></li>
     <li><div class="divider"></div></li>
     <li><a class="waves-effect" href="<?php echo base_url('mahasiswa/C_sempro'); ?>">Pendaftaran Seminar Proposal</a></li>
     <li><div class="divider"></div></li>
