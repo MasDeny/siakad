@@ -7,9 +7,9 @@
   <ul id="slide-out" class="side-nav">
     <li><div class="user-view">
       <div class="background">
-        <img src="<?php echo base_url() ?>asset/img/bg.jpg">
+        <img src="<?php echo base_url() ?>assets/img/bg.jpg">
       </div>
-      <a href="<?php echo base_url(); ?>mahasiswa/Index_mahasiswa"><img class="circle" src="<?php echo base_url() ?>asset/img/logo.png"></a>
+      <a href="<?php echo base_url(); ?>mahasiswa/Index_mahasiswa"><img class="circle" src="<?php echo base_url() ?>assets/img/logo.png"></a>
       <a href="#!name"><span class="white-text name">Polije | polije.ac.id</span></a>
       <a href="#!email"><span class="white-text email">Hey user, <?php echo $this->session->userdata("nama") ?>
     <a href="<?php echo base_url(); ?>index.php/login/logout">Log Out</a>
