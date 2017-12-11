@@ -14,8 +14,13 @@
 
       <div class="row">
         <div class="input-field col s12">
-        <label class="active" for="Judul">NIM :  </label>
-          <input id="Judul" type="text" class="validate" value="<?php echo $this->session->userdata("nama") ?>" disabled>
+        <label class="active" for="Judul">Judul :  </label>
+          <input id="Judul" type="text" class="validate" value="<?php 
+        foreach($mahasiswa->result() as $m)
+        {
+        echo $m->judul_TA;
+        }
+        ?>" disabled>
         </div>
       </div>
 
