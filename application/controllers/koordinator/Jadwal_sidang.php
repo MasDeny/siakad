@@ -42,18 +42,10 @@ public function __construct() {
     }
 
 
-    public function view_acc($id = NULL)
-    {
-        $data['title'] = "Koordinator Panel System - Detail Jadwal ";
-        $data['heading'] = "Detail Jadwal";
-        $data['user_details'] = $this->M_jadwal_sidang->get_data($id);
-        $data['dosen'] = $this->M_jadwal_sidang->show_dosen();   
-        $this->load->view('koordinator/sidang/index', $data);
-    }
-
     public function unselect_mhs($id)
     {
-        
+        $this->M_jadwal_sidang->delete_jadwal($id);
+        redirect('koordinator/jadwal_sidang');
     }
 
     public function edit_jadwal($id)

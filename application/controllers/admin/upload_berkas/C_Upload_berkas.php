@@ -15,7 +15,7 @@ class C_Upload_berkas extends CI_Controller {
         $data['username'] = $this->session->userdata('username');
         // $data = array('select_option' => $this->M_adminjudulberkas->get_option());
         $data['judul'] = $this->M_adminjudulberkas->judul();
-        $this->load->view('administrasi/v_upload', $data);
+        $this->load->view('administrasi/upload_berkas/v_upload', $data);
   }
 
   public function logout() {
