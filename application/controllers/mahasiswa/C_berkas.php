@@ -67,6 +67,7 @@ class C_berkas extends CI_Controller{
         $this->upload->do_upload('file18');
         $this->upload->do_upload('file19');
         $this->upload->do_upload('file20');
+        redirect("mahasiswa/Index_mahasiswa","refresh");
   }
 
     public function logout() {

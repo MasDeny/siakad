@@ -41,6 +41,7 @@
       ?>
     </select>
 
+      <?php echo form_open_multipart('admin/upload_berkas/C_verberkas/gas_lur'); ?>
       <table class="bordered highlight">
         <tbody>
           <tr>
@@ -151,8 +152,9 @@
         <div class="col s3">*File berupa PDF</div>
         <div class="col s3"></div>
         <div class="col s3"></div>
-        <div class="col s3"><a class="waves-effect waves-light indigo darken-4 btn">Verifikasi Berkas</a></div>
+        <div class="col s3"><a class="waves-effect waves-light indigo darken-4 btn"><?php echo form_submit('upload', 'Verifikasi Berkas'); ?></a></div>
       </div>
+      <?php echo form_close() ?>
 
     </div>
     </section>
