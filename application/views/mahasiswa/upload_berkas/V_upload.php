@@ -16,15 +16,14 @@
         <div class="input-field col s12">
         <label class="active" for="Judul">Judul :  </label>
           <input id="Judul" type="text" class="validate" value="<?php 
-        foreach($mahasiswa->result() as $m)
-        {
-        echo $m->judul_TA;
-        }
+            foreach ($mahasiswa->result() as $m) {
+              echo $m->judul_TA;
+            }
         ?>" disabled>
         </div>
       </div>
 
-      <?php echo form_open_multipart('mahasiswa/C_berkas/multiple_upload'); ?>
+      <?php echo form_open("mahasiswa/C_berkas/upload_berkas_ta", array('enctype'=>'multipart/form-data')); ?>
       <table class="bordered highlight">
         <tbody>
           <tr>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Daftar_judul extends CI_Controller 
+class C_judul extends CI_Controller 
 {
 	public function __construct()
 	{
@@ -9,17 +9,16 @@ class Daftar_judul extends CI_Controller
 		$this->load->library('Commonfunction','','fn');
 				
 		if(!isset($this->session->userdata['codeUser']))		
-			redirect("login","refresh");
-	}
+		redirect("login","refresh");
+    }
 	/*	
 		====================================================== Variable Declaration =========================================================
 	*/
-	
 	var $mainTable="mahasiswa";
 	var $mainPk="NIM";
-	var $viewLink="Daftar_judul";
-	var $breadcrumbTitle="Daftar_judul";
-	var $viewPage="mahasiswa/daftar_judul/v_daftarjudul";
+	var $viewLink="C_judul";
+	var $breadcrumbTitle="C_judul";
+	var $viewPage="mahasiswa/daftar_judul/v_mahasiswa";
 	var $addPage="mahasiswa/daftar_judul/v_daftarjudul";
 	
 	
@@ -44,8 +43,15 @@ class Daftar_judul extends CI_Controller
 					 d.id_mhs,
 					 e.berkas_dokumen,
 					 a.status,
-					 a.status_mahasiswa
-					 "; //leave blank to show all field
+					 CASE	 
+	WHEN a.status=0 then 'Belum Dikonfirmasi'
+	WHEN a.status=1 then 'Diterima'
+	When a.status=2 then 'Ditolak'
+	END as status,
+					a.status_mahasiswa";
+					
+					 
+					  //leave blank to show all field
 						
 	var $primaryKey="id";
 	var $updateKey="a.NIM";
@@ -68,8 +74,7 @@ class Daftar_judul extends CI_Controller
 									"Deskripsi",
 									"ID Mahasiswa",
 									"Referensi",
-									"Status",
-									"Status Mahasiswa"
+									"Status"
 									);
 	
 	//save
@@ -85,8 +90,7 @@ class Daftar_judul extends CI_Controller
 									"Deskripsi",
 									"ID Mahasiswa",
 									"Referensi",
-									"Status",
-									"Status Mahasiswa"
+									"Status"
 									);
 	
 	//update
@@ -101,12 +105,10 @@ class Daftar_judul extends CI_Controller
 		//init modal
 		$this->load->database();
 		$this->load->model('Mmain');
-		
 			
-		
 		//init view
 		
-		$renderTemp=$this->Mmain->qRead($this->tableQuery.$this->ordQuery,$this->fieldQuery,"");
+		$renderTemp=$this->Mmain->qRead($this->tableQuery." WHERE a.NIM='".$this->session->userdata('codeUser')."'".$this->ordQuery,$this->fieldQuery,"");
 		
 		$output['render']=$renderTemp;
 		//init view
@@ -117,16 +119,12 @@ class Daftar_judul extends CI_Controller
 		$output['deleteLink']=$this->viewLink."/delete";
 		$output['primaryKey']=$this->primaryKey;
 		$output['tableHeader']=$this->viewFormTableHeader;
-		$output['cborumpun']=$this->fn->createCbofromDb("rumpun","id_rumpun as id,nm_rumpun as nm","","");
-		$output['cbodp1']=$this->fn->createCbofromDb("dp1","id_dp1 as id,nm_dosen as nm","","");
-		$output['cbodokumen']=$this->fn->createCbofromDb("dokumen_tugas_akhir","id_dokumen as id,berkas_dokumen as nm","","");
+		
 		//render view
 		$this->fn->getheader();
 		$this->load->view($this->viewPage,$output);
 		$this->fn->getfooter();
 	}
-	
-
 	
 	public function add($isEdit="")
 	{
@@ -147,12 +145,12 @@ class Daftar_judul extends CI_Controller
 		$codeTemp="";
 		if(!empty($isEdit))
 		{
-			
+			$output['isedit']=1;
 			$output['pageTitle']=$this->editFormTitle;
 			$output['saveLink']=$this->viewLink."/update";
 			$pid=$isEdit;
 			//$this->fieldQuery="code_user,nm_user,pwd_user,ava_user,id_acc";
-			$render=$this->Mmain->qRead($this->tableQuery,$this->fieldQuery,$this->mainPk." = '".$pid."'");
+			$render=$this->Mmain->qRead($this->tableQuery,$this->fieldQuery,$this->updateKey." = '".$pid."'");
 			foreach($render->result() as $row)
 			{
 				foreach($row as $col)
@@ -160,13 +158,24 @@ class Daftar_judul extends CI_Controller
 					$txtVal[]= $col;
 				}
 			}
-			
+				$txtVal[0]=$pid;
 				$cbodp1=$this->fn->createCbofromDb("dp1","id_dp1 as id,nm_dosen as nm","",$txtVal[3]);
 				$cborumpun=$this->fn->createCbofromDb("rumpun","id_rumpun as id,nm_rumpun as nm","",$txtVal[5]);
 				$cbodokumen=$this->fn->createCbofromDb("dokumen_tugas_akhir","id_dokumen as id,berkas_dokumen as nm","",$txtVal[9]);
 				//$cboloc=$this->fn->createCbofromDb("tb_loc","id_loc as id,nm_loc as nm","",$txtVal[6]);
-				$cbostat=$this->fn->createCbo(array(0),array("Belum diverifikasi"),$txtVal[11]);
-					
+				$cbostat=$this->fn->createCbo(array(0),array("Belum diverifikasi"),$txtVal[10]);
+				
+				$output['datamhs']=Array(
+											$pid,
+											$txtVal[1],
+											$txtVal[2],
+											$cbodp1,
+											$txtVal[4],
+											$cborumpun,
+											$txtVal[6],
+											$txtVal[7],
+											$cbodokumen
+											);
 				
 		}
 		else
@@ -187,7 +196,6 @@ class Daftar_judul extends CI_Controller
 				//$cbostat=$this->fn->createCbo(array(1,0),array("Active","Inactive"),"");
 				$txtVal[0]=$this->session->userdata("codeUser");
 				$txtVal[8]=$this->session->userdata("name");
-				
 		}
 		$output['formTxt']=array(
 								$codeTemp."<input type='text' class='form-control' id='txtid0' name=txt[] value='".$txtVal[0]."' readonly>",
@@ -201,22 +209,10 @@ class Daftar_judul extends CI_Controller
 								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[8]."' readonly>",
 								$cbodokumen,
 								$cbostat,
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[11]."' readonly>"
-
+								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[11]."' readonly>",
 								);
 		
-		$output['datamhs']=Array(
-									0,
-									$txtVal[1],
-									$txtVal[2],
-									$cbodp1,
-									$txtVal[4],
-									$cborumpun,
-									$txtVal[6],
-									$txtVal[7],
-									$cbodokumen
-									);
-									
+		
 		//load view
 		$this->fn->getheader();
 		$this->load->view($this->addPage,$output);
@@ -236,7 +232,7 @@ class Daftar_judul extends CI_Controller
 		$this->Mmain->qIns($this->mainTable,$savValTemp);
 		
 		//redirect to form
-		redirect("mahasiswa/C_judul",'refresh');		
+		redirect("mahasiswa/Index_mahasiswa",'refresh');		
 	}
 	
 	//delete record
@@ -252,8 +248,7 @@ class Daftar_judul extends CI_Controller
 	}
 	
 	//update record
-	public function update()
-	{
+	public function update() {
 		//retrieve values
 		$savValTemp=$this->input->post('txt');
 		
@@ -262,11 +257,11 @@ class Daftar_judul extends CI_Controller
 		$this->load->model('Mmain');
 		
 							
-		//echo implode("<br>",$savEmp);
-		$this->Mmain->qUpd($this->mainTable,$this->mainPk,$savValTemp[0],$savheader,$savEmp);
+		//echo implode("<br>",$savValTemp);
+		$this->Mmain->qUpd("mahasiswa","NIM" ,$savValTemp[0],$savValTemp);
 		
 		//redirect to form
-		redirect($this->viewLink,'refresh');		
+		redirect($this->viewLink,'refresh');
 	}
 	
 }

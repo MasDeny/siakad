@@ -11,7 +11,7 @@
       </div>
       <a href="<?php echo base_url(); ?>mahasiswa/Index_mahasiswa"><img class="circle" src="<?php echo base_url() ?>assets/img/logo.png"></a>
       <a href="#!name"><span class="white-text name">Polije | polije.ac.id</span></a>
-      <a href="#!email"><span class="white-text email">Hey user, <?php echo $this->session->userdata("nama") ?>
+      <a href="#!email"><span class="white-text email">Hey user, <?php echo $this->session->userdata("codeUser") ?>
     <a href="<?php echo base_url(); ?>index.php/login/logout">Log Out</a>
     </span></a>
     </div></li>

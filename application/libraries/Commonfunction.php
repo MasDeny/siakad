@@ -48,7 +48,8 @@ class Commonfunction
 			//get website setting
 												
 			$output['ses']=$this->CI->session->all_userdata();
-			$this->CI->load->view('adm_header');
+			$this->CI->load->view('mahasiswa/header');
+			$this->CI->load->view('mahasiswa/sidebar');
 		
 		
 	}
@@ -56,7 +57,7 @@ class Commonfunction
 	public function getfooter()
 	{	
 	
-		$this->CI->load->view('adm_footer');		
+		$this->CI->load->view('mahasiswa/footer');		
 	}
 	
 	public function getFormGroup($idacc)

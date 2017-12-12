@@ -45,7 +45,7 @@
 	{
 		?>
 		
-	<form action="<?php echo base_url().'mahasiswa/Index_mahasiswa/update';?>" method="post" id="form_studytracer">
+	<form action="<?php echo base_url().'mahasiswa/C_judul/update';?>" method="post" id="form_studytracer">
 		<?php
 		
 	}

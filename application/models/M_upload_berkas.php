@@ -12,7 +12,9 @@ class M_upload_berkas extends CI_Model{
             );
 
         return $this->db->insert('upload', $data);
-
-
     }
+
+    public function simpan_berkas_ta($data) {
+        $this->db->insert ("berkasta",$data);
+    }    
 }
