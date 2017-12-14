@@ -7,6 +7,7 @@
   $('select').material_select('destroy');
   });
   </script>
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/icon.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">

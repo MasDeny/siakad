@@ -16,7 +16,7 @@
         <li class="header">MENU</li>
 
         <li><a href="<?php echo base_url('admin/daftar_sempro/c_versempro'); ?> "><i class=""></i> <span>Verifikasi Sempro</span></a></li>
-        <li><a href="<?php echo base_url('admin/sidang/c_versidang'); ?> "><i class=""></i> <span>Mahasiswa Sidang</span></a></li>
+        <li><a href="<?php echo base_url('admin/sidang/c_versidang'); ?> "><i class=""></i> <span>Verifikasi Sidang</span></a></li>
         <li><a href="<?php echo base_url('admin/upload_berkas/c_verberkas'); ?> "><i class=""></i> <span>Verifikasi Berkas TA</span></a></li>
         <li><a href="#"><i class=""></i> <span>Study Tracer</span></a></li>
         <li><a href="#"><i class=""></i> <span>Yudisium</span></a></li>
