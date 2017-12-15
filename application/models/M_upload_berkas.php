@@ -13,7 +13,11 @@ class M_upload_berkas extends CI_Model{
         return $this->db->get();
     }       
 
-    function cek_datajudulberkas($table,$where) {        
+    function cek_datajudulberkas($table,$where) {
+        return $this->db->get_where($table,$where);
+    }
+
+    function cek_isi($table,$where) {
         return $this->db->get_where($table,$where);
     }
 
@@ -199,54 +203,20 @@ class M_upload_berkas extends CI_Model{
 
     function update_berkas_ta($nim,$data) {
         $this->db->where('NIM', $nim);
-        $this->db->update('tb_yudisium', $data); //update ke database
+        $this->db->update('berkasta', $data); //update ke database
         redirect(site_url('mahasiswa/C_berkas'));
-    }
-
-    function select_all_mahasiswa() {        
-        $this->db->select('*');
-        $this->db->from('tb_mahasiswa');
-        $this->db->order_by('NIM');
-        return $this->db->get(); 
-    }
-
-    function select_all_mahasiswa_cari($tahun,$status) {        
-        $data = $this->db->query("SELECT * from mahasiswa where STATUS_MAHASISWA='$status' and TAHUN_ANGKATAN='$tahun'");
-        return $data->result();
-    }
-
-    function select_by_id_yudisium($nim) {        
-        $this->db->select('*');
-        $this->db->from('tb_yudisium');
-        $this->db->where('NIM', $nim);
-        return $this->db->get();
-    }
-
-    function update_data_yudisium_mahasiswa($nim, $data){
-        $this->db->where('NIM', $nim);
-        $this->db->update('tb_yudisium', $data);
-    }
-
-    function update_data_status_mahasiswa($nim, $data){
-        $this->db->where('NIM', $nim);
-        $this->db->update('tb_mahasiswa', $data);
-    }
-
-    function select_data_form_yudisium_mahasiswa($data){        
-        $this->db->select('*');
-        $this->db->from('tb_yudisium');
-        $this->db->join("tb_mahasiswa", "tb_yudisium.NIM = tb_mahasiswa.NIM",'inner');
-        $this->db->join("tb_ta", "tb_yudisium.NIM = tb_ta.NIM",'inner');
-        $this->db->join("tb_pkl", "tb_yudisium.NIM = tb_pkl.NIM",'inner');
-        $this->db->join("tb_nilai_khs", "tb_yudisium.NIM = tb_nilai_khs.NIM",'inner');
-        $this->db->join("tb_nilai_ta", "tb_yudisium.NIM = tb_nilai_ta.NIM",'inner');
-        $this->db->where('tb_mahasiswa.NIM', $data['NIM']);
-        return $this->db->get();
     }
 
     function judul(){
         $query = $this->db->query('SELECT judul_TA FROM mahasiswa');
         return $query->result();
+    }
+
+    function baca_berkas_ta($NIM) {
+        $this->db->select("*");
+        $this->db->from("berkasta");
+        $this->db->where("NIM",$NIM);
+        return $this->db->get();
     }
 
     function tampil_berkas_ta($NIM = FALSE) {

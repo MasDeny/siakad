@@ -23,17 +23,13 @@ class C_verberkas extends CI_Controller {
   }
 
   public function konfirmasi($NIM = NULL) {
-    $data['detail_bks'] = $this->M_upload_berkas->tampil_berkas_ta($NIM);   
+    $data['detail_bks'] = $this->M_upload_berkas->tampil_berkas_ta($NIM);
     $this->load->view('administrasi/upload_berkas/v_konfirmberkas', $data);
   }
 
-  public function acc_berkas_ta($NIM) {
-    $this->M_upload_berkas->acc_sempro($NIM);
-    redirect('admin/C_verberkas');
-  }
-
-  public function gas_lur() {
-    redirect("admin/C_admin","refresh");
+  public function berkas_ta_acc($NIM) {
+    $this->M_upload_berkas->acc_berkas_ta($NIM);
+    redirect('admin/upload_berkas/C_verberkas');
   }
 
   public function logout() {

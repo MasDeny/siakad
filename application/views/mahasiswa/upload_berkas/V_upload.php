@@ -28,103 +28,443 @@
         <tbody>
           <tr>
             <td>1. File scan Berita Acara</td>
-            <td><input type="file" name="file1" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->beritaAcaraTA)) {
+                  echo "<input type='file' name='file1' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file1' value='' style='display:none'>";
+                  echo "<input type='file' name='file1' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->beritaAcaraTA)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>2. File Sampul</td>
-            <td><input type="file" name="file2" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->sampul)) {
+                  echo "<input type='file' name='file2' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file2' value='' style='display:none'>";
+                  echo "<input type='file' name='file2' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->sampul)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>3. File scan Pengesahan TA</td>
-            <td><input type="file" name="file3" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->pengesahanTA)) {
+                  echo "<input type='file' name='file3' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file3' value='' style='display:none'>";
+                  echo "<input type='file' name='file3' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->pengesahanTA)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>4. File Persembahan</td>
-            <td><input type="file" name="file4" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->persembahan)) {
+                  echo "<input type='file' name='file4' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file4' value='' style='display:none'>";
+                  echo "<input type='file' name='file4' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->persembahan)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>5. File Motto</td>
-            <td><input type="file" name="file5" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->motto)) {
+                  echo "<input type='file' name='file5' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file5' value='' style='display:none'>";
+                  echo "<input type='file' name='file5' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->motto)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>6. File scan Pernyataan TA</td>
-            <td><input type="file" name="file6" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->pernyataanTA)) {
+                  echo "<input type='file' name='file6' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file6' value='' style='display:none'>";
+                  echo "<input type='file' name='file6' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->pernyataanTA)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>7. File Abstrak</td>
-            <td><input type="file" name="file7" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->abstrak)) {
+                  echo "<input type='file' name='file7' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file7' value='' style='display:none'>";
+                  echo "<input type='file' name='file7' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->abstrak)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>8. File Ringkasan</td>
-            <td><input type="file" name="file8" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->ringkasan)) {
+                  echo "<input type='file' name='file8' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file8' value='' style='display:none'>";
+                  echo "<input type='file' name='file8' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->ringkasan)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>9. File Prakata</td>
-            <td><input type="file" name="file9" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->prakata)) {
+                  echo "<input type='file' name='file9' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file9' value='' style='display:none'>";
+                  echo "<input type='file' name='file9' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->prakata)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>10. File Daftar Isi</td>
-            <td><input type="file" name="file10" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->daftarIsi)) {
+                  echo "<input type='file' name='file10' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file10' value='' style='display:none'>";
+                  echo "<input type='file' name='file10' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->daftarIsi)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>11. File Daftar Tabel</td>
-            <td><input type="file" name="file11" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->daftarTabel)) {
+                  echo "<input type='file' name='file11' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file11' value='' style='display:none'>";
+                  echo "<input type='file' name='file11' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->daftarTabel)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>12. File Daftar Gambar</td>
-            <td><input type="file" name="file12" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->daftarGambar)) {
+                  echo "<input type='file' name='file12' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file12' value='' style='display:none'>";
+                  echo "<input type='file' name='file12' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->daftarGambar)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>13. File Daftar Lampiran</td>
-            <td><input type="file" name="file13" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->daftarLampiran)) {
+                  echo "<input type='file' name='file13' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file13' value='' style='display:none'>";
+                  echo "<input type='file' name='file13' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->daftarLampiran)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>14. File Bab 1</td>
-            <td><input type="file" name="file14" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->bab1)) {
+                  echo "<input type='file' name='file14' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file14' value='' style='display:none'>";
+                  echo "<input type='file' name='file14' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->bab1)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>15. File Bab 2</td>
-            <td><input type="file" name="file15" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->bab2)) {
+                  echo "<input type='file' name='file15' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file15' value='' style='display:none'>";
+                  echo "<input type='file' name='file15' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->bab2)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>16. File Bab 3</td>
-            <td><input type="file" name="file16" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->bab3)) {
+                  echo "<input type='file' name='file16' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file16' value='' style='display:none'>";
+                  echo "<input type='file' name='file16' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->bab3)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>17. File Bab 4</td>
-            <td><input type="file" name="file17" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->bab4)) {
+                  echo "<input type='file' name='file17' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file17' value='' style='display:none'>";
+                  echo "<input type='file' name='file17' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->bab4)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>18. File Bab 5</td>
-            <td><input type="file" name="file18" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->bab5)) {
+                  echo "<input type='file' name='file18' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file18' value='' style='display:none'>";
+                  echo "<input type='file' name='file18' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->bab5)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>19. File Daftar Pustaka</td>
-            <td><input type="file" name="file19" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->daftarPustaka)) {
+                  echo "<input type='file' name='file19' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file19' value='' style='display:none'>";
+                  echo "<input type='file' name='file19' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->daftarPustaka)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
           <tr>
             <td>20. File Lampiran</td>
-            <td><input type="file" name="file20" class="waves-effect waves-light blue darken-1 btn"></td>
-            <td><i class="material-icons" style="color: #26a69a;">check_box</i></td>
+            <td>
+              <?php 
+              if(empty($detail_bks->lampiran)) {
+                  echo "<input type='file' name='file20' class='waves-effect waves-light blue darken-1 btn'>";  
+              }else {
+                  echo "<input type='file' name='file20' value='' style='display:none'>";
+                  echo "<input type='file' name='file20' class='waves-effect waves-light blue darken-1 btn' disabled=''>";
+              }
+              ?>
+            </td>
+            <td>
+              <?php
+              if(empty($detail_bks->lampiran)) {
+                  echo "<i class='material-icons'>check_box_outline_blank</i>";
+              }else {
+                  echo "<i class='material-icons' style='color: #26a69a;'>check_box</i>";
+              } 
+              ?>
+            </td>
           </tr>
         </tbody>
       </table>

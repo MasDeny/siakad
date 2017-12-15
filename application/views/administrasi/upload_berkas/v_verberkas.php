@@ -49,10 +49,23 @@
                      <td><?=$bksTa->NIM;?></td>
                      <td><?=$bksTa->nama_mahasiswa;?></td>
                      <td><?=$bksTa->judul_TA;?></td>
-                     <td><?=$bksTa->statusBerkasTA;?></td>
+                     <td><?php 
+                     if (empty($detail_bks->beritaAcaraTA) || empty($detail_bks->sampul) || empty($detail_bks->pengesahanTA) || empty($detail_bks->persembahan) || empty($detail_bks->motto) || empty($detail_bks->pernyataanTA) || empty($detail_bks->abstrak) || empty($detail_bks->ringkasan) || empty($detail_bks->prakata) || empty($detail_bks->daftarIsi) || empty($detail_bks->daftarTabel) || empty($detail_bks->daftarGambar) || empty($detail_bks->daftarLampiran) || empty($detail_bks->bab1) || empty($detail_bks->bab2) || empty($detail_bks->bab3) || empty($detail_bks->bab4) || empty($detail_bks->bab5) || empty($detail_bks->daftarPustaka) || empty($detail_bks->lampiran)) {
+                      echo "Berkas tidak lengkap";
+                    }
+                    else {
+                      echo "Berkas lengkap";
+                    }
+                    ?></td>
                      <td>
                       <div>
-                          <a href="<?php echo site_url("admin/upload_berkas/c_verberkas/konfirmasi/".$bksTa->NIM); ?>" class="btn btn-primary">Konfirmasi</a>
+                        <?php 
+                          // if(empty($detail_bks->beritaAcaraTA) || empty($detail_bks->sampul) || empty($detail_bks->pengesahanTA) || empty($detail_bks->persembahan) || empty($detail_bks->motto) || empty($detail_bks->pernyataanTA) || empty($detail_bks->abstrak) || empty($detail_bks->ringkasan) || empty($detail_bks->prakata) || empty($detail_bks->daftarIsi) || empty($detail_bks->daftarTabel) || empty($detail_bks->daftarGambar) || empty($detail_bks->daftarLampiran) || empty($detail_bks->bab1) || empty($detail_bks->bab2) || empty($detail_bks->bab3) || empty($detail_bks->bab4) || empty($detail_bks->bab5) || empty($detail_bks->daftarPustaka) || empty($detail_bks->lampiran)) {
+                          //   echo "<a href='".site_url('admin/upload_berkas/c_verberkas/konfirmasi/').$bksTa->NIM."' class='waves-effect waves-light indigo darken-4 btn btn-primary' disabled=''>Konfirmasi</a>";
+                          // }else {
+                            echo "<a href='".site_url('admin/upload_berkas/c_verberkas/konfirmasi/').$bksTa->NIM."' class='waves-effect waves-light indigo darken-4 btn btn-primary'>Konfirmasi</a>";
+                          // }
+                        ?>
                       </div>
                      </td>
                 </tr>     
