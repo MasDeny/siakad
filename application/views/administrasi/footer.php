@@ -73,122 +73,157 @@
     document.getElementById("Judul").disabled=true;
   </script>
 
+  <script>
+    $(document).ready(function () {
+      $('#konfirm').click(function() {
+        checked = ($("input[type=checkbox]:checked").length > 19);
+        if(!checked) {
+          alert("Anda harus memverifikasi semua file berkas TA pada halaman ini.");
+          return false;
+        }
+      });
+    });
+  </script>
+
+<!--   <script>
+    $(".veriBerkasTA").on("click", function() {
+      if($(".veriBerkasTA:checked").length > 1) {
+        $('#submit').prop('disabled', false);
+      }
+      else {
+        $('#submit').prop('disabled', true);
+      }  
+    });
+  </script> -->
+
+<!-- <script>
+function check(element) {
+var cb1 = document.getElementById("1");
+var cb3 = document.getElementById("3");
+var konfirm = document.getElementById("submit");
+if (cb1.checked == true  &&  cb3.checked == true)
+    konfirm.disabled = false;
+else
+    konfirm.disabled = true;
+}
+</script> -->
+
   <div id="modal1" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/1. file scan berita acara.pdf'); ?>"></a>
+      <?php if(!$detail_bks->beritaAcaraTA=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->beritaAcaraTA."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal2" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/2. file sampul.pdf'); ?>"></a>
+      <?php if(!$detail_bks->sampul=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->sampul."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal3" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/3. file scan pengesahan ta.pdf'); ?>"></a>
+      <?php if(!$detail_bks->pengesahanTA=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->pengesahanTA."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal4" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/4. file persembahan.pdf'); ?>"></a>
+      <?php if(!$detail_bks->persembahan=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->persembahan."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal5" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/5. file motto.pdf'); ?>"></a>
+      <?php if(!$detail_bks->motto=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->motto."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal6" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/6. file pernyataan ta.pdf'); ?>"></a>
+      <?php if(!$detail_bks->pernyataanTA=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->pernyataanTA."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal7" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/7. file abstrak.pdf'); ?>"></a>
+      <?php if(!$detail_bks->abstrak=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->abstrak."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal8" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/8. file ringkasan.pdf'); ?>"></a>
+      <?php if(!$detail_bks->ringkasan=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->ringkasan."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal9" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/9. file prakata.pdf'); ?>"></a>
+      <?php if(!$detail_bks->prakata=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->prakata."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal10" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/10. file daftar isi.pdf'); ?>"></a>
+      <?php if(!$detail_bks->daftarIsi=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->daftarIsi."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal11" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/11. file daftar tabel.pdf'); ?>"></a>
+      <?php if(!$detail_bks->daftarTabel=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->daftarTabel."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal12" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/12. file daftar gambar.pdf'); ?>"></a>
+      <?php if(!$detail_bks->daftarGambar=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->daftarGambar."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal13" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/13. file daftar lampiran.pdf'); ?>"></a>
+      <?php if(!$detail_bks->daftarLampiran=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->daftarLampiran."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal14" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/14. file bab 1.pdf'); ?>"></a>
+      <?php if(!$detail_bks->bab1=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->bab1."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal15" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/15. file bab 2.pdf'); ?>"></a>
+      <?php if(!$detail_bks->bab2=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->bab2."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal16" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/16. file bab 3.pdf'); ?>"></a>
+      <?php if(!$detail_bks->bab3=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->bab3."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal17" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/17. file bab 4.pdf'); ?>"></a>
+      <?php if(!$detail_bks->bab4=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->bab4."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal18" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/18. file bab 5.pdf'); ?>"></a>
+      <?php if(!$detail_bks->bab5=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->bab5."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal19" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/19. file daftar pustaka.pdf'); ?>"></a>
+      <?php if(!$detail_bks->daftarPustaka=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->daftarPustaka."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal20" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <a class="media" href="<?php echo base_url('upload/20. file lampiran.pdf'); ?>"></a>
+      <?php if(!$detail_bks->lampiran=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->lampiran."'></a>"; } ?>
     </div>
   </div>

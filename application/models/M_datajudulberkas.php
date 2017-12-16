@@ -14,11 +14,4 @@ class M_datajudulberkas extends CI_Model{
 	function cek_datajudulberkas($table,$where){		
 		return $this->db->get_where($table,$where);
 	}
-
-    function tampiljudul($nim){
-           $this->db->select('judul_TA')
-            ->from('mahasiswa')
-            ->where('NIM',$nim);
-            return $this->db->get()->row(); 
-    }
 }

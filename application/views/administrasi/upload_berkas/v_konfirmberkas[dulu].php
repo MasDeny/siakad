@@ -1,46 +1,4 @@
-
-<!DOCTYPE html>
-<html>
-<?php $this->load->view('administrasi/head') ?>
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-
-<?php $this->load->view('administrasi/header') ?>
-  <!-- Left side column. contains the logo and sidebar -->
-<?php $this->load->view('administrasi/leftbar') ?>
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Verifikasi Berkas TA
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="<?php echo base_url('admin/c_admin/index'); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-      </ol>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-  <div class="container">
-
-    <div class="section">
-    <label>Judul</label>
-    <select>
-      <option value="" disabled selected class="form-control">Silahkan pilih salah satu</option>
-<!--       <option value="1">Aplikasi Diagnosis Penyakit Utama Tanaman Kopi Dengan Metode Naive Bayes Berbasis Android</option>
-      <option value="2">Aplikasi Manajemen Perkantoran Klinik Dokterku Taman Gading</option>
-      <option value="3">Aplikasi Jasa Service Dan Penjualan Sparepart Berbasis Desktop</option>
-      <option value="4">Aplikasi Media Pembelajaran Olaharaga Futsal Berbasis Android</option>
-      <option value="5">Implementasi Web Service Restful Pada Website E-Commerce Distro Potlot 14 Jember</option>
-      <option value="6">Aplikasi Pembanding Algoritma Shortest Path Berbasis Dekstop</option> -->
-      <?php
-        foreach ($judul as $row) {
-          echo '<option value="'.$row->judul_TA.'">'.$row->judul_TA.'</option>';
-        }
-      ?>
-    </select>
-
+      <?php echo form_open_multipart('admin/upload_berkas/C_verberkas/gas_lur'); ?>
       <table class="bordered highlight">
         <tbody>
           <tr>
@@ -147,18 +105,4 @@
       </table>
       <br><br>
 
-      <div class="row">
-        <div class="col s3">*File berupa PDF</div>
-        <div class="col s3"></div>
-        <div class="col s3"></div>
-        <div class="col s3"><a class="waves-effect waves-light indigo darken-4 btn">Verifikasi Berkas</a></div>
-      </div>
-
-    </div>
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-<?php $this->load->view('administrasi/footer') ?>
-</body>
-</html>
+      <?php echo form_close() ?>

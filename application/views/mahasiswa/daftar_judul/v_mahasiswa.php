@@ -8,7 +8,7 @@
   </div>
    <div class="container">
     <div class="section">
-	<form action="<?php echo base_url().'Index_mahasiswa/add';?>" method="post" id="form_studytracer">
+	<form action="<?php echo base_url().'mahasiswa/C_judul/add';?>" method="post" id="form_studytracer">
       <table class="table">
 		<thead>
 			<tr>
@@ -39,7 +39,7 @@
 				{
 					?>
 				<td>
-				<a href="<?= site_url();?>mahasiswa/Index_mahasiswa/add/<?= $row->id;?>"  class="btn btn-success">Edit
+				<a href="<?= site_url();?>mahasiswa/C_judul/add/<?= $row->id;?>"  class="btn btn-success">Edit
 				</a>
 				</td>
 				<?php
