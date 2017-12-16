@@ -19,7 +19,17 @@ class C_verberkas extends CI_Controller {
     $data['username'] = $this->session->userdata('username');
     $data['judul'] = $this->M_upload_berkas->judul();
     $data['bks'] = $this->M_upload_berkas->tampil_berkas_ta();
-    $this->load->view('administrasi/upload_berkas/v_verberkas', $data);
+    //$data['detail_bks'] = $this->M_upload_berkas->tampil_berkas_ta($NIM);
+        // $where = array(
+        //      'statusBerkasTA' => $statusBerkasTA
+        // );
+        $data['cek'] = $this->M_upload_berkas->cek_status_konfirm();
+        if($cek->statusBerkasTA == 1) {
+            $this->load->view('administrasi/upload_berkas/v_berkaskosong', $data);
+        } else {
+            // $data['mahasiswa'] = $this->M_upload_berkas->view_by($NIM);
+            $this->load->view('administrasi/upload_berkas/v_verberkas', $data);
+        }
   }
 
   public function konfirmasi($NIM = NULL) {

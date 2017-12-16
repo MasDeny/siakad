@@ -241,6 +241,15 @@ class M_upload_berkas extends CI_Model{
         $this->db->update('berkasta');
     }
 
+    function cek_status_konfirm() {
+        $this->db->select('mahasiswa.NIM as NIM, mahasiswa.nama_mahasiswa, mahasiswa.judul_TA, berkasta.statusBerkasTA');
+        $this->db->from('mahasiswa');
+        $this->db->join('berkasta', 'mahasiswa.NIM = berkasta.NIM');
+        $this->db->where('berkasta.statusBerkasTA', 1);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
     // function simpan_berkas_ta($data) {
     //     $this->db->insert ("berkasta",$data);
     // }    
