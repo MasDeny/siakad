@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  MIT License (MIT)
+=======
+The MIT License (MIT)
+>>>>>>> parent of 375306e... coba
 
 Copyright (c) 2014 - 2017, British Columbia Institute of Technology
 
