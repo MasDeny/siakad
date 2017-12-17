@@ -8,22 +8,31 @@ class M_pendaftaran_senpro extends CI_Model {
         
     }
 
-    public function get_data($id = FALSE)
+    public function get_data($limit, $start)
     {
-        
-        if ($id === FALSE) {
+         
             $this->db->select('status_sempro.idStatus_Sempro as id,status_sempro.mahasiswa_NIM as NIM,
             nama_mahasiswa as nama,judul_TA as judul,dp1.nm_dosen as dospem')
             ->from('mahasiswa')
             ->join('status_sempro','status_sempro.mahasiswa_NIM=mahasiswa.NIM')
             ->join('dp1','dp1.id_dp1=mahasiswa.dp1_id_dp1')
-            ->where('status_sempro.status', 1);
+            ->where('status_sempro.status', 1)
+            ->limit($limit , $start);
             return $this->db->get()->result();   
-        }
 
         //menampilkan beberapa data yang dipilih yang menyesuaikan dengan controller jadwalsidang 
         //dengan view details
 
+        
+    }
+
+    public function counting()
+    {
+        $this->db->where('status', 1);
+        return $this->db->get('status_sempro')->num_rows();
+    }
+
+    public function get_data_detail($id) {
         $this->db->select('status_sempro.idStatus_Sempro as id,status_sempro.mahasiswa_NIM as NIM,
         nama_mahasiswa as nama,judul_TA as judul,dp1.nm_dosen as dospem')
         ->from('mahasiswa')
@@ -64,4 +73,35 @@ class M_pendaftaran_senpro extends CI_Model {
         ->update('status_sempro');
 
     }
+
+    public function acc_mhs($limit, $start)//untuk mahasiswa yang telah diberi jadwal
+    {
+        $this->db->select('status_sempro.idStatus_Sempro as id,status_sempro.mahasiswa_NIM as NIM,
+        nama_mahasiswa as nama,jadwal.panelis_1,jadwal.jam,jadwal.tanggal,jadwal.ruangan')
+        ->from('status_sempro')
+        ->join('mahasiswa','mahasiswa.NIM=status_sempro.mahasiswa_NIM')
+        ->join('jadwal', 'jadwal.idStatus_Sempro=status_sempro.idStatus_Sempro')
+        ->where('status_sempro.status', 2)
+        ->limit($limit , $start);
+        return $this->db->get()->result();       
+    }
+
+     public function acc_counting()//menghitung banyak data 
+    {
+        $this->db->where('status', 2);
+        return $this->db->get('status_sempro')->num_rows();
+    }
+
+    public function delete_jadwal($id)
+    {
+        $this->db->set('status', 1)
+        ->where('idStatus_Sempro', $id)
+        ->update('status_sempro');
+
+        $this->db->where('idStatus_Sempro', $id)
+        ->delete('jadwal');
+
+        return TRUE;
+    }
+
 }

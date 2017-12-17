@@ -41,7 +41,9 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Panelis 1</label>
-                                                <input type="text" class="form-control border-input" placeholder="ketua" name="panelis_1" value="<?php echo $user_details->dospem; ?>">
+                                                <select name="panelis_1" class="form-control border-input text-center" required>>
+                                                    <option value="<?php echo $user_details->dospem; ?>"><?php echo $user_details->dospem; ?></option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
