@@ -40,14 +40,13 @@
           <div class="form-group">
             <label>Status Berkas TA</label>
             <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php 
-              if (empty($detail_mhs->proposal_TA) || empty($detail_mhs->kartu_kendali) || empty($detail_mhs->kk_senpro_lalu) || empty($detail_mhs->makalah) || empty($detail_mhs->lembar_berita_acara) || empty($detail_mhs->lembar_pengusulan) || empty($detail_mhs->lembar_revisi) || empty($detail_mhs->lembar_hasil_senpro) || empty($detail_mhs->lembar_daftar_hadir) || empty($detail_mhs->lembar_pengesahan) || empty($detail_mhs->kartu_kontrak_DP)) {
-                            echo "Berkas tidak lengkap";
-                          }
-                          else
-                          {
-                            echo "Berkas lengkap";
-                          }
-                         ?>">
+              if (empty($detail_bks->beritaAcaraTA) || empty($detail_bks->sampul) || empty($detail_bks->pengesahanTA) || empty($detail_bks->persembahan) || empty($detail_bks->motto) || empty($detail_bks->pernyataanTA) || empty($detail_bks->abstrak) || empty($detail_bks->ringkasan) || empty($detail_bks->prakata) || empty($detail_bks->daftarIsi) || empty($detail_bks->daftarTabel) || empty($detail_bks->daftarGambar) || empty($detail_bks->daftarLampiran) || empty($detail_bks->bab1) || empty($detail_bks->bab2) || empty($detail_bks->bab3) || empty($detail_bks->bab4) || empty($detail_bks->bab5) || empty($detail_bks->daftarPustaka) || empty($detail_bks->lampiran)) {
+                echo "Berkas tidak lengkap";
+              }
+              else {
+                echo "Berkas lengkap";
+              }
+            ?>">
           </div>
 
       <?php echo form_open_multipart('admin/upload_berkas/C_verberkas'); ?>

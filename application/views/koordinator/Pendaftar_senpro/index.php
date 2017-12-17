@@ -8,6 +8,7 @@
     <?php $this->load->view('koordinator/navbar'); ?>
          <div class="content">
             <div class="container-fluid">
+                <a href="<?php echo base_url()."koordinator/Pendaftar_senpro/list";?>" class="btn pull-right btn-flat navbar-btn btn-sm btn-info"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>  Daftar mahasiswa yang telah mendapatkan jadwal</a>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -25,13 +26,17 @@
                                         <th></th>
                                     </thead>
                                     <tbody>
+                                        <?php if (is_null($user) || empty($user)): ?>
+                                        <div class="text-center breadcrumb">
+                                            <i class="glyphicon glyphicon-alert text-center text-danger"><p>data kosong</p></i>
+                                        </div>
+                                        <?php else: ?>
                                         <?php 
-                                        $no = 1 ;
                                         foreach ($user as $data) {
                                             
                                         ?>
                                         <tr>
-                                            <td><?php echo $no++; ?></td>
+                                            <td><?php echo ++$no; ?></td>
                                             <td><?php echo $data->NIM; ?></td>
                                             <td><?php echo $data->nama; ?></td>
                                             <td><?php echo $data->judul; ?></td>
@@ -47,9 +52,12 @@
                                             </td>
                                         </tr>
                                         <?php } ?>
+                                        <?php endif ?>
                                     </tbody>
                                 </table>
-
+                                     <div class="text-center">
+                                    <?php echo $pagination; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
