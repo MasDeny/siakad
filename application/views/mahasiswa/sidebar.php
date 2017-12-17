@@ -24,8 +24,6 @@
     <li><div class="divider"></div></li>
     <li><a class="waves-effect" href="<?php echo base_url('mahasiswa/C_berkas'); ?>">Upload Berkas TA</a></li>
     <li><div class="divider"></div></li>
-    <li><a class="waves-effect" href="#!">Pendaftaran Wisuda</a></li>
-    <li><div class="divider"></div></li>
     <li><a class="waves-effect" href="<?php echo base_url('mahasiswa/C_studytracer'); ?>">Pendaftaran Tracer Study</a></li>
     <li><div class="divider"></div></li>
     <li><a class="waves-effect" href="<?php echo base_url('mahasiswa/C_yudisium'); ?>">Pendaftaran Yudisium</a></li>

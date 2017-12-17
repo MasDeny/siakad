@@ -8,26 +8,29 @@
 
         /*=== DAFTAR YUDISIUM ===*/
         public function daftar_yudisium(){    
-        $data['NIM']=$_SESSION['nama'];
+        $data['NIM']=$_SESSION['codeUser'];
         $data['data_yudisium']  = $this->Yudisium_model->check_status_upload($data)->row();
+        $this->load->view('mahasiswa/header', $data);
+        $this->load->view('mahasiswa/sidebar', $data);
+        $this->load->view('mahasiswa/footer', $data);
         $this->render_page('modul5/mahasiswa/yudisium/daftar_yudisium',$data); //render_page ada di file MYController di folder CORE 
     	}
 
         public function daftar_yudisium_error(){ 
-        $data['NIM']=$_SESSION['nama'];
+        $data['NIM']=$_SESSION['codeUser'];
         $data['data_yudisium']  = $this->Yudisium_model->check_status_upload($data)->row();
         $this->render_page('modul5/mahasiswa/yudisium/daftar_yudisium',$data); //render_page ada di file MYController di folder CORE 
 
         }
    
         public function proses_daftar_yudisium(){
-            $data['NIM']=$_SESSION['nama'];
+            $data['NIM']=$_SESSION['codeUser'];
             $data_yudisium= $this->Yudisium_model->check_status_upload($data)->row();
             $num_data_yudisium = count($data_yudisium);
             if(!$num_data_yudisium==1){ //jika belum pernah input
                 $this->Yudisium_model->insert_daftar_yudisium($data);
             }else{
-                $nim=$_SESSION['nama'];
+                $nim=$_SESSION['codeUser'];
                  $this->db->where('NIM',$nim);
              $query = $this->db->get('tb_yudisium');
              $row = $query->row();
@@ -337,7 +340,7 @@
                 }
             }else{
                 $upload_data13 = array('upload_data13' => $this->upload->data()); //memaksukkan data file ke upload_data1
-                $file_daftar_nilai= $upload_data13['upload_data13']['file_name'];   //nama array [kolom] [type format]
+                $file_daftar_nilai= $upload_data13['upload_data13']['file_name'];   //codeUser array [kolom] [type format]
                 
                     $error13=2;
                     unlink("./assets/img/yudisium/$file_daftar_nilai");
@@ -348,7 +351,7 @@
             if($error1==0 && $error2==0 && $error3==0 && $error4==0 && $error5==0 && $error6==0 && $error7==0 && $error8==0 && $error9==0 && $error10==0 && $error11==0 && $error12==0 && $error13==0){
                 redirect(site_url('Yudisium/daftar_yudisium'));
             }else if ($error1==1 || $error2==1 || $error3==1 || $error4==1 || $error5==1 || $error6==1 || $error7==1 || $error8==1 || $error9==1 || $error10==1 || $error11==1 || $error12==1 || $error13==1){
-                $data['NIM']=$_SESSION['nama'];
+                $data['NIM']=$_SESSION['codeUser'];
                 $data['data_yudisium']  = $this->Yudisium_model->check_status_upload($data)->row();
                 $error = array('error'=>'format file salah harus format png/jpg/jpeg');
                 $data1['headernya'] = $this->load->view('template/header', $data, TRUE);
@@ -361,7 +364,7 @@
                 $this->upload->do_upload('file_khs1');
                 unlink("./assets/img/yudisium/$row->FILE_KHS1");
                 $upload_data1 = array('upload_data1' => $this->upload->data()); //memaksukkan data file ke upload_data1
-                $data['FILE_KHS1']                          = $upload_data1['upload_data1']['file_name'];   //nama array [kolom] [type format]
+                $data['FILE_KHS1']                          = $upload_data1['upload_data1']['file_name'];   //codeUser array [kolom] [type format]
                 $data['STATUS_KHS1']                          = "MENUNGGU KONFIRMASI";
             }if($error2==2){
                 $this->upload->do_upload('file_khs2');
@@ -491,7 +494,7 @@
 
 
         public function cetak_pendaftaran_yudisium(){
-            $data['NIM']=$_SESSION['nama'];
+            $data['NIM']=$_SESSION['codeUser'];
             $data['data_form_yudisium_mahasiswa'] = $this->Yudisium_model->select_data_form_yudisium_mahasiswa($data)->row();
             $data['data_ketua_prodi_mif'] = $this->Yudisium_model->select_ketua_prodi_mif()->row();
 

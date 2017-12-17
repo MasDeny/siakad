@@ -9,30 +9,19 @@ class C_yudisium extends CI_Controller{
         $this->load->library('form_validation');
         $this->load->library('image_lib');
 		$this->load->model('m_datamahasiswa');
+		$this->load->model('yudisium/Yudisium_model');
 		// if($this->session->userdata('status') == ""){
 		// 	redirect('login');
 		// }
 	}
 
 	public function index(){
-        $data['username'] = $this->session->userdata('username');
-        $NIM = $this->session->userdata("nama");
-        $where = array(
-            'mahasiswa_NIM' => $NIM
-            );
-        $cek = $this->m_datamahasiswa->cek_datastudytracer("yudisium",$where)->num_rows();
-        if($cek > 0){
+        $data['NIM'] = $this->session->userdata('codeUser');
+		$data['data_yudisium']= $this->Yudisium_model->check_status_upload($data)->row();
             $this->load->view('mahasiswa/header', $data);
             $this->load->view('mahasiswa/sidebar', $data);
-            $this->load->view('mahasiswa/yudisium/v_terdaftar_yudisium');
+            $this->load->view('modul5/mahasiswa/yudisium/daftar_yudisium',$data);
             $this->load->view('mahasiswa/footer', $data);
-        }else{
-            $data['mahasiswa'] = $this->m_datamahasiswa->view_by($NIM);
-            $this->load->view('mahasiswa/header', $data);
-            $this->load->view('mahasiswa/sidebar', $data);
-            $this->load->view('mahasiswa/yudisium/v_yudisium1',$data);
-            $this->load->view('mahasiswa/footer', $data);
-        }
 	}
 
     

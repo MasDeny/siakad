@@ -5,10 +5,6 @@ class Admin extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_datamahasiswa');
-	
-		if($this->session->userdata('status') != "login"){
-			redirect(base_url("login"));
-		}
 	}
 
 	function index(){
@@ -16,7 +12,7 @@ class Admin extends CI_Controller{
 	}
 	
 	function getyudisium(){
-		$NIM = $this->session->userdata("nama");
+		$NIM = $this->session->userdata("codeUser");
 		$where = array(
 			'mahasiswa_NIM' => $NIM
 			);
@@ -31,7 +27,7 @@ class Admin extends CI_Controller{
 	
 	function getstudytracer(){
 		//$this->load->view('v_studytracer');
-		$NIM = $this->session->userdata("nama");
+		$NIM = $this->session->userdata("codeUser");
 		$where = array(
 			'mahasiswa_NIM' => $NIM
 			);
@@ -55,10 +51,10 @@ class Admin extends CI_Controller{
 		}
 	}
 	
-	public function cetak_pendaftaran_yudisium(){
-            $data['NIM']=$_SESSION['nama'];
+	function cetak_pendaftaran_yudisium(){
+            $data['NIM']=$_SESSION['codeUser'];
             $data['data_form_yudisium_mahasiswa'] = $this->m_datamahasiswa->select_data_form_yudisium_mahasiswa($data)->row();
             $this->load->view('modul5/v_cetak_yudisium', $data); //untuk menampilkan form edit mobil}
-        }
+    }
         
 }
