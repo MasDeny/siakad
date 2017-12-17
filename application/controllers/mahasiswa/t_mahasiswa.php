@@ -25,6 +25,7 @@ class T_mahasiswa extends CI_Controller {
 			$row[] = $field->id_mhs;
 			$row[] = $field->nama_mahasiswa;
 			$row[] = $field->program_studi;
+			$row[] = $field->program_studi;
 			$data[] = $row;
 		}
 
