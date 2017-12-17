@@ -21,6 +21,23 @@ class M_upload_berkas extends CI_Model{
         return $this->db->get_where($table,$where);
     }
 
+    function tampil_terverifikasi($NIM) {
+        // if ($NIM === FALSE) {
+            $this->db->select('mahasiswa.NIM as NIM, mahasiswa.nama_mahasiswa, mahasiswa.judul_TA, berkasta.statusBerkasTA, berkasta.*');
+            $this->db->from('mahasiswa');
+            $this->db->join('berkasta', 'mahasiswa.NIM = berkasta.NIM');
+            $this->db->where('mahasiswa.NIM', $NIM);
+            $this->db->where('berkasta.statusBerkasTA', 1);
+            $query = $this->db->get();
+            return $query->result(); 
+        // }
+        // $this->db->select('mahasiswa.NIM as NIM, mahasiswa.nama_mahasiswa, mahasiswa.judul_TA, berkasta.statusBerkasTA, berkasta.*');
+        // $this->db->from('mahasiswa');
+        // $this->db->join('berkasta','mahasiswa.NIM = berkasta.NIM');
+        // $this->db->where('mahasiswa.NIM', $NIM);
+        // return $this->db->get()->row();
+    }
+
     function check_status_berkas($data) {
         $this->db->select('*');
         $this->db->from('berkasta');
@@ -221,7 +238,7 @@ class M_upload_berkas extends CI_Model{
 
     function tampil_berkas_ta($NIM = FALSE) {
         if ($NIM === FALSE) {
-            $this->db->select('mahasiswa.NIM as NIM, mahasiswa.nama_mahasiswa, mahasiswa.judul_TA, berkasta.statusBerkasTA');
+            $this->db->select('mahasiswa.NIM as NIM, mahasiswa.nama_mahasiswa, mahasiswa.judul_TA, berkasta.statusBerkasTA, berkasta.*');
             $this->db->from('mahasiswa');
             $this->db->join('berkasta', 'mahasiswa.NIM = berkasta.NIM');
             $this->db->where('berkasta.statusBerkasTA', 0);

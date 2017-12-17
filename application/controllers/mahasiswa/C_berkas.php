@@ -20,23 +20,25 @@ class C_berkas extends CI_Controller{
         $NIM = $this->session->userdata("codeUser");
         $data['NIM']=$_SESSION['codeUser'];
         $data['data_berkas_ta'] = $this->M_upload_berkas->check_status_berkas($data)->row();
+        $data['mahasiswa'] = $this->M_upload_berkas->view_by($NIM);
         $data['detail_bks'] = $this->M_upload_berkas->tampil_berkas_ta($NIM);
-        $where = array(
-             'NIM' => $NIM
-        );
-        $cek = $this->M_upload_berkas->cek_isi("berkasta",$where)->num_rows();
-        // if($cek > 0) {
+        $data['terverifikasi'] = $this->M_upload_berkas->tampil_terverifikasi($NIM);
+        if($data['terverifikasi']) {
+            $this->load->view('mahasiswa/header', $data);
+            $this->load->view('mahasiswa/sidebar', $data);
+            $this->load->view('mahasiswa/upload_berkas/v_terverifikasi', $data);
+            $this->load->view('mahasiswa/footer', $data);}
+        // } elseif($data['terverifikasi']) {
         //     $this->load->view('mahasiswa/header', $data);
         //     $this->load->view('mahasiswa/sidebar', $data);
-        //     $this->load->view('mahasiswa/upload_berkas/v_terverifikasi', $data);
-        //     $this->load->view('mahasiswa/footer', $data);
-        // } else {
-            $data['mahasiswa'] = $this->M_upload_berkas->view_by($NIM);
+        //     $this->load->view('mahasiswa/upload_berkas/v_upload', $data);
+        //     $this->load->view('mahasiswa/footer', $data);}
+         else {
             $this->load->view('mahasiswa/header', $data);
             $this->load->view('mahasiswa/sidebar', $data);
             $this->load->view('mahasiswa/upload_berkas/v_upload', $data);
             $this->load->view('mahasiswa/footer', $data);
-        // }
+        }
 	}
 
     public function proses_upload_berkas() {

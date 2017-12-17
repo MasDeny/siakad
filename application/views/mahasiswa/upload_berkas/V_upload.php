@@ -474,8 +474,15 @@
       	<div class="col s3">*File berupa PDF</div>
       	<div class="col s3"></div>
       	<div class="col s3"></div>
-      	<div class="col s3 waves-effect waves-light indigo darken-4 btn">
-          <input type="submit" value="upload berkas" class="btn btn-success">
+      	<div class="col s3">
+          <?php 
+            if (!empty($detail_bks->beritaAcaraTA) && !empty($detail_bks->sampul) && !empty($detail_bks->pengesahanTA) && !empty($detail_bks->persembahan) && !empty($detail_bks->motto) && !empty($detail_bks->pernyataanTA) && !empty($detail_bks->abstrak) && !empty($detail_bks->ringkasan) && !empty($detail_bks->prakata) && !empty($detail_bks->daftarIsi) && !empty($detail_bks->daftarTabel) && !empty($detail_bks->daftarGambar) && !empty($detail_bks->daftarLampiran) && !empty($detail_bks->bab1) && !empty($detail_bks->bab2) && !empty($detail_bks->bab3) && !empty($detail_bks->bab4) && !empty($detail_bks->bab5) && !empty($detail_bks->daftarPustaka) && !empty($detail_bks->lampiran)) {
+                echo "<input type='submit' value='menunggu konfirm' class='btn btn-success' disabled=''>";
+            }
+            else {
+                echo "<input type='submit' value='upload berkas' class='btn btn-success'>";
+            }
+          ?>
         </div>
       </div>
       <?php echo form_close() ?>
