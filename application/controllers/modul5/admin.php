@@ -31,7 +31,7 @@ class Admin extends CI_Controller{
 	
 	function getstudytracer(){
 		//$this->load->view('v_studytracer');
-		$NIM = $this->session->userdata("nama");
+		$NIM = $this->session->userdata("codeUser");
 		$where = array(
 			'mahasiswa_NIM' => $NIM
 			);

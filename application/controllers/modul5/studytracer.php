@@ -11,7 +11,7 @@ class Studytracer extends CI_Controller{
 	function index(){
 		//$this->data['hasil']= $this->m_modelcrud->getUser('tracer study');
 		//$this->load->view('v_studytracer',$this->data);
-		$this->load->view('modul5/v_beranda');
+		$this->load->view('modul5/v_terdaftar');
 	}
 	
 	public function utama()
@@ -56,7 +56,10 @@ class Studytracer extends CI_Controller{
 	'mahasiswa_NIM'=>$nim
 	);
 	$this->m_modelcrud->tambahData('tracer_study',$data);
-	redirect('modul5/studytracer/index');
+    $this->load->view('mahasiswa/header', $data);
+    $this->load->view('mahasiswa/sidebar', $data);
+    $this->load->view('mahasiswa/studytracer/v_terdaftar', $data);
+    $this->load->view('mahasiswa/footer', $data);
 	}
 	
 	

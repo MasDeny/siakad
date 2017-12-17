@@ -7,26 +7,33 @@
         }
 
 		public function daftar_tracer(){    
-        $data['NIM']=$_SESSION['nama'];
+        $data['NIM']=$_SESSION['codeUser'];
         $data['data_tracer']  = $this->m_datamahasiswa->check_status_upload_tracer($data)->row();
+        $this->load->view('mahasiswa/header', $data);
+        $this->load->view('mahasiswa/sidebar', $data);
+        $this->load->view('mahasiswa/footer', $data);
         $this->render_page('modul5/v_validasi_statusmahasiswa',$data); //render_page ada di file MYController di folder CORE 
 		}
 		
         public function daftar_yudisium_error(){ 
-        $data['NIM']=$_SESSION['nama'];
+        $data['NIM']=$_SESSION['codeUser'];
         $data['data_yudisium']  = $this->m_datamahasiswa->check_status_upload($data)->row();
+		
+        $this->load->view('mahasiswa/header', $data);
+        $this->load->view('mahasiswa/sidebar', $data);
+        $this->load->view('mahasiswa/footer', $data);
         $this->render_page('modul5/v_validasi_statusmahasiswa',$data); //render_page ada di file MYController di folder CORE 
 
         }
    
         public function proses_daftar_tracer(){
-            $data['NIM']=$_SESSION['nama'];
+            $data['NIM']=$_SESSION['codeUser'];
             $data_studytracer= $this->m_datamahasiswa->check_status_upload_tracer($data)->row();
             $num_data_studytracer = count($data_studytracer);
             if(!$num_data_studytracer==1){ //jika belum pernah input
                 $this->m_datamahasiswa->insert_daftar_tracer($data);
             }else{
-                $nim=$_SESSION['nama'];
+                $nim=$_SESSION['codeUser'];
                  $this->db->where('NIM',$nim);
              $query = $this->db->get('temp_mahasiswa');
              $row = $query->row();
@@ -81,7 +88,7 @@
             if($error1==0 && $error2==0 && $error3==0 && $error4==0 && $error5==0 && $error6==0 && $error7==0 && $error8==0 && $error9==0 && $error10==0 && $error11==0 && $error12==0 && $error13==0){
                 redirect(site_url('modul5/v_validasi_statusmahasiswa'));
             }else if ($error1==1 || $error2==1 || $error3==1 || $error4==1 || $error5==1 || $error6==1 || $error7==1 || $error8==1 || $error9==1 || $error10==1 || $error11==1 || $error12==1 || $error13==1){
-                $data['NIM']=$_SESSION['nama'];
+                $data['NIM']=$_SESSION['codeUser'];
                 $data['data_tracer']  = $this->m_datamahasiswa->check_status_upload($data)->row();
                 $error = array('error'=>'format file salah harus format png/jpg/jpeg');
                 $data1['headernya'] = $this->load->view('template/header', $data, TRUE);
