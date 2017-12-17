@@ -70,26 +70,5 @@
 </div>
 <?php $this->load->view('koordinator/sidang/view'); ?> 
 </div>
-<script type="text/javascript">
-    var table;
-    $(document).ready(function() {
- 
-        //datatables
-        table = $('#table').DataTable({ 
- 
-            "processing": true, 
-            "serverSide": true, 
-            "order": [], 
-             
-            "ajax": {
-                "url": "<?php echo site_url('user/get_data')?>",
-                "type": "POST"
-            }
- 
-        });
- 
-    });
- 
-</script>
 <script>document.body.style.overflow = "hidden";</script>
     <?php $this->load->view('/koordinator/footer');
