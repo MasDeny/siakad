@@ -55,5 +55,69 @@
         $timestamp=date("Y-m-d H:i:s");
         $this->db->query(" INSERT INTO notification VALUES('".$id."','".$pesan."','".$timestamp."','0')");
     }
+     public function tampil_pasca_sidang_nilai()
+    {
+        
+        
+            $this->db->select('mahasiswa.NIM as NIM, mahasiswa.nama_mahasiswa, mahasiswa.judul_TA, nilai_sidang.nilai_total, status_sidang.status');
+            $this->db->from('status_sidang');
+            $this->db->join('mahasiswa','mahasiswa.NIM=status_sidang.mahasiswa_NIM');
+            $this->db->join('nilai_sidang', 'status_sidang.id_statussidang = nilai_sidang.status_sidang_id_statussidang');
+            $this->db->where('status_sidang.status', 3);
+            $query = $this->db->get();
+            return $query->result(); 
+        
+    }
 
+    public function tampil_pasca_sidang()
+    {
+        
+        
+            $this->db->select('status_sidang.id_statussidang as id, mahasiswa.NIM as NIM, mahasiswa.nama_mahasiswa, mahasiswa.judul_TA, status_sidang.status');
+            $this->db->from('status_sidang');
+            $this->db->join('mahasiswa','mahasiswa.NIM=status_sidang.mahasiswa_NIM');
+            $this->db->where('status_sidang.status', 2);
+            $query = $this->db->get();
+            return $query->result(); 
+        
+    }
+    // public function simpan_nilai($nilai_isi)
+    //{
+    //   $id=0;
+    //    $nilai_bimbingan_dp1=$nilai_isi;
+    //    $nilai_bimbingan_dp2=$nilai_isi;
+    //    $nilai_ujian=$nilai_isi;
+    //    $nilai_total=$nilai_isi;
+    //    $this->db->query(" INSERT INTO nilai_sidang VALUES('".$id."','".$nilai_bimbingan_dp1."','".$nilai_bimbingan_dp2."','".$nilai_ujian."','".$nilai_total."','2')");
+    //}
+    function show_nilai(){
+        $nilai=$this->db->query("SELECT * FROM nilai_sidang");
+        return $nilai;
+    }
+    function simpan_nilai($id){
+        $nilai_dp1      = $this->input->post('nilai_bimbingan_dp1');
+        $nilai_dp2      = $this->input->post('nilai_bimbingan_dp2');
+        $nilai_ujian    = $this->input->post('nilai_ujian');
+        
+        $total = ($nilai_dp1+$nilai_dp2+$nilai_ujian)/3;
+    
+        $data = array(
+                'nilai_bimbingan_dp1'           => $nilai_dp1,
+                'nilai_bimbingan_dp2'           => $nilai_dp2,
+                'nilai_ujian'                   => $nilai_ujian,
+                'nilai_total'                   => $total,
+                'status_sidang_id_statussidang' => $id
+            );
+        $this->db->insert('nilai_sidang', $data);
+
+        $this->db->set('status', 3)
+        ->where('id_statussidang', $id)
+        ->update('status_sidang');
+
+        return TRUE;
+
+
+        /*$nilai=$this->db->query("INSERT INTO nilai_sidang (nilai_bimbingan_dp1,nilai_bimbingan_dp2,nilai_ujian,nilai_total,status_sidang_id_statussidang) VALUES ('$nilai_bimbingan_dp1','$nilai_bimbingan_dp2','$nilai_ujian','$nilai_total','3')");
+        return $nilai;*/
+    }
 }
