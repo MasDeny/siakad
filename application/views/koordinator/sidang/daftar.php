@@ -9,48 +9,49 @@
     <?php $this->load->view('koordinator/navbar'); ?> 
          <div class="content">
             <div class="container-fluid">
-                
-                    <a href="<?php echo base_url()."koordinator/jadwal_sidang/list";?>" class="btn pull-right btn-flat navbar-btn btn-sm btn-info"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>  Daftar mahasiswa yang telah mendapatkan jadwal</a>
-                
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Berikut adalah daftar mahasiswa yang telah terverifikasi oleh admin : </h4>
+                                <h4 class="title">Berikut adalah daftar mahasiswa yang telah ditentukan jadwal sidangnya : </h4>
                                 <br>
-                                <p class="category">Tabel ini untuk memilih mahasiswa yang akan disetujui melakukan sidang, sehingga nantinya akan di tentukan jadwal sidangnya</p>
+                                <p class="category">Pada tabel ini anda berhak untuk mengganti jadwal sidang ataupun menghapus mahasiswa dari jadwal sidang yang ditentukan</p>
                             </div>
                             <div class="content table-responsive table-full-width">
-                                <table class="table table-hover" id="table">
+                                <table class="table table-hover table-responsive">
                                     <thead>
                                         <th>No</th>
                                         <th>NIM</th>
                                         <th>Nama</th>
                                         <th>Judul Tugas Akhir</th>
-                                        <th>Pembimbing 1</th>
+                                        <th>Keterangan</th>
                                         <th></th>
                                     </thead>
                                     <tbody>
-                                        <?php if (is_null($user) || empty($user)): ?>
+                                        <?php if (is_null($user_acc) || empty($user_acc)): ?>
                                         <div class="text-center breadcrumb">
                                             <i class="glyphicon glyphicon-alert text-center text-danger"><p>data kosong</p></i>
                                         </div>
                                         <?php else: ?>
                                         <?php 
-                                        foreach($user as $data) {
+                                        foreach ($user_acc as $data) {   
                                         ?>
                                         <tr>
                                             <td><?php echo ++$no; ?></td>
                                             <td><?php echo $data->NIM; ?></td>
                                             <td><?php echo $data->nama; ?></td>
                                             <td><?php echo $data->judul; ?></td>
-                                            <td><?php echo $data->dospem; ?></td>
+                                            <?php if ($data->sekertaris === NULL ): ?>
+                                                <td class="text-danger"> Belum Lengkap</td>
+                                            <?php else: ?>
+                                                <td class="text-success"> Lengkap</td>
+                                            <?php endif ?>
                                             <td>
-                                                <div class="col-xs-3 text-right">        
-                                                <a href="<?php echo base_url()."koordinator/jadwal_sidang/view/". 
-                                                $data->id; ?>" class="btn btn-md btn-info btn-icon">
-                                                <i class="fa fa-check" aria-hidden="true"></i>
-                                                </a>
+                                                <div class="button-group">        
+                                                <a href="<?php echo base_url()."koordinator/jadwal_sidang/view_acc/". 
+                                                $data->id; ?>" class="btn btn-md btn-default btn-flat" id="view"><i class="glyphicon glyphicon-eye-open"></i> Lihat</a>        
+                                                <a data-toogle="modal" data-target="#myModal" href="<?php echo base_url()."koordinator/jadwal_sidang/view/".$data->id; ?>" class="btn btn-md btn-info btn-flat" id="edit"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                                                <a href="<?php echo base_url()."koordinator/Jadwal_sidang/unselect_mhs/".$data->id; ?>" class="btn btn-md btn-danger btn-flat"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -60,7 +61,7 @@
                                 </table>
                                 <div class="text-center">
                                     <?php echo $pagination; ?>
-                                </div>
+                                </div>    
                             </div>
                         </div>
                     </div>
@@ -68,28 +69,6 @@
             </div>
         </div>
 </div>
-<?php $this->load->view('koordinator/sidang/view'); ?> 
 </div>
-<script type="text/javascript">
-    var table;
-    $(document).ready(function() {
- 
-        //datatables
-        table = $('#table').DataTable({ 
- 
-            "processing": true, 
-            "serverSide": true, 
-            "order": [], 
-             
-            "ajax": {
-                "url": "<?php echo site_url('user/get_data')?>",
-                "type": "POST"
-            }
- 
-        });
- 
-    });
- 
-</script>
 <script>document.body.style.overflow = "hidden";</script>
     <?php $this->load->view('/koordinator/footer');
