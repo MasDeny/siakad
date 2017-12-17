@@ -38,6 +38,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?php if ($user_details->id > 15) { ?>
                                     <div class="row" id="penguji">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -69,6 +70,10 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <?php }else { ?>
+                                            <div class="col-md-4"> <p>mahasiswa berikut bebas menentukan sekertaris dan anggota pada sidang nanti</p>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">

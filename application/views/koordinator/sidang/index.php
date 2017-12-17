@@ -29,12 +29,14 @@
                                     </thead>
                                     <tbody>
                                         <?php 
-                                        $no = 1 ;
-                                        foreach ($user as $data) {
-                                            
+                                        if (is_array($user) || is_object($user))
+                                            echo '<p class="text-center text-danger">data kosong</p>';
+                                        {
+                                        foreach($user as $data) {
+
                                         ?>
                                         <tr>
-                                            <td><?php echo $no++; ?></td>
+                                            <td><?php echo ++$start; ?></td>
                                             <td><?php echo $data->NIM; ?></td>
                                             <td><?php echo $data->nama; ?></td>
                                             <td><?php echo $data->judul; ?></td>
@@ -45,13 +47,17 @@
                                                 $data->id; ?>" class="btn btn-md btn-info btn-icon">
                                                 <i class="fa fa-check" aria-hidden="true"></i>
                                                 </a>
-                                                 
                                                 </div>
                                             </td>
                                         </tr>
-                                        <?php } ?>
+                                        <?php } 
+                                        }?>
                                     </tbody>
                                 </table>
+                                <div class="text-center">
+                                  <?php echo $pagination; ?>  
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="card">
