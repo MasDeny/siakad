@@ -530,7 +530,7 @@
 					
                     echo "<br><br>
 					<center>
-					Status pendaftaran yudisium anda telah diterima, silakan lakukan";?><b><a href="<?php echo base_url(); ?>index.php/modul5/admin/cetak_pendaftaran_yudisium"> Cetak Form</a></b></center><?php
+					Status pendaftaran yudisium anda telah diterima, silakan lakukan";?><b><a href="<?php echo base_url(); ?>modul5/admin/cetak_pendaftaran_yudisium"> Cetak Form</a></b></center><?php
                 };
                 ?>
                 

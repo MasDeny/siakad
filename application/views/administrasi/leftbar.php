@@ -18,8 +18,25 @@
         <li><a href="<?php echo base_url('admin/daftar_sempro/c_versempro'); ?> "><i class=""></i> <span>Verifikasi Sempro</span></a></li>
         <li><a href="<?php echo base_url('admin/sidang/c_versidang'); ?> "><i class=""></i> <span>Verifikasi Sidang</span></a></li>
         <li><a href="<?php echo base_url('admin/upload_berkas/c_verberkas'); ?> "><i class=""></i> <span>Verifikasi Berkas TA</span></a></li>
-        <li><a href="#"><i class=""></i> <span>Study Tracer</span></a></li>
-        <li><a href="#"><i class=""></i> <span>Yudisium</span></a></li>
+        <li class="treeview">
+            <a href="#">
+                    <span>Study Tracer</span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="<?php echo base_url(); ?>index.php/modul5/validasistudytracer"><i class="fa fa-circle-o"></i> Data Tracer</a></li>
+                <li><a href="<?php echo base_url(); ?>index.php/modul5/tracer/data_tracer"><i class="fa fa-circle-o"></i> Validasi Hak Akses</a></li>
+            </ul>
+            </a>
+        </li>
+        <li class="treeview">
+			<a href="#">
+                    <span>Yudisium</span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="<?php echo base_url(); ?>index.php/modul5/yudisium/data_yudisium"><i class="fa fa-circle-o"></i> Yudisium</a></li>
+				<li><a href="<?php echo base_url(); ?>index.php/modul5/Yudisium/grafik_data_yudisium"><i class="fa fa-circle-o"></i>Grafik Data Yudisium</a></li>
+		   </ul>
+        </li>
         <li><a href="<?php echo base_url('admin/c_admin/logout'); ?> "><i class=""></i> <span>Logout</span></a></li>
       </ul>
     </section>
