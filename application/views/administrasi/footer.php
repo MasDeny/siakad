@@ -227,3 +227,9 @@ else
       <?php if(!$detail_bks->lampiran=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->lampiran."'></a>"; } ?>
     </div>
   </div>
+
+  <div id="modal21" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_revisi->berkas_revisi=="") { echo "<a class='media' href='".base_url('upload/revisi_sempro/').$detail_revisi->berkas_revisi."'></a>"; } ?>
+    </div>
+  </div>

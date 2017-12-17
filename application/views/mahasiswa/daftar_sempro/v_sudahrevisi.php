@@ -2,7 +2,7 @@
 	<div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h4 class="header center">Anda Sudah Mendaftar. Silahkan menunggu jadwal anda.</h4>
+      <h3 class="header center">Anda Sudah Melakukan Seminar Proposal dan Sudah Revisi</h3>
 	  
 	<?php echo form_close(); ?>
 	</div>

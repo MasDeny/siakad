@@ -26,7 +26,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title"></h3>
+              <h3 class="box-title">Daftar peserta sempro</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -37,7 +37,7 @@
                   <th>NIM</th>
                   <th>Nama Mahasiswa</th>
                   <th>Judul Tugas Akhir</th>
-                  <th>Verifikasi</th>
+                  <th>Aksi</th>
                 </tr>
                   <?php
                    $no = 1; 
@@ -52,6 +52,76 @@
                       <div>
                           <a href="<?php echo site_url("admin/daftar_sempro/c_versempro/konfirmasi/".$mhsSempro->NIM); ?>" class="btn btn-primary">Konfirmasi</a>
                       </div>
+                     </td>
+                </tr>     
+                <?php }?>
+             
+              </table>
+            </div>
+            <!-- /.box-body -->
+          <!-- /.box -->
+
+          <div class="box">
+            
+            <!-- /.box-header -->
+          
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Daftar revisi sempro</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover">
+               
+                <tr>
+                  <th>Nomer</th>
+                  <th>NIM</th>
+                  <th>Nama Mahasiswa</th>
+                  <th>Judul Tugas Akhir</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+                  <?php
+                   $no = 1; 
+                   foreach($revisi as $mhsrevisi){
+                  ?>
+                 <tr>
+                     <td><?=$no++;?></td>
+                     <td><?=$mhsrevisi->NIM;?></td>
+                     <td><?=$mhsrevisi->nama_mahasiswa;?></td>
+                     <td><?=$mhsrevisi->judul_TA;?></td>
+                     <td>
+                       <?php 
+                          if (empty($mhsrevisi->berkas_revisi))
+                          {
+                            echo "Belum upload revisi";
+                          }
+                          else
+                          {
+                            echo "Sudah upload revisi";
+                          }
+                         ?>
+                     </td>
+                     <td>
+                      <?php 
+                          if (empty($mhsrevisi->berkas_revisi))
+                          {
+                            echo "<a href='".site_url('admin/daftar_sempro/c_versempro/knfr_revsempro/').$mhsrevisi->NIM."' class='btn btn-success' disabled=''>Cek Mahasiswa</a>";
+                          }
+                          else
+                          {
+                            echo "<a href='".site_url('admin/daftar_sempro/c_versempro/knfr_revsempro/').$mhsrevisi->NIM."' class='btn btn-success' >Cek Mahasiswa</a>";
+                          }
+                         ?>
                      </td>
                 </tr>     
                 <?php }?>
