@@ -38,8 +38,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <?php if ($user_details->id > 15) { ?>
                                     <div class="row" id="penguji">
+                                        
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Ketua</label>
@@ -48,6 +48,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <?php if ($user_details->id > 15) { ?>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Sekertaris</label>
@@ -71,7 +72,10 @@
                                             </div>
                                         </div>
                                         <?php }else { ?>
-                                            <div class="col-md-4"> <p>mahasiswa berikut bebas menentukan sekertaris dan anggota pada sidang nanti</p>
+                                            
+                                            <div class="col-md-8 text-center text-info"> 
+                                                <br><label>Keterangan : </label><br>
+                                                <p>mahasiswa ke-<?php echo $user_details->id;?> bebas menentukan sekertaris dan anggota pada sidang nanti</p><br>
                                             </div>
                                         <?php } ?>
                                     </div>
@@ -100,8 +104,8 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4 text-right pull-right">
-                                            <a href="<?php echo base_url(); ?>koordinator/Jadwal_sidang" class="btn btn-md btn-danger btn-flat">Batal</a>
-                                            <button type="submit" class="btn btn-md btn-success btn-flat">Simpan</button>
+                                            <button type="submit" class="btn btn-md btn-success btn-flat"><i class="glyphicon glyphicon-save"></i> Simpan</button>
+                                            <a href="<?php echo base_url();?>koordinator/Jadwal_sidang" class="btn btn-md btn-danger btn-flat"><i class="glyphicon glyphicon-ban-circle"></i> Batal</a>
                                         </div>
                                     </div>
                                 </form>

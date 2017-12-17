@@ -2,35 +2,48 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_jadwal_sidang extends CI_Model {
-    public function __construct()
+
+    //fungsi ini untuk menampilkan daftar mahasiswa yang terverifikasi admin yang nantinya
+    //akan ditentukan jadwal untuk melakukan sidang
+
+    public function get_data($limit, $start)
     {
-        
+        $this->db->select('status_sidang.id_statussidang as id,status_sidang.mahasiswa_NIM as NIM,
+        nama_mahasiswa as nama,judul_TA as judul,dp1.nm_dosen as dospem, status_sidang.status as status')
+        ->from('mahasiswa')
+        ->join('status_sidang','status_sidang.mahasiswa_NIM=mahasiswa.NIM')
+        ->join('dp1','dp1.id_dp1=mahasiswa.dp1_id_dp1')
+        ->where('status_sidang.status', 1)
+        ->limit($limit , $start);
+        return $this->db->get()->result();   
     }
 
-    public function get_data($id = FALSE)
+    //fungsi untuk menghitung banyak data di tabel status_sidang 
+    // yang memiliki status 1
+
+    public function counting()
     {
-        
-        if ($id === FALSE) {
-            $this->db->select('status_sidang.id_statussidang as id,status_sidang.mahasiswa_NIM as NIM,
-            nama_mahasiswa as nama,judul_TA as judul,dp1.nm_dosen as dospem')
-            ->from('mahasiswa')
-            ->join('status_sidang','status_sidang.mahasiswa_NIM=mahasiswa.NIM')
-            ->join('dp1','dp1.id_dp1=mahasiswa.dp1_id_dp1')
-            ->where('status_sidang.status', 1);
-            return $this->db->get()->result();   
-        }
+        $this->db->where('status', 1);
+        return $this->db->get('status_sidang')->num_rows();
+    }
 
-        //menampilkan beberapa data yang dipilih yang menyesuaikan dengan controller jadwalsidang 
-        //dengan view details
+    //menampilkan beberapa data yang dipilih yang menyesuaikan dengan controller jadwalsidang 
+    //dengan view details
 
-        $this->db->select('status_sidang.id_statussidang as id,status_sidang.mahasiswa_NIM as NIM,
+    public function get_data_details($id)
+    {
+     $this->db->select('status_sidang.id_statussidang as id,status_sidang.mahasiswa_NIM as NIM,
         nama_mahasiswa as nama,judul_TA as judul,dp1.nm_dosen as dospem')
         ->from('mahasiswa')
         ->join('status_sidang','status_sidang.mahasiswa_NIM=mahasiswa.NIM')
         ->join('dp1','dp1.id_dp1=mahasiswa.dp1_id_dp1')
         ->where('status_sidang.id_statussidang', $id);
-        return $this->db->get()->row();
+        return $this->db->get()->row();   
     }
+
+
+
+    //fungsi ini digunakan untuk memilih nama dosen dari sebuah dropdown
     public function show_dosen()
     {
         $this->db->select('nm_dosen')
@@ -72,28 +85,38 @@ class M_jadwal_sidang extends CI_Model {
     }
 
     // fungsi ini berguna untuk menampilkan mahasiswa yang telah ditentukan jadwal untuk melakukan sidang
-    public function acc_mhs($id = FALSE)
+    public function acc_mhs($limit, $start)
     {
-        if ($id === FALSE) {
-            $this->db->select('id_statussidang as id,mahasiswa_NIM as NIM,
-            mahasiswa.nama_mahasiswa as nama,mahasiswa.judul_TA as judul, penguji.sekertaris')
-            ->from('status_sidang')
-            ->join('mahasiswa','mahasiswa.NIM=status_sidang.mahasiswa_NIM')
-            ->join('penguji', 'penguji.status_sidang_id_statussidang=status_sidang.id_statussidang')
-            ->where('status_sidang.status', 2);
-            return $this->db->get()->result();   
-        }
+        $this->db->select('id_statussidang as id,mahasiswa_NIM as NIM,
+        mahasiswa.nama_mahasiswa as nama,mahasiswa.judul_TA as judul, penguji.sekertaris')
+        ->from('status_sidang')
+        ->join('mahasiswa','mahasiswa.NIM=status_sidang.mahasiswa_NIM')
+        ->join('penguji', 'penguji.status_sidang_id_statussidang=status_sidang.id_statussidang')
+        ->where('status_sidang.status', 2)
+        ->limit($limit , $start);
+        return $this->db->get()->result();       
+    }
 
-        //menampilkan beberapa data yang dipilih yang menyesuaikan dengan controller jadwalsidang 
-        //dengan view details
+    //fungsi untuk menghitung banyak data di tabel status_sidang 
+    // yang memiliki status 2
 
+    public function acc_counting()
+    {
+        $this->db->where('status', 2);
+        return $this->db->get('status_sidang')->num_rows();
+    }
+
+    //menampilkan beberapa data yang dipilih yang menyesuaikan dengan controller jadwalsidang 
+    //dengan view details
+    public function acc_mhs_detail($id)
+    {
         $this->db->select('status_sidang.id_statussidang as id,status_sidang.mahasiswa_NIM as NIM,
         nama_mahasiswa as nama,judul_TA as judul,dp1.nm_dosen as dospem')
         ->from('mahasiswa')
         ->join('status_sidang','status_sidang.mahasiswa_NIM=mahasiswa.NIM')
         ->join('dp1','dp1.id_dp1=mahasiswa.dp1_id_dp1')
         ->where('status_sidang.id_statussidang', $id);
-        return $this->db->get()->row();
+        return $this->db->get()->row();        
     }
 
     public function jadwal_mhs($id)
