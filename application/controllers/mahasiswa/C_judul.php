@@ -232,7 +232,7 @@ class C_judul extends CI_Controller
 		$this->Mmain->qIns($this->mainTable,$savValTemp);
 		
 		//redirect to form
-		redirect("mahasiswa/Index_mahasiswa",'refresh');		
+		redirect($this->viewLink,'refresh');		
 	}
 	
 	//delete record
@@ -261,7 +261,7 @@ class C_judul extends CI_Controller
 		$this->Mmain->qUpd("mahasiswa","NIM" ,$savValTemp[0],$savValTemp);
 		
 		//redirect to form
-		redirect($this->viewLink,'refresh');
+		redirect("mahasiswa/C_judul",'refresh');
 	}
 	
 }

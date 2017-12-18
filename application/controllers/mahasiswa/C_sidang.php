@@ -28,12 +28,20 @@ class C_sidang extends CI_Controller{
         //     $this->load->view('mahasiswa/upload_berkas/v_terverifikasi', $data);
         //     $this->load->view('mahasiswa/footer', $data);
         // } else {
-            $data['mahasiswa'] = $this->M_upload_berkasta->view_by($NIM);
+        $data['mahasiswa'] = $this->M_upload_berkasta->view_by($NIM);
+        $cek = $this->M_upload_berkasta->check($NIM);
+        $status = $cek->revisi;
+        if ($status == !NULL) {
             $this->load->view('mahasiswa/header', $data);
             $this->load->view('mahasiswa/sidebar', $data);
             $this->load->view('mahasiswa/sidang/v_sidang', $data);           
             $this->load->view('mahasiswa/footer', $data);
-        // }
+        }else{
+            $this->load->view('mahasiswa/header', $data);
+            $this->load->view('mahasiswa/sidebar', $data);
+            $this->load->view('mahasiswa/sidang/v_gagal', $data);           
+            $this->load->view('mahasiswa/footer', $data);
+        }
     }
 
     public function proses_upload_berkas() {

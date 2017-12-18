@@ -44,7 +44,8 @@ class Daftar_judul extends CI_Controller
 					 d.id_mhs,
 					 e.berkas_dokumen,
 					 a.status,
-					 a.status_mahasiswa
+					 a.status_mahasiswa,
+					 a.keterangan
 					 "; //leave blank to show all field
 						
 	var $primaryKey="id";
@@ -69,7 +70,8 @@ class Daftar_judul extends CI_Controller
 									"ID Mahasiswa",
 									"Referensi",
 									"Status",
-									"Status Mahasiswa"
+									"Status Mahasiswa",
+									"Keterangan"
 									);
 	
 	//save
@@ -86,7 +88,8 @@ class Daftar_judul extends CI_Controller
 									"ID Mahasiswa",
 									"Referensi",
 									"Status",
-									"Status Mahasiswa"
+									"Status Mahasiswa",
+									"Keterangan"
 									);
 	
 	//update
@@ -201,8 +204,8 @@ class Daftar_judul extends CI_Controller
 								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[8]."' readonly>",
 								$cbodokumen,
 								$cbostat,
-								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[11]."' readonly>"
-
+								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[11]."' readonly>",
+								"<input type='text' class='form-control' id='txtid1' name=txt[] value='".$txtVal[12]."' readonly>"
 								);
 		
 		$output['datamhs']=Array(

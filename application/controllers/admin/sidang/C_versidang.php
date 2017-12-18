@@ -19,7 +19,7 @@ class C_versidang extends CI_Controller {
     }
 
     public function konfirmasi($NIM = NULL) {
-        $data['detail_mhs'] = $this->m_psidang->tampil_regsidang($NIM);   
+        $data['detail_mhs'] = $this->m_psidang->tampil_regsidang($NIM);
         $this->load->view('administrasi/sidang/v_konfirsidang', $data);
     }
 
@@ -67,9 +67,10 @@ class C_versidang extends CI_Controller {
 
         
     }
-    // function print_pdf() 
-    // {       
-    //     $data['data_mahasiswa'] = $this->mahasiswa_model->data();
+
+    function print_pdf() 
+    {       
+          $data['data_mahasiswa'] = $this->mahasiswa_model->data();
  
     //     //load the view and saved it into $html variable
     //     $html=$this->load->view('mahasiswa/mahasiswa', $data, true);
@@ -82,5 +83,5 @@ class C_versidang extends CI_Controller {
  
     //     //download it.
     //     $this->m_pdf->pdf->Output($pdfFilePath, "D");  
-    // }
+    }
 }

@@ -25,11 +25,10 @@
         //menampilkan beberapa data yang dipilih yang menyesuaikan dengan controller jadwalsidang 
         //dengan view details
 
-        $this->db->select('mahasiswa.NIM as NIM, mahasiswa.nama_mahasiswa, mahasiswa.judul_TA, dp1.nm_dosen, bukti_spp_terakhir.berkas_spp, berkas.*');
+        $this->db->select('mahasiswa.NIM as NIM, mahasiswa.nama_mahasiswa, mahasiswa.judul_TA, dp1.nm_dosen, berkas.*');
         $this->db->from('mahasiswa');
-        $this->db->join('dp1','dp1.id_dp1 = mahasiswa.dp1_id_dp1');
+        $this->db->join('dp1','dp1.id_dp1 = mahasiswa.id_dp1');
         $this->db->join('status_sidang','mahasiswa.NIM = status_sidang.mahasiswa_NIM');
-        $this->db->join('bukti_spp_terakhir','status_sidang.bukti_spp_terakhir_id_bukti = bukti_spp_terakhir.id_bukti');
         $this->db->join('berkas','status_sidang.berkas_id_berkas_kelengkapan = berkas.id_berkas_kelengkapan');
         $this->db->where('mahasiswa.NIM', $NIM);
         return $this->db->get()->row();
@@ -115,9 +114,17 @@
         ->update('status_sidang');
 
         return TRUE;
-
+    }
 
         /*$nilai=$this->db->query("INSERT INTO nilai_sidang (nilai_bimbingan_dp1,nilai_bimbingan_dp2,nilai_ujian,nilai_total,status_sidang_id_statussidang) VALUES ('$nilai_bimbingan_dp1','$nilai_bimbingan_dp2','$nilai_ujian','$nilai_total','3')");
         return $nilai;*/
+        public function tampil_berkas($NIM)
+        {
+        $this->db->select('mahasiswa.NIM,status_sidang.berkas_id_berkas_kelengkapan,berkas.*');
+        $this->db->from('mahasiswa');
+        $this->db->join('status_sidang','mahasiswa.NIM=status_sidang.mahasiswa_NIM');
+        $this->db->join('berkas','status_sidang.berkas_id_berkas_kelengkapan=berkas.id_berkas_kelengkapan');
+        $this->db->where('mahasiswa.NIM',$NIM);
+        return $this->db->get()->row();
     }
 }

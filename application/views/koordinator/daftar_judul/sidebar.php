@@ -7,49 +7,51 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="<?php echo base_url(); ?>koordinator/dashboard" class="simple-text">
-                   <strong>Koordinator Panel</strong>
+                <a href="Dashboard" class="simple-text">
+                    Koordinator Panel
                 </a>
             </div>
+
             <ul class="nav">
                 <li>
-                    <a href="<?php echo base_url(); ?>koordinator/dashboard">
-                        <i class="glyphicon glyphicon-home"></i>
+                    <a href="dashboard">
+                        <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
+                    <br>
                 </li>
-                <div class="logo">
-                </div>
                 <li class="active">
                     <a href="<?php echo base_url(); ?>koordinator/Pengajuan">
-                        <i class="glyphicon glyphicon-th-list"></i>
+                        <i class="ti-view-list-alt"></i>
                         <p>Pengajuan Judul TA</p>
                     </a>
+                    <br>
                 </li>
-                <div class="logo">
-                </div>
                 <li>
                     <a href="<?php echo base_url(); ?>koordinator/Pendaftar_senpro">
-                        <i class="glyphicon glyphicon-blackboard"></i>
+                        <i class="ti-view-list-alt"></i>
                         <p>Pendaftar Sempro</p>
                     </a>
+                    <br>
                 </li>
-                <div class="logo">
-                </div>
                 <li>
                     <a href="<?php echo base_url(); ?>koordinator/Jadwal_sidang">
-                        <i class="glyphicon glyphicon-education"></i>
+                        <i class="ti-pencil-alt2"></i>
                         <p>Jadwal Sidang</p>
                     </a>
+                    <br>
                 </li>
-                <div class="logo">
-                </div>
                 <li>
-                <p><br></p>
+                    <br>
+                </li>
+                <li>
+                <p>
+                    <br><br><br>
+                </p>
                 </li>
                 <li class="active-pro">
                     <a href="<?php echo base_url(); ?>karyawan_login/logout">
-                        <i class="glyphicon glyphicon-log-out"></i>
+                        <i class="ti-export"></i>
                         <p>LogOut</p>
                     </a>
                 </li>

@@ -135,6 +135,15 @@ class M_upload_berkasta extends CI_Model{
         $this->db->update('berkas');
     }
 
+    public function check($NIM)
+    {
+        $this->db->select('dokumen_kelengkapan_senpro.lembar_revisi as revisi')
+        ->from('status_sempro')
+        ->join('dokumen_kelengkapan_senpro', 'status_sempro.dokumen_kelengkapan_senpro_iddokumen_kelengkapan_senpro = dokumen_kelengkapan_senpro.iddokumen_kelengkapan_senpro')
+        ->where('status_sempro.mahasiswa_NIM', $NIM);
+        return $this->db->get()->row();
+    }
+
     // function simpan_berkas_ta($data) {
     //     $this->db->insert ("berkasta",$data);
     // }    

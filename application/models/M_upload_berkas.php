@@ -284,6 +284,7 @@ class M_upload_berkas extends CI_Model{
         return $query->num_rows();
     }
 
+
     // function simpan_berkas_ta($data) {
     //     $this->db->insert ("berkasta",$data);
     // }    

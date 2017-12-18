@@ -8,7 +8,7 @@
     <?php $this->load->view('koordinator/navbar'); ?>
          <div class="content">
             <div class="container-fluid">
-                <a href="<?php echo base_url()."koordinator/Pendaftar_senpro/list";?>" class="btn pull-right btn-flat navbar-btn btn-sm btn-info"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>  Daftar mahasiswa yang telah mendapatkan jadwal</a>
+                <a href="<?php echo base_url()."koordinator/Pendaftar_senpro/daftar";?>" class="btn pull-right btn-flat navbar-btn btn-sm btn-info"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>  Daftar mahasiswa yang telah mendapatkan jadwal</a>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
