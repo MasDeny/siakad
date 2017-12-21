@@ -54,10 +54,10 @@ public function __construct() {
         
     }
 
-    public function list()
+    public function list_details()
     {
         $rows = $this->M_jadwal_sidang->acc_counting();
-        $config['base_url'] = base_url().'koordinator/Jadwal_sidang/list/';
+        $config['base_url'] = base_url().'koordinator/Jadwal_sidang/list_details/';
         $config['total_rows'] = $rows;
         $config['per_page'] = 2;
         $config['uri_segment'] = 4;

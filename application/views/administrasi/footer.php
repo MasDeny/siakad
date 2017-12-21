@@ -61,7 +61,6 @@
       $('.modal').modal();
     });
   </script>
-
   <script src="<?php echo base_url('assets/js/jquery.media.js'); ?>"></script>
   <script>
     $(function () {
@@ -84,30 +83,6 @@
       });
     });
   </script>
-
-<!--   <script>
-    $(".veriBerkasTA").on("click", function() {
-      if($(".veriBerkasTA:checked").length > 1) {
-        $('#submit').prop('disabled', false);
-      }
-      else {
-        $('#submit').prop('disabled', true);
-      }  
-    });
-  </script> -->
-
-<!-- <script>
-function check(element) {
-var cb1 = document.getElementById("1");
-var cb3 = document.getElementById("3");
-var konfirm = document.getElementById("submit");
-if (cb1.checked == true  &&  cb3.checked == true)
-    konfirm.disabled = false;
-else
-    konfirm.disabled = true;
-}
-</script> -->
-
   <div id="modal1" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
       <?php if(!$detail_bks->beritaAcaraTA=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->beritaAcaraTA."'></a>"; } ?>
