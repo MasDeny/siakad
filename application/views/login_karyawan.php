@@ -49,11 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
       <?php } ?>
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="NIK" name="NIK">
+            <input type="text" class="form-control" placeholder="NIK" name="NIK" required>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="password" name="password">
+            <input type="password" class="form-control" placeholder="password" name="password" required>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
