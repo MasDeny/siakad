@@ -115,6 +115,8 @@ class C_sempro extends CI_Controller {
 			'lembar_pengesahan' => $dok[9],
 			'kartu_kontrak_DP' => $dok[10]
 			);
+			$this->M_modelcrud->simpandokumen_kelengkapan_senpro($data);
+			
 
 			$datastatus = array(
 			'idStatus_Sempro' => 0,
@@ -123,7 +125,7 @@ class C_sempro extends CI_Controller {
 			'status' => 0,
 			'status_revisi' => 0
 			);
-			$this->M_modelcrud->simpandokumen_kelengkapan_senpro($data);		
+					
 			$this->M_modelcrud->simpan($datastatus);
 			//echo implode("<br>",$data);
 			$this->load->view('mahasiswa/header', $data);
