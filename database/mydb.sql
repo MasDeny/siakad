@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.4.14
+-- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 17, 2017 at 08:48 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 7.1.2
+-- Host: 127.0.0.1
+-- Generation Time: Dec 21, 2017 at 04:38 PM
+-- Server version: 5.6.26
+-- PHP Version: 5.5.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mydb`
+-- Database: `mydb1`
 --
 
 -- --------------------------------------------------------
@@ -28,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `berkas`
 --
 
-CREATE TABLE `berkas` (
+CREATE TABLE IF NOT EXISTS `berkas` (
   `id_berkas_kelengkapan` int(11) NOT NULL,
   `khs_semester_1` varchar(100) DEFAULT NULL,
   `khs_semester_2` varchar(100) DEFAULT NULL,
@@ -46,7 +44,7 @@ CREATE TABLE `berkas` (
 -- Table structure for table `berkasta`
 --
 
-CREATE TABLE `berkasta` (
+CREATE TABLE IF NOT EXISTS `berkasta` (
   `idBerkasTA` int(11) NOT NULL,
   `beritaAcaraTA` varchar(45) DEFAULT NULL,
   `sampul` varchar(45) DEFAULT NULL,
@@ -79,7 +77,7 @@ CREATE TABLE `berkasta` (
 -- Table structure for table `berkas_khs`
 --
 
-CREATE TABLE `berkas_khs` (
+CREATE TABLE IF NOT EXISTS `berkas_khs` (
   `idberkas_khs` char(10) NOT NULL,
   `khs_semester1` varchar(45) DEFAULT NULL,
   `khs_semester2` varchar(45) DEFAULT NULL,
@@ -95,7 +93,7 @@ CREATE TABLE `berkas_khs` (
 -- Table structure for table `berkas_pkl`
 --
 
-CREATE TABLE `berkas_pkl` (
+CREATE TABLE IF NOT EXISTS `berkas_pkl` (
   `idberkas_pkl` char(10) NOT NULL,
   `judul_pkl` varchar(45) DEFAULT NULL,
   `nilai_pkl` varchar(45) DEFAULT NULL,
@@ -109,7 +107,7 @@ CREATE TABLE `berkas_pkl` (
 -- Table structure for table `berkas_ta`
 --
 
-CREATE TABLE `berkas_ta` (
+CREATE TABLE IF NOT EXISTS `berkas_ta` (
   `idberkas_TA` char(10) NOT NULL,
   `judul_TA` varchar(45) DEFAULT NULL,
   `nilai_TA` varchar(45) DEFAULT NULL,
@@ -123,7 +121,7 @@ CREATE TABLE `berkas_ta` (
 -- Table structure for table `dokumen_kelengkapan_senpro`
 --
 
-CREATE TABLE `dokumen_kelengkapan_senpro` (
+CREATE TABLE IF NOT EXISTS `dokumen_kelengkapan_senpro` (
   `iddokumen_kelengkapan_senpro` int(11) NOT NULL,
   `proposal_TA` varchar(45) DEFAULT NULL,
   `kartu_kendali` varchar(45) DEFAULT NULL,
@@ -136,7 +134,7 @@ CREATE TABLE `dokumen_kelengkapan_senpro` (
   `lembar_daftar_hadir` varchar(45) DEFAULT NULL,
   `lembar_pengesahan` varchar(45) DEFAULT NULL,
   `kartu_kontrak_DP` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -144,11 +142,11 @@ CREATE TABLE `dokumen_kelengkapan_senpro` (
 -- Table structure for table `dokumen_tugas_akhir`
 --
 
-CREATE TABLE `dokumen_tugas_akhir` (
+CREATE TABLE IF NOT EXISTS `dokumen_tugas_akhir` (
   `id_dokumen` int(11) NOT NULL,
   `berkas_dokumen` varchar(45) DEFAULT NULL,
   `verifikasi_tugas_akhir` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -156,10 +154,10 @@ CREATE TABLE `dokumen_tugas_akhir` (
 -- Table structure for table `dp1`
 --
 
-CREATE TABLE `dp1` (
+CREATE TABLE IF NOT EXISTS `dp1` (
   `id_dp1` int(3) NOT NULL,
   `nm_dosen` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `dp1`
@@ -176,7 +174,7 @@ INSERT INTO `dp1` (`id_dp1`, `nm_dosen`) VALUES
 -- Table structure for table `jadwal`
 --
 
-CREATE TABLE `jadwal` (
+CREATE TABLE IF NOT EXISTS `jadwal` (
   `idJadwal` int(11) NOT NULL,
   `jam` varchar(45) DEFAULT NULL,
   `tanggal` varchar(45) DEFAULT NULL,
@@ -185,7 +183,7 @@ CREATE TABLE `jadwal` (
   `panelis_2` varchar(45) DEFAULT NULL,
   `panelis_3` varchar(45) DEFAULT NULL,
   `idStatus_Sempro` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -193,12 +191,12 @@ CREATE TABLE `jadwal` (
 -- Table structure for table `login_karyawan`
 --
 
-CREATE TABLE `login_karyawan` (
+CREATE TABLE IF NOT EXISTS `login_karyawan` (
   `id_karyawan` int(11) NOT NULL,
   `NIK` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login_karyawan`
@@ -214,11 +212,11 @@ INSERT INTO `login_karyawan` (`id_karyawan`, `NIK`, `password`, `status`) VALUES
 -- Table structure for table `login_mhs`
 --
 
-CREATE TABLE `login_mhs` (
+CREATE TABLE IF NOT EXISTS `login_mhs` (
   `id_mhs` int(11) NOT NULL,
   `NIM` varchar(10) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login_mhs`
@@ -236,7 +234,7 @@ INSERT INTO `login_mhs` (`id_mhs`, `NIM`, `password`) VALUES
 -- Table structure for table `mahasiswa`
 --
 
-CREATE TABLE `mahasiswa` (
+CREATE TABLE IF NOT EXISTS `mahasiswa` (
   `NIM` varchar(9) NOT NULL,
   `nama_mahasiswa` varchar(120) DEFAULT NULL,
   `program_studi` varchar(55) DEFAULT NULL,
@@ -258,7 +256,7 @@ CREATE TABLE `mahasiswa` (
 -- Table structure for table `nilai_sidang`
 --
 
-CREATE TABLE `nilai_sidang` (
+CREATE TABLE IF NOT EXISTS `nilai_sidang` (
   `idnilai_sidang` int(11) NOT NULL,
   `nilai_bimbingan_dp1` varchar(10) DEFAULT NULL,
   `nilai_bimbingan_dp2` varchar(10) DEFAULT NULL,
@@ -273,7 +271,7 @@ CREATE TABLE `nilai_sidang` (
 -- Table structure for table `notification`
 --
 
-CREATE TABLE `notification` (
+CREATE TABLE IF NOT EXISTS `notification` (
   `id_notification` int(11) NOT NULL,
   `pesan` varchar(45) DEFAULT NULL,
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -286,7 +284,7 @@ CREATE TABLE `notification` (
 -- Table structure for table `penguji`
 --
 
-CREATE TABLE `penguji` (
+CREATE TABLE IF NOT EXISTS `penguji` (
   `id_penguji` int(11) NOT NULL,
   `ketua` varchar(120) DEFAULT NULL,
   `sekertaris` varchar(120) DEFAULT NULL,
@@ -303,7 +301,7 @@ CREATE TABLE `penguji` (
 -- Table structure for table `riwayat_ipmhs`
 --
 
-CREATE TABLE `riwayat_ipmhs` (
+CREATE TABLE IF NOT EXISTS `riwayat_ipmhs` (
   `idriwayat_ipmhs` char(10) NOT NULL,
   `ipsemester1` varchar(45) DEFAULT NULL,
   `ipsemester2` varchar(45) DEFAULT NULL,
@@ -320,10 +318,10 @@ CREATE TABLE `riwayat_ipmhs` (
 -- Table structure for table `rumpun`
 --
 
-CREATE TABLE `rumpun` (
+CREATE TABLE IF NOT EXISTS `rumpun` (
   `id_rumpun` int(3) NOT NULL,
   `nm_rumpun` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rumpun`
@@ -340,14 +338,14 @@ INSERT INTO `rumpun` (`id_rumpun`, `nm_rumpun`) VALUES
 -- Table structure for table `status_sempro`
 --
 
-CREATE TABLE `status_sempro` (
+CREATE TABLE IF NOT EXISTS `status_sempro` (
   `idStatus_Sempro` int(11) NOT NULL,
   `mahasiswa_NIM` varchar(9) NOT NULL,
   `dokumen_kelengkapan_senpro_iddokumen_kelengkapan_senpro` int(11) NOT NULL,
   `status` int(11) DEFAULT '0',
   `bukti_revisi_sempro` varchar(200) DEFAULT NULL,
   `status_revisi` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -355,7 +353,7 @@ CREATE TABLE `status_sempro` (
 -- Table structure for table `status_sidang`
 --
 
-CREATE TABLE `status_sidang` (
+CREATE TABLE IF NOT EXISTS `status_sidang` (
   `id_statussidang` int(11) NOT NULL,
   `bukti_spp_terakhir_id_bukti` int(11) NOT NULL,
   `mahasiswa_NIM` varchar(9) NOT NULL,
@@ -367,10 +365,83 @@ CREATE TABLE `status_sidang` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_yudisium`
+--
+
+CREATE TABLE IF NOT EXISTS `tb_yudisium` (
+  `ID_YUDISIUM` int(11) NOT NULL,
+  `NIM` varchar(9) NOT NULL,
+  `Angkatan` varchar(4) DEFAULT NULL,
+  `IP_SMT1` varchar(3) DEFAULT NULL,
+  `IP_SMT2` varchar(3) DEFAULT NULL,
+  `IP_SMT3` varchar(3) DEFAULT NULL,
+  `IP_SMT4` varchar(3) DEFAULT NULL,
+  `IP_SMT5` varchar(3) DEFAULT NULL,
+  `IP_SMT6` varchar(3) DEFAULT NULL,
+  `FILE_KHS1` varchar(45) DEFAULT NULL,
+  `FILE_KHS2` varchar(45) DEFAULT NULL,
+  `FILE_KHS3` varchar(45) DEFAULT NULL,
+  `FILE_KHS4` varchar(45) DEFAULT NULL,
+  `FILE_KHS5` varchar(45) DEFAULT NULL,
+  `FILE_KHS6` varchar(45) DEFAULT NULL,
+  `FILE_SURAT_BEBAS_TANGGUNGAN` varchar(45) DEFAULT NULL,
+  `FILE_SPP` varchar(45) DEFAULT NULL,
+  `FILE_BERITA_ACARA_TA` varchar(45) DEFAULT NULL,
+  `FILE_BERITA_ACARA_PKL` varchar(45) DEFAULT NULL,
+  `FILE_PENYERAHAN_TA` varchar(45) DEFAULT NULL,
+  `FILE_PENYERAHAN_PKL` varchar(45) DEFAULT NULL,
+  `FILE_KONSEP_DAFTAR_NILAI_SEMENTARA` varchar(45) DEFAULT NULL,
+  `STATUS_VALIDASI` varchar(45) DEFAULT NULL,
+  `STATUS_KHS1` varchar(45) DEFAULT NULL,
+  `STATUS_KHS2` varchar(45) DEFAULT NULL,
+  `STATUS_KHS3` varchar(45) DEFAULT NULL,
+  `STATUS_KHS4` varchar(45) DEFAULT NULL,
+  `STATUS_KHS5` varchar(45) DEFAULT NULL,
+  `STATUS_KHS6` varchar(45) DEFAULT NULL,
+  `STATUS_SURAT_BEBAS_TANGGUNGAN` varchar(45) DEFAULT NULL,
+  `STATUS_SPP` varchar(45) DEFAULT NULL,
+  `STATUS_BERITA_ACARA_TA` varchar(45) DEFAULT NULL,
+  `STATUS_BERITA_ACARA_PKL` varchar(45) DEFAULT NULL,
+  `STATUS_PENYERAHAN_TA` varchar(45) DEFAULT NULL,
+  `STATUS_PENYERAHAN_PKL` varchar(45) DEFAULT NULL,
+  `STATUS_KONSEP_DAFTAR_NILAI_SEMENTARA` varchar(45) DEFAULT NULL,
+  `TGL_YUDISIUM` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_yudisium`
+--
+
+INSERT INTO `tb_yudisium` (`ID_YUDISIUM`, `NIM`, `Angkatan`, `IP_SMT1`, `IP_SMT2`, `IP_SMT3`, `IP_SMT4`, `IP_SMT5`, `IP_SMT6`, `FILE_KHS1`, `FILE_KHS2`, `FILE_KHS3`, `FILE_KHS4`, `FILE_KHS5`, `FILE_KHS6`, `FILE_SURAT_BEBAS_TANGGUNGAN`, `FILE_SPP`, `FILE_BERITA_ACARA_TA`, `FILE_BERITA_ACARA_PKL`, `FILE_PENYERAHAN_TA`, `FILE_PENYERAHAN_PKL`, `FILE_KONSEP_DAFTAR_NILAI_SEMENTARA`, `STATUS_VALIDASI`, `STATUS_KHS1`, `STATUS_KHS2`, `STATUS_KHS3`, `STATUS_KHS4`, `STATUS_KHS5`, `STATUS_KHS6`, `STATUS_SURAT_BEBAS_TANGGUNGAN`, `STATUS_SPP`, `STATUS_BERITA_ACARA_TA`, `STATUS_BERITA_ACARA_PKL`, `STATUS_PENYERAHAN_TA`, `STATUS_PENYERAHAN_PKL`, `STATUS_KONSEP_DAFTAR_NILAI_SEMENTARA`, `TGL_YUDISIUM`) VALUES
+(0, 'e31150089', '2013', '3', '3', '3', '3', '3', '3', '227.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TIDAK VALID', 'MENUNGGU KONFIRMASI', '', '', '', '', '', '', '', '', '', '', '', '', '2017-12-16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `temp_mahasiswa`
+--
+
+CREATE TABLE IF NOT EXISTS `temp_mahasiswa` (
+  `id_temp_mahasiswa` int(20) NOT NULL,
+  `NIM` varchar(10) DEFAULT NULL,
+  `File_bukti_alumni` varchar(45) DEFAULT NULL,
+  `Status_bukti_alumni` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `temp_mahasiswa`
+--
+
+INSERT INTO `temp_mahasiswa` (`id_temp_mahasiswa`, `NIM`, `File_bukti_alumni`, `Status_bukti_alumni`) VALUES
+(9, 'e31150089', '228.jpg', 'TERVERIFIKASI');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tracer_study`
 --
 
-CREATE TABLE `tracer_study` (
+CREATE TABLE IF NOT EXISTS `tracer_study` (
   `id_Tracer` int(11) NOT NULL,
   `Time_Stamp` datetime DEFAULT NULL,
   `Jenis_Kelamin` varchar(10) DEFAULT NULL,
@@ -395,7 +466,7 @@ CREATE TABLE `tracer_study` (
 -- Table structure for table `yudisium`
 --
 
-CREATE TABLE `yudisium` (
+CREATE TABLE IF NOT EXISTS `yudisium` (
   `idyudisium` char(10) NOT NULL,
   `angkatan` varchar(45) DEFAULT NULL,
   `srt_bebastanggungan` varchar(45) DEFAULT NULL,
@@ -532,6 +603,19 @@ ALTER TABLE `status_sidang`
   ADD KEY `fk_status_sidang_berkas1_idx` (`berkas_id_berkas_kelengkapan`);
 
 --
+-- Indexes for table `tb_yudisium`
+--
+ALTER TABLE `tb_yudisium`
+  ADD PRIMARY KEY (`ID_YUDISIUM`,`NIM`),
+  ADD KEY `fk_tb_yudisium_mahasiswa1_idx` (`NIM`);
+
+--
+-- Indexes for table `temp_mahasiswa`
+--
+ALTER TABLE `temp_mahasiswa`
+  ADD PRIMARY KEY (`id_temp_mahasiswa`);
+
+--
 -- Indexes for table `tracer_study`
 --
 ALTER TABLE `tracer_study`
@@ -563,32 +647,32 @@ ALTER TABLE `berkas`
 -- AUTO_INCREMENT for table `dokumen_kelengkapan_senpro`
 --
 ALTER TABLE `dokumen_kelengkapan_senpro`
-  MODIFY `iddokumen_kelengkapan_senpro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `iddokumen_kelengkapan_senpro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `dokumen_tugas_akhir`
 --
 ALTER TABLE `dokumen_tugas_akhir`
-  MODIFY `id_dokumen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_dokumen` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `dp1`
 --
 ALTER TABLE `dp1`
-  MODIFY `id_dp1` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_dp1` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `idJadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idJadwal` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `login_karyawan`
 --
 ALTER TABLE `login_karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `login_mhs`
 --
 ALTER TABLE `login_mhs`
-  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `nilai_sidang`
 --
@@ -608,17 +692,22 @@ ALTER TABLE `penguji`
 -- AUTO_INCREMENT for table `rumpun`
 --
 ALTER TABLE `rumpun`
-  MODIFY `id_rumpun` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_rumpun` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `status_sempro`
 --
 ALTER TABLE `status_sempro`
-  MODIFY `idStatus_Sempro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idStatus_Sempro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `status_sidang`
 --
 ALTER TABLE `status_sidang`
   MODIFY `id_statussidang` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `temp_mahasiswa`
+--
+ALTER TABLE `temp_mahasiswa`
+  MODIFY `id_temp_mahasiswa` int(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- Constraints for dumped tables
 --
@@ -678,7 +767,6 @@ ALTER TABLE `yudisium`
   ADD CONSTRAINT `fk_yudisium_berkas_pkl1` FOREIGN KEY (`berkas_pkl_idberkas_pkl`) REFERENCES `berkas_pkl` (`idberkas_pkl`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_yudisium_mahasiswa1` FOREIGN KEY (`mahasiswa_NIM`) REFERENCES `mahasiswa` (`NIM`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_yudisium_riwayat_ipmhs1` FOREIGN KEY (`riwayat_ipmhs_idriwayat_ipmhs`) REFERENCES `riwayat_ipmhs` (`idriwayat_ipmhs`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
