@@ -4,12 +4,12 @@ class Studytracer extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('m_modelcrud');
+		$this->load->model('m_modelcrud_modul5');
         $this->load->library('form_validation');
 	}
 
 	function index(){
-		//$this->data['hasil']= $this->m_modelcrud->getUser('tracer study');
+		//$this->data['hasil']= $this->m_modelcrud_modul5->getUser('tracer study');
 		//$this->load->view('v_studytracer',$this->data);
 		$this->load->view('modul5/v_terdaftar');
 	}
@@ -21,7 +21,7 @@ class Studytracer extends CI_Controller{
 	
 	public function insert()
 	{
-	$kode = $this->m_modelcrud->getkode();
+	$kode = $this->m_modelcrud_modul5->getkode();
 	$nim = $this->input->post('mahasiswa_NIM');
 	$jkel = $this->input->post('jk');
 	$angkatan = $this->input->post('angkatan');
@@ -55,7 +55,7 @@ class Studytracer extends CI_Controller{
 	'Kesesuaian_Bidang'=>$kesesuaian_bidang,
 	'mahasiswa_NIM'=>$nim
 	);
-	$this->m_modelcrud->tambahData('tracer_study',$data);
+	$this->m_modelcrud_modul5->tambahData('tracer_study',$data);
     $this->load->view('mahasiswa/header', $data);
     $this->load->view('mahasiswa/sidebar', $data);
     $this->load->view('mahasiswa/studytracer/v_terdaftar', $data);
