@@ -17,6 +17,7 @@
 
         <li><a href="<?php echo base_url('admin/daftar_sempro/c_versempro'); ?> "><i class=""></i> <span>Verifikasi Sempro</span></a></li>
         <li><a href="<?php echo base_url('admin/sidang/c_versidang'); ?> "><i class=""></i> <span>Verifikasi Sidang</span></a></li>
+        <li><a href="<?php echo site_url('admin/sidang/c_versidang/pasca_sidang'); ?> "><i class=""></i> <span>Mahasiswa Pasca Sidang</span></a></li>
         <li><a href="<?php echo base_url('admin/upload_berkas/c_verberkas'); ?> "><i class=""></i> <span>Verifikasi Berkas TA</span></a></li>
         <li class="treeview">
             <a href="#">

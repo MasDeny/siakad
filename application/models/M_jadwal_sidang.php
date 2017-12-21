@@ -12,7 +12,7 @@ class M_jadwal_sidang extends CI_Model {
         nama_mahasiswa as nama,judul_TA as judul,dp1.nm_dosen as dospem, status_sidang.status as status')
         ->from('mahasiswa')
         ->join('status_sidang','status_sidang.mahasiswa_NIM=mahasiswa.NIM')
-        ->join('dp1','dp1.id_dp1=mahasiswa.dp1_id_dp1')
+        ->join('dp1','dp1.id_dp1=mahasiswa.id_dp1')
         ->where('status_sidang.status', 1)
         ->limit($limit , $start);
         return $this->db->get()->result();   
@@ -36,7 +36,7 @@ class M_jadwal_sidang extends CI_Model {
         nama_mahasiswa as nama,judul_TA as judul,dp1.nm_dosen as dospem')
         ->from('mahasiswa')
         ->join('status_sidang','status_sidang.mahasiswa_NIM=mahasiswa.NIM')
-        ->join('dp1','dp1.id_dp1=mahasiswa.dp1_id_dp1')
+        ->join('dp1','dp1.id_dp1=mahasiswa.id_dp1')
         ->where('status_sidang.id_statussidang', $id);
         return $this->db->get()->row();   
     }

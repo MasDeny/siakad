@@ -51,12 +51,22 @@
                           else
                           {
                             echo "Berkas lengkap";
-                    daftar_      }
+                          }
                          ?>">
           </div>
           <div class="form-group">
                                 <div class="col-md-7 col-md-offset-5">
-                                <a href="<?php echo site_url("admin/daftar_sempro/c_versempro/sempro_acc/".$detail_mhs->NIM); ?> " class="btn btn-success">Konfirmasi</a>
+                                <?php 
+                                if (empty($detail_mhs->proposal_TA) || empty($detail_mhs->kartu_kendali) || empty($detail_mhs->kk_senpro_lalu) || empty($detail_mhs->makalah) || empty($detail_mhs->lembar_berita_acara) || empty($detail_mhs->lembar_pengusulan) || empty($detail_mhs->lembar_revisi) || empty($detail_mhs->lembar_hasil_senpro) || empty($detail_mhs->lembar_daftar_hadir) || empty($detail_mhs->lembar_pengesahan) || empty($detail_mhs->kartu_kontrak_DP))
+                                {
+                                  echo "<a href='".site_url('admin/daftar_sempro/c_versempro/sempro_acc/').$detail_mhs->NIM."' class='btn btn-success' disabled=''>Konfirmasi</a>";
+                                }
+                                else
+                                {
+                                  echo "<a href='".site_url('admin/daftar_sempro/c_versempro/sempro_acc/').$detail_mhs->NIM."' class='btn btn-success'>Konfirmasi</a>";
+                                }
+                               ?>
+                                <!-- <a href="<?php //echo site_url("admin/daftar_sempro/c_versempro/sempro_acc/".$detail_mhs->NIM); ?> " class="btn btn-success">Konfirmasi</a> -->
                                 <a href="<?php echo site_url('admin/daftar_sempro/c_versempro'); ?> " class="btn btn-danger">Tolak</a>
           </div>
           </div>

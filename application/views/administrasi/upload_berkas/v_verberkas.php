@@ -50,7 +50,7 @@
                      <td><?=$bksTa->nama_mahasiswa;?></td>
                      <td><?=$bksTa->judul_TA;?></td>
                      <td><?php 
-                     if (empty($detail_bks->beritaAcaraTA) || empty($detail_bks->sampul) || empty($detail_bks->pengesahanTA) || empty($detail_bks->persembahan) || empty($detail_bks->motto) || empty($detail_bks->pernyataanTA) || empty($detail_bks->abstrak) || empty($detail_bks->ringkasan) || empty($detail_bks->prakata) || empty($detail_bks->daftarIsi) || empty($detail_bks->daftarTabel) || empty($detail_bks->daftarGambar) || empty($detail_bks->daftarLampiran) || empty($detail_bks->bab1) || empty($detail_bks->bab2) || empty($detail_bks->bab3) || empty($detail_bks->bab4) || empty($detail_bks->bab5) || empty($detail_bks->daftarPustaka) || empty($detail_bks->lampiran)) {
+                     if (empty($bksTa->beritaAcaraTA) || empty($bksTa->sampul) || empty($bksTa->pengesahanTA) || empty($bksTa->persembahan) || empty($bksTa->motto) || empty($bksTa->pernyataanTA) || empty($bksTa->abstrak) || empty($bksTa->ringkasan) || empty($bksTa->prakata) || empty($bksTa->daftarIsi) || empty($bksTa->daftarTabel) || empty($bksTa->daftarGambar) || empty($bksTa->daftarLampiran) || empty($bksTa->bab1) || empty($bksTa->bab2) || empty($bksTa->bab3) || empty($bksTa->bab4) || empty($bksTa->bab5) || empty($bksTa->daftarPustaka) || empty($bksTa->lampiran)) {
                       echo "Berkas tidak lengkap";
                     }
                     else {
@@ -60,11 +60,12 @@
                      <td>
                       <div>
                         <?php 
-                          // if(empty($detail_bks->beritaAcaraTA) || empty($detail_bks->sampul) || empty($detail_bks->pengesahanTA) || empty($detail_bks->persembahan) || empty($detail_bks->motto) || empty($detail_bks->pernyataanTA) || empty($detail_bks->abstrak) || empty($detail_bks->ringkasan) || empty($detail_bks->prakata) || empty($detail_bks->daftarIsi) || empty($detail_bks->daftarTabel) || empty($detail_bks->daftarGambar) || empty($detail_bks->daftarLampiran) || empty($detail_bks->bab1) || empty($detail_bks->bab2) || empty($detail_bks->bab3) || empty($detail_bks->bab4) || empty($detail_bks->bab5) || empty($detail_bks->daftarPustaka) || empty($detail_bks->lampiran)) {
-                          //   echo "<a href='".site_url('admin/upload_berkas/c_verberkas/konfirmasi/').$bksTa->NIM."' class='waves-effect waves-light indigo darken-4 btn btn-primary' disabled=''>Konfirmasi</a>";
-                          // }else {
+                     		if (empty($bksTa->beritaAcaraTA) || empty($bksTa->sampul) || empty($bksTa->pengesahanTA) || empty($bksTa->persembahan) || empty($bksTa->motto) || empty($bksTa->pernyataanTA) || empty($bksTa->abstrak) || empty($bksTa->ringkasan) || empty($bksTa->prakata) || empty($bksTa->daftarIsi) || empty($bksTa->daftarTabel) || empty($bksTa->daftarGambar) || empty($bksTa->daftarLampiran) || empty($bksTa->bab1) || empty($bksTa->bab2) || empty($bksTa->bab3) || empty($bksTa->bab4) || empty($bksTa->bab5) || empty($bksTa->daftarPustaka) || empty($bksTa->lampiran)) {
+                            echo "<a href='".site_url('admin/upload_berkas/c_verberkas/konfirmasi/').$bksTa->NIM."' class='waves-effect waves-light indigo darken-4 btn btn-primary' disabled=''>Konfirmasi</a>";
+                          	}
+                          	else {
                             echo "<a href='".site_url('admin/upload_berkas/c_verberkas/konfirmasi/').$bksTa->NIM."' class='waves-effect waves-light indigo darken-4 btn btn-primary'>Konfirmasi</a>";
-                          // }
+                          }
                         ?>
                       </div>
                      </td>

@@ -13,7 +13,7 @@
   
   <div class="container">
     <div class="section">
-	<?php echo form_open("yudisium/multiple_upload", array('enctype'=>'multipart/form-data')); ?>
+	<?php echo form_open("mahasiswa/C_sempro/multiple_upload", array('enctype'=>'multipart/form-data')); ?>
 			<br><br><h6>Berkas Seminar Proposal</h6>
 	<table class="bordered highlight">
         <tbody>

@@ -59,10 +59,10 @@ public function __construct() {
         }
         
     }
-    public function list()
+    public function daftar()
     {
         $rows = $this->M_pendaftaran_senpro->acc_counting();
-        $config['base_url'] = base_url().'koordinator/Pendaftar_senpro/list/';
+        $config['base_url'] = base_url().'koordinator/Pendaftar_senpro/daftar/';
         $config['total_rows'] = $rows;
         $config['per_page'] = 2;
         $config['uri_segment'] = 4;
@@ -77,7 +77,7 @@ public function __construct() {
             'no' => $start,
             'pagination' => $this->pagination->create_links()
         );
-        $this->load->view('koordinator/pendaftar_senpro/list_jadwal', $data);
+        $this->load->view('koordinator/Pendaftar_senpro/list_jadwal', $data);
         
     }
     public function unselect_mhs($id)

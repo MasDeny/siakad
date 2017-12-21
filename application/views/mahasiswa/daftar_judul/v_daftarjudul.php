@@ -111,7 +111,8 @@
 		</div>
 	<input value=0 id="status" name="txt[10]" type="hidden" class="validate" required="required">
 	
-	 <input value="1" id="status_alumni" name="txt[11]" type="hidden" class="validate" required="required">
+	 <input value="mahasiswa" id="status_alumni" name="txt[11]" type="hidden" class="validate" required="required">
+	 <input value="0" id="keterangan" name="txt[12]" type="hidden" class="validate" required="required">
 		<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
 			<button type="submit" class="btn btn-success">Save</button>

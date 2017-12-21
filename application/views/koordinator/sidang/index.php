@@ -10,7 +10,7 @@
          <div class="content">
             <div class="container-fluid">
                 
-                    <a href="<?php echo base_url()."koordinator/jadwal_sidang/list";?>" class="btn pull-right btn-flat navbar-btn btn-sm btn-info"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>  Daftar mahasiswa yang telah mendapatkan jadwal</a>
+                    <a href="<?php echo base_url()."koordinator/jadwal_sidang/list_details";?>" class="btn pull-right btn-flat navbar-btn btn-sm btn-info"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>  Daftar mahasiswa yang telah mendapatkan jadwal</a>
                 
                 <div class="row">
                     <div class="col-md-12">

@@ -61,7 +61,6 @@
       $('.modal').modal();
     });
   </script>
-
   <script src="<?php echo base_url('assets/js/jquery.media.js'); ?>"></script>
   <script>
     $(function () {
@@ -84,30 +83,6 @@
       });
     });
   </script>
-
-<!--   <script>
-    $(".veriBerkasTA").on("click", function() {
-      if($(".veriBerkasTA:checked").length > 1) {
-        $('#submit').prop('disabled', false);
-      }
-      else {
-        $('#submit').prop('disabled', true);
-      }  
-    });
-  </script> -->
-
-<!-- <script>
-function check(element) {
-var cb1 = document.getElementById("1");
-var cb3 = document.getElementById("3");
-var konfirm = document.getElementById("submit");
-if (cb1.checked == true  &&  cb3.checked == true)
-    konfirm.disabled = false;
-else
-    konfirm.disabled = true;
-}
-</script> -->
-
   <div id="modal1" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
       <?php if(!$detail_bks->beritaAcaraTA=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->beritaAcaraTA."'></a>"; } ?>
@@ -227,3 +202,51 @@ else
       <?php if(!$detail_bks->lampiran=="") { echo "<a class='media' href='".base_url('upload/').$detail_bks->lampiran."'></a>"; } ?>
     </div>
   </div>
+
+  <div id="modal21" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_revisi->berkas_revisi=="") { echo "<a class='media' href='".base_url('upload/revisi_sempro/').$detail_revisi->berkas_revisi."'></a>"; } ?>
+    </div>
+  </div>
+
+   <div id="modal22" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_mhs->khs_semester_1=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->khs_semester_1."'></a>"; } ?>
+    </div>
+  </div>
+  
+  <div id="modal23" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_mhs->khs_semester_2=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->khs_semester_2."'></a>"; } ?>
+    </div>
+  </div>
+
+<div id="modal24" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_mhs->khs_semester_3=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->khs_semester_3."'></a>"; } ?>
+    </div>
+  </div>
+
+  <div id="modal25" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_mhs->khs_semester_4=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->khs_semester_4."'></a>"; } ?>
+    </div>
+  </div>
+
+  <div id="modal26" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_mhs->khs_semester_5=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->khs_semester_5."'></a>"; } ?>
+    </div>
+  </div>
+
+  <div id="modal27" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_mhs->laporan_proposal=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->laporan_proposal."'></a>"; } ?>
+    </div>
+  </div>
+
+  <div id="modal28" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_mhs->bukti_spp_terakhir=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->bukti_spp_terakhir."'></a>"; } ?>
+    </div>
+  
