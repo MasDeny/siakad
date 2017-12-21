@@ -38,80 +38,42 @@
                               <label>Dosen Pembimbing 1</label>
                               <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php echo $detail_mhs->nm_dosen; ?>">
                 </div>
-                 <div class="form-group">
-                             <!--<br> <td><a class="waves-effect waves-light blue darken-1 btn modal-trigger" data-target="modal1">Cek File</a></td>
-                              <button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Semester 2</button>
-                               <button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Semester 3</button>
-                                <button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Semester 4</button>
-                              </div>
-                                                 <div class="form-group">
-                                 <button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Semester 5</button>
-                             
-                </div> -->
               <div class="form-group">
                               <label>Kartu Hasil Studi (1-5)</label>
-                              <br><button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Semester 1</button>
-                              <button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Semester 2</button>
-                              <button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Semester 3</button>
-                              <button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Semester 4</button>
+                              <br><button type="button" class="btn btn-alert modal-trigger" data-toggle="modal" data-target="modal22">Semester 1</button>
+                              <button type="button" class="btn btn-alert modal-trigger" data-toggle="modal" data-target="modal23">Semester 2</button>
+                              <button type="button" class="btn btn-alert modal-trigger" data-toggle="modal" data-target="modal24">Semester 3</button>
+                              <button type="button" class="btn btn-alert modal-trigger" data-toggle="modal" data-target="modal25">Semester 4</button>
                                <div class="form-group">
-                              <br><button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Semester 5</button>
+                              <br><button type="button" class="btn btn-alert modal-trigger" data-toggle="modal" data-target="modal26">Semester 5</button>
                             </div>
-                             <!--  <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php 
-                              if (empty($detail_mhs->khs_semester_1) || empty($detail_mhs->khs_semester_2) || empty($detail_mhs->khs_semester_3) || empty($detail_mhs->khs_semester_4) || empty($detail_mhs->khs_semester_5)) {
-
-                                echo "Berkas Tidak Lengkap";
-                                }else{
-                                  echo "Berkas Lengkap";
-                                  }
-
-
-                                  ?>"> -->
                 </div> 
                 <div class="form-group">
                               <label>Dokumen Proposal</label>
-                              <br> <button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Lihat File</button> 
-                               
-                             <!-- <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php 
-                              if (empty($detail_mhs->laporan_proposal)) {
-
-                                echo "Berkas Tidak Lengkap";
-                                }else{
-                                  echo "Berkas lengkap";
-                                  }
-
-                                  ?>"> -->
+                              <br> <button type="button" class="btn btn-alert modal-trigger" data-toggle="modal" data-target="modal27">Lihat File</button> 
                 </div>
                 <div class="form-group">
                               <label>Bukti SPP Terakhir</label>
-                              <br> <button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Lihat File</button>
-                             <!-- <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php 
-                              if (empty($detail_mhs->berkas_spp)) {
-
-                              echo "Berkas Tidak Lengkap";
-                              }else{
-                                echo "Berkas Lengkap";
-                                }
-                                ?>"> -->
+                              <br> <button type="button" class="btn btn-alert modal-trigger" data-toggle="modal" data-target="modal28">Lihat File</button>
                 </div>
                 <div class="form-group">
                               <label>Kartu Kendali</label>
-                             <br> <button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Lihat File</button> 
-                            <!--  <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php 
-                              if (empty($detail_mhs->lembar_revisi)) {
+                            <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php 
+                              if (empty($detail_mhs->kartu_kendali)) {
 
                               echo "Berkas Tidak Lengkap";
                               }else{
                                 echo "Berkas Lengkap";
                                 }
-                                ?>"> -->
+                                ?>">
                 </div>
                 
                     
                 <div class="form-group">
                     <div class="col-md-7 col-md-offset-5">
                 <?php 
-                  if (empty($detail_mhs->khs_semester_1) || empty($detail_mhs->khs_semester_2) || empty($detail_mhs->khs_semester_3) || empty($detail_mhs->khs_semester_4) || empty($detail_mhs->khs_semester_5) || empty($detail_mhs->laporan_proposal) || empty($detail_mhs->berkas_spp) || empty($detail_mhs->lembar_revisi)) {
+                  if (empty($detail_mhs->khs_semester_1) || empty($detail_mhs->khs_semester_2) || empty($detail_mhs->khs_semester_3) || empty($detail_mhs->khs_semester_4) || empty($detail_mhs->khs_semester_5) || empty($detail_mhs->laporan_proposal) || empty($detail_mhs->kartu_kendali
+                  ) || empty($detail_mhs->bukti_spp_terakhir)) {
 
                     echo "<a href='". site_url('admin/sidang/c_versidang/sidang_acc/').$detail_mhs->NIM."'class='btn btn-success' disabled=''>Konfirmasi</a>";
                     }else{
@@ -119,7 +81,7 @@
                       }
 
                       ?>
-                            <button type="button" class="btn btn-alert" data-toggle="modal" data-target="#tolak">Tolak</button>
+                            <button type="button" class="btn btn-alert modal-trigger" data-toggle="modal" data-target="tolak">Tolak</button>
                                
                     </div>
                 </div>
@@ -132,12 +94,12 @@
 <!-- /.content -->
 <!-- modal -->
 
- <div id="tolak" class="modal fade" style="width: 700px !important; height: 253px !important;" role="dialog">
+ <div id="tolak" class="modal fade in" style="width: 700px !important; height: 253px !important;" role="dialog">
     <div class="modal-content">
 
             <!-- heading modal -->
             <div class="modal-header">
-              
+              <button type="button" class="close modal-close" data-dismiss="modal" data-target="modal">&times;</button>
               <h4 class="modal-title">Pesan Peringatan</h4>
 
         <form method="post" enctype="multipart/form-data" action="<?= base_url()?>index.php/admin/sidang/C_versidang/simpan_notifikasi">
@@ -147,9 +109,8 @@
                 <input type="text" class="form-control" name="isi" required>
                 </div>
                 <!-- footer modal -->
-                <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                  <input type="submit" class="btn btn-success" name="tolak" Value="Selesai"></input>
+                <div class="modal-footer">                
+                  <input type="submit" class="btn btn-success" name="tolak" Value="Kirim"></input>
                 </div>
            
             </form>
