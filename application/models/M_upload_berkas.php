@@ -23,13 +23,13 @@ class M_upload_berkas extends CI_Model{
 
     function tampil_selesai_revsidang($NIM) {
         // if ($NIM === FALSE) {
-            $this->db->select('mahasiswa.NIM as NIM, status_sidang.*');
-            $this->db->from('mahasiswa');
-            $this->db->join('status_sidang', 'mahasiswa.NIM = status_sidang.NIM');
-            $this->db->where('mahasiswa.NIM', $NIM);
+            $this->db->select('nilai_total');
+            $this->db->from('nilai_sidang');
+            $this->db->join('status_sidang', 'status_sidang.id_statussidang = nilai_sidang.status_sidang_id_statussidang');
+            $this->db->where('status_sidang.mahasiswa_NIM', $NIM);
             $this->db->where('status_sidang.status', 3);
             $query = $this->db->get();
-            return $query->result(); 
+            return $query->row(); 
         // }
         // $this->db->select('mahasiswa.NIM as NIM, mahasiswa.nama_mahasiswa, mahasiswa.judul_TA, berkasta.statusBerkasTA, berkasta.*');
         // $this->db->from('mahasiswa');
