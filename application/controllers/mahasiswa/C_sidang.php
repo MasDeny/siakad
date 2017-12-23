@@ -1,4 +1,4 @@
-<?php 
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class C_sidang extends CI_Controller{
     function __construct(){
@@ -27,12 +27,12 @@ class C_sidang extends CI_Controller{
         if ($status == !NULL) {
             $this->load->view('mahasiswa/header', $data);
             $this->load->view('mahasiswa/sidebar', $data);
-            $this->load->view('mahasiswa/sidang/v_sidang', $data);           
+            $this->load->view('mahasiswa/sidang/v_sidang', $data);
             $this->load->view('mahasiswa/footer', $data);
         }else{
             $this->load->view('mahasiswa/header', $data);
             $this->load->view('mahasiswa/sidebar', $data);
-            $this->load->view('mahasiswa/sidang/v_gagal', $data);           
+            $this->load->view('mahasiswa/sidang/v_gagal', $data);
             $this->load->view('mahasiswa/footer', $data);
         }
     }
@@ -56,7 +56,7 @@ class C_sidang extends CI_Controller{
         $this->upload->do_upload($file);
         $file_1 = $this->upload->data();
         $dok[]=$file_1['file_name'];
-    }        
+    }
     $data = array(
             'khs_semester_1' => $dok[0],
             'khs_semester_2' => $dok[1],
@@ -68,12 +68,11 @@ class C_sidang extends CI_Controller{
             'bukti_spp_terakhir' => $dok[7],
             );
             $this->M_upload_berkasta->simpansidang($data);
-            $id = 1;
+            $id = $this->M_upload_berkasta->simpansidang($data);;
             $datastatus = array(
-            'mahasiswa_NIM' => $this->session->userdata('codeUser'),
-            'berkas_id_berkas_kelengkapan' => $id++ ,
+            'mahasiswa_NIM' => $nim,
+            'berkas_id_berkas_kelengkapan' => $id ,
             'status' => 0
-            
             );
         $this->M_upload_berkasta->simpan($datastatus);
             //echo implode("<br>",$data);
@@ -82,7 +81,7 @@ class C_sidang extends CI_Controller{
             $this->load->view('mahasiswa/sidang/V_sukses_upload', $data);
             $this->load->view('mahasiswa/footer', $data);
     }
-    
+
 
     public function logout(){
         $this->session->session_destroy();
