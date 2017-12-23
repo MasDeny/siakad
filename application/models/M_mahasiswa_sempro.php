@@ -1,6 +1,6 @@
 <?php 
 
-class M_modelcrud extends CI_Model{	
+class M_mahasiswa_sempro extends CI_Model{	
 
 	var $table = "tracer_study";
 	public function getUser($table_name)
@@ -18,6 +18,8 @@ class M_modelcrud extends CI_Model{
 	public function simpandokumen_kelengkapan_senpro($data)
 	{
 	$this->db->insert ("dokumen_kelengkapan_senpro",$data);
+	$iddok = $this->db->insert_id();
+	return $iddok;
 	}
 	
 	public function simpan($data)

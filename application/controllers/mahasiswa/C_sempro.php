@@ -6,7 +6,7 @@ class C_sempro extends CI_Controller {
 	{
 		parent::__construct();
 		//$this->load->model('m_upload');
-		$this->load->model('M_modelcrud');
+		$this->load->model('M_mahasiswa_sempro');
 	}
 	
 	function index(){
@@ -30,12 +30,12 @@ class C_sempro extends CI_Controller {
 			{
 				$nim =  $this->session->userdata("codeUser");
 				$data['username'] = $this->session->userdata('username');
-				$data['data_jadwal'] = $this->M_modelcrud->show_jadwalsempro();
-				$ss = $this->M_modelcrud->cek_status();
+				$data['data_jadwal'] = $this->M_mahasiswa_sempro->show_jadwalsempro();
+				$ss = $this->M_mahasiswa_sempro->cek_status();
 				$nilai = $ss->status;
 				if ($nilai == 2)
 				{
-					$rv = $this->M_modelcrud->cek_smprorev();
+					$rv = $this->M_mahasiswa_sempro->cek_smprorev();
 					$stat = $rv->status;
 					if ($stat == 0)
 					{
@@ -76,7 +76,7 @@ class C_sempro extends CI_Controller {
 		
 	}
 	
-
+	//fungsi upload untuk berkas-berkas persyaratan seminar proposal
 	function multiple_upload()
 	{
 	
@@ -115,18 +115,17 @@ class C_sempro extends CI_Controller {
 			'lembar_pengesahan' => $dok[9],
 			'kartu_kontrak_DP' => $dok[10]
 			);
-			$this->M_modelcrud->simpandokumen_kelengkapan_senpro($data);
-			
+			$key = $this->M_mahasiswa_sempro->simpandokumen_kelengkapan_senpro($data);
 
 			$datastatus = array(
 			'idStatus_Sempro' => 0,
 			'mahasiswa_NIM' => $this->session->userdata('codeUser'),
-			'dokumen_kelengkapan_senpro_iddokumen_kelengkapan_senpro' => 0,
+			'dokumen_kelengkapan_senpro_iddokumen_kelengkapan_senpro' => $key,
 			'status' => 0,
 			'status_revisi' => 0
 			);
 					
-			$this->M_modelcrud->simpan($datastatus);
+			$this->M_mahasiswa_sempro->simpan($datastatus);
 			//echo implode("<br>",$data);
 			$this->load->view('mahasiswa/header', $data);
 			$this->load->view('mahasiswa/sidebar', $data);
@@ -159,10 +158,6 @@ class C_sempro extends CI_Controller {
 		}
 		$this->load->view('administrasi/daftar_sempro/v_sudahmendaftar', $data);
 	}
-        public function logout() {
-        $this->session->sess_destroy();
-        redirect('login');
-		}
        
 	 public function uploadrevisi() {
     	$nim =  $this->session->userdata("codeUser");
@@ -185,7 +180,7 @@ class C_sempro extends CI_Controller {
 				$file_1 = $this->upload->data();
 				//$dok[]=$file_1['file_name'];
 				$data = $file_1['file_name'];
-				$this->M_modelcrud->simpan_revisi($data);
+				$this->M_mahasiswa_sempro->simpan_revisi($data);
 				$this->load->view('mahasiswa/header', $data);
 				$this->load->view('mahasiswa/sidebar', $data);
 				$this->load->view('mahasiswa/daftar_sempro/v_sudahrevisi');
@@ -194,4 +189,9 @@ class C_sempro extends CI_Controller {
 		}
         
     }
+
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect('login');
+		}
 }
