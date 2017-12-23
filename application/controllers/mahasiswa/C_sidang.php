@@ -67,8 +67,8 @@ class C_sidang extends CI_Controller{
             'kartu_kendali' => $dok[6],
             'bukti_spp_terakhir' => $dok[7],
             );
-            $this->M_upload_berkasta->simpansidang($data);
-            $id = $this->M_upload_berkasta->simpansidang($data);;
+            //$this->M_upload_berkasta->simpansidang($data);
+            $id = $this->M_upload_berkasta->simpansidang($data);
             $datastatus = array(
             'mahasiswa_NIM' => $nim,
             'berkas_id_berkas_kelengkapan' => $id ,

@@ -211,42 +211,42 @@
 
    <div id="modal22" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <?php if(!$detail_mhs->khs_semester_1=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->khs_semester_1."'></a>"; } ?>
+      <?php if(!$detail_mhs->khs_semester_1=="") { echo "<a class='media' href='".base_url('upload/sidang/').$detail_mhs->khs_semester_1."'></a>"; } ?>
     </div>
   </div>
   
   <div id="modal23" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <?php if(!$detail_mhs->khs_semester_2=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->khs_semester_2."'></a>"; } ?>
+      <?php if(!$detail_mhs->khs_semester_2=="") { echo "<a class='media' href='".base_url('upload/sidang/').$detail_mhs->khs_semester_2."'></a>"; } ?>
     </div>
   </div>
 
 <div id="modal24" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <?php if(!$detail_mhs->khs_semester_3=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->khs_semester_3."'></a>"; } ?>
+      <?php if(!$detail_mhs->khs_semester_3=="") { echo "<a class='media' href='".base_url('upload/sidang/').$detail_mhs->khs_semester_3."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal25" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <?php if(!$detail_mhs->khs_semester_4=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->khs_semester_4."'></a>"; } ?>
+      <?php if(!$detail_mhs->khs_semester_4=="") { echo "<a class='media' href='".base_url('upload/sidang/').$detail_mhs->khs_semester_4."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal26" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <?php if(!$detail_mhs->khs_semester_5=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->khs_semester_5."'></a>"; } ?>
+      <?php if(!$detail_mhs->khs_semester_5=="") { echo "<a class='media' href='".base_url('upload/sidang/').$detail_mhs->khs_semester_5."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal27" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <?php if(!$detail_mhs->laporan_proposal=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->laporan_proposal."'></a>"; } ?>
+      <?php if(!$detail_mhs->laporan_proposal=="") { echo "<a class='media' href='".base_url('upload/sidang/').$detail_mhs->laporan_proposal."'></a>"; } ?>
     </div>
   </div>
 
   <div id="modal28" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
-      <?php if(!$detail_mhs->bukti_spp_terakhir=="") { echo "<a class='media' href='".base_url('upload/').$detail_mhs->bukti_spp_terakhir."'></a>"; } ?>
+      <?php if(!$detail_mhs->bukti_spp_terakhir=="") { echo "<a class='media' href='".base_url('upload/sidang/').$detail_mhs->bukti_spp_terakhir."'></a>"; } ?>
     </div>
   
