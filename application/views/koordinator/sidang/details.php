@@ -83,19 +83,19 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Tanggal</label>
-                                                <input type="text" class="form-control border-input text-center" id="tanggal" placeholder="tanggal" name="tanggal" >
+                                                <input type="text" class="form-control border-input text-center" id="tanggal" placeholder="tanggal" name="tanggal" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Jam</label>
-                                                <input type="text" class="form-control border-input text-center" id="jam" placeholder="jam" name="jam">
+                                                <input type="text" class="form-control border-input text-center" id="jam" placeholder="jam" name="jam" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Ruangan</label>
-                                                <select name="ruangan" class="form-control border-input text-center">
+                                                <select name="ruangan" class="form-control border-input text-center" required>
                                                     <option value="R.Sidang 1">Ruang Sidang 1</option>
                                                     <option value="R.Sidang 2">Ruang Sidang 2</option>
                                                     <option value="R.Sidang 3">Ruang Sidang 3</option>
