@@ -83,8 +83,19 @@ public function __construct() {
         redirect('koordinator/jadwal_sidang');
     }
 
-    public function edit_jadwal($id)
+    public function search_details()
     {
-        
+        $nim = $this->input->post('search');
+        if (isset($nim) and !empty($nim)) {
+            $data = array(
+            'title' => "Koordinator Panel System - List Mahasiswa yang telah di tentukan jadwalnya",
+            'heading' => "List Detail Jadwal",
+            'user_acc' => $this->M_jadwal_sidang->search_data($nim),
+            'no' => $start,
+            'pagination' => $this->pagination->create_links()
+        );
+        }else {
+            redirect('koordinator/jadwal_sidang/list');
+        }
     }
 }

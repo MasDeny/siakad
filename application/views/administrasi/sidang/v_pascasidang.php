@@ -48,7 +48,7 @@
                              <td><?=$mhs_psSidang->judul_TA;?></td>
                              <td>
                               <div>
-                                   <button type="button" class="btn btn-alert" data-toggle="modal" data-target="#inputnilai">Nilai</button>
+                                   <button type="button" class="btn btn-alert modal-trigger" data-toggle="modal" data-target="inputnilai">Nilai</button>
                               </div>
                              </td>
                           </tr>
@@ -88,7 +88,7 @@
                                       <input type="text" class="form-control" name="isi" required>
                                       </div>-->
                                       <div class="modal-footer">
-                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                                      <button type="button" class="btn btn-danger modal-close" data-dismiss="modal">Tutup</button>
                                         <input type="submit" class="btn btn-success" name="selesai" Value="Selesai"></input>
                                       </div>
                                  
