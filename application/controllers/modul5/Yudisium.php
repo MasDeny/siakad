@@ -3,7 +3,6 @@
     	function __construct(){
         parent::__construct();
         $this->load->model('yudisium/Yudisium_model');
-        $this->load->library('form_validation');
         }
 
         /*=== DAFTAR YUDISIUM ===*/
