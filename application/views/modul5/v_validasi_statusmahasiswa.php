@@ -36,10 +36,10 @@
                     <td>
                         <?php 
                         if ($data_tracer->Status_bukti_alumni=="MENUNGGU KONFIRMASI" || $data_tracer->STATUS_KHS1==""){
-                            echo "<input type='file' name='file_validasialumni'>";  
+                            echo "<input type='file' name='file_validasialumni' required>";  
                         }elseif ($data_tracer->Status_bukti_alumni=="TERVERIFIKASI"){
-                            echo "<input type='file' name='file_validasialumni' value='' style='display:none'>";   
-                            echo "<input type='file' name='file_validasialumni' disabled=''>";
+                            echo "<input type='file' name='file_validasialumni' value='' style='display:none' required>";   
+                            echo "<input type='file' name='file_validasialumni' disabled='' required>";
                         }?>
                     </td>
                     <td>Status : <br>
@@ -65,6 +65,7 @@
                 </table>
                 
 				 <?php 
+				 
                 if($data_tracer->Status_bukti_alumni=="MENUNGGU KONFIRMASI" || $data_tracer->Status_bukti_alumni==""){
                     echo "<br><br>
 					<div class='col s4'></div>

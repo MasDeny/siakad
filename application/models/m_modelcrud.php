@@ -20,6 +20,48 @@ class M_modelcrud extends CI_Model{
 	$this->db->insert ("dokumen_kelengkapan_senpro",$data);
 	}
 	
+	public function simpan($data)
+	{
+	$this->db->insert ("status_sempro",$data);
+	}
+
+	public function simpan_revisi($data)
+	{
+		$this->db->set('berkas_revisi', $data);
+        $this->db->where('mahasiswa_NIM', $this->session->userdata("codeUser"));
+        $this->db->update('status_sempro');
+	}
+
+	public function cek_status()
+	{
+		$this->db->select('mahasiswa.NIM,status_sempro.status as status');
+		$this->db->from('mahasiswa');
+		$this->db->join('status_sempro','status_sempro.mahasiswa_NIM = mahasiswa.NIM');
+		$this->db->where('mahasiswa.NIM', $this->session->userdata("codeUser"));
+		return $this->db->get()->row();
+
+	}
+
+	function cek_smprorev()
+	{
+		$this->db->select('mahasiswa.NIM,status_sempro.status_revisi as status');
+		$this->db->from('mahasiswa');
+		$this->db->join('status_sempro','status_sempro.mahasiswa_NIM = mahasiswa.NIM');
+		$this->db->where('mahasiswa.NIM', $this->session->userdata("codeUser"));
+		return $this->db->get()->row();
+	}
+
+	public function show_jadwalsempro()
+	{
+		$this->db->select('mahasiswa.NIM,status_sempro.*,jadwal.*');
+        $this->db->from('mahasiswa');
+        $this->db->join('status_sempro','status_sempro.mahasiswa_NIM = mahasiswa.NIM');
+        $this->db->join('jadwal','jadwal.idStatus_Sempro = status_sempro.idStatus_Sempro');
+        $this->db->where('mahasiswa.NIM', $this->session->userdata("codeUser"));
+        return $this->db->get()->row();
+	}
+
+	
 	function getkode() {
 	$this->db->select('RIGHT(tracer_study.id_Tracer,3) as kode', FALSE);
 	$this->db->order_by('id_Tracer','DESC');
@@ -55,4 +97,5 @@ class M_modelcrud extends CI_Model{
 	$kodejadi = "KHS-".$kodemax;
 	return $kodejadi;
 	}
+	
 }

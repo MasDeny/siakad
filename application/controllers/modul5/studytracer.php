@@ -9,7 +9,7 @@ class Studytracer extends CI_Controller{
 	}
 
 	function index(){
-		//$this->data['hasil']= $this->m_modelcrud->getUser('tracer study');
+		//$this->data['hasil']= $this->m_modelcrud_modul5->getUser('tracer study');
 		//$this->load->view('v_studytracer',$this->data);
 		$this->load->view('modul5/v_terdaftar');
 	}
