@@ -7,20 +7,20 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="dashboard" class="simple-text">
+                <a href="Dashboard" class="simple-text">
                     Koordinator Panel
                 </a>
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="<?php echo base_url(); ?>koordinator/Chart_judul">
                         <i class="ti-panel"></i>
                         <p>Diagram Mahasiswa</p>
                     </a>
                     <br>
                 </li>
-                <li>
+                <li class="active">
                     <a href="<?php echo base_url(); ?>koordinator/Pengajuan">
                         <i class="ti-view-list-alt"></i>
                         <p>Pengajuan Judul TA</p>
@@ -49,7 +49,6 @@
                     <br><br><br>
                 </p>
                 </li>
-
                 <li class="active-pro">
                     <a href="<?php echo base_url(); ?>karyawan_login/logout">
                         <i class="ti-export"></i>
