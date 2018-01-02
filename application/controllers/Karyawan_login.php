@@ -22,7 +22,7 @@ class Karyawan_login extends CI_controller {
         $session = $this->session->userdata('status');
         if ($session == '') {
         $this->load->view('login_karyawan');
-        }   
+        }
 
         if ($this->form_validation->run() == TRUE) {
             $data = array('NIK' => $this->input->post('NIK'),
@@ -44,13 +44,13 @@ class Karyawan_login extends CI_controller {
             }
             elseif ($this->session->userdata('status')=='koordinator') {
                 redirect('koordinator/dashboard');
-            }       
+            }
         } else {
             $this->session->set_flashdata('result_login', '<br>Username atau Password yang anda masukkan salah.');
             redirect('karyawan_login');
             }
         }
-    }   
+    }
 
     public function logout() {
         $this->session->unset_userdata('nik');

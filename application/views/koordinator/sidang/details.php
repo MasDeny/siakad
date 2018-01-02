@@ -16,7 +16,7 @@
                                 <br>
                             </div>
                             <div class="content">
-                                <form action="<?php echo base_url()."koordinator/jadwal_sidang/select_mhs/". 
+                                <form action="<?php echo base_url()."koordinator/jadwal_sidang/select_mhs/".
                                                 $user_details->id; ?>" method="post">
                                     <div class="row">
                                         <div class="col-md-4">
@@ -39,11 +39,11 @@
                                         </div>
                                     </div>
                                     <div class="row" id="penguji">
-                                        
+
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Ketua</label>
-                                                <select name="ketua" class="form-control border-input text-center" required>>
+                                                <select name="ketua" class="form-control border-input text-center" required>
                                                     <option value="<?php echo $user_details->dospem; ?>"><?php echo $user_details->dospem; ?></option>
                                                 </select>
                                             </div>
@@ -72,8 +72,8 @@
                                             </div>
                                         </div>
                                         <?php }else { ?>
-                                            
-                                            <div class="col-md-8 text-center text-info"> 
+
+                                            <div class="col-md-8 text-center text-info">
                                                 <br><label>Keterangan : </label><br>
                                                 <p>mahasiswa ke-<?php echo $user_details->id;?> bebas menentukan sekertaris dan anggota pada sidang nanti</p><br>
                                             </div>
@@ -110,10 +110,10 @@
                                     </div>
                                 </form>
                             </div>
-                         </div>   
+                         </div>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
 <script>document.body.style.overflow = "hidden";</script>
 <?php $this->load->view('/koordinator/footer');

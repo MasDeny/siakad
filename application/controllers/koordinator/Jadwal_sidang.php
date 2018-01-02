@@ -20,7 +20,7 @@ public function __construct() {
         $start = $this->uri->segment(4);
 
         $this->pagination->initialize($config);
-        
+
         $data = array(
             'title' => "Koordinator Panel System - Jadwal Sidang",
             'heading' => "Jadwal Sidang",
@@ -35,7 +35,7 @@ public function __construct() {
         $data['title'] = "Koordinator Panel System - Detail Jadwal ";
         $data['heading'] = "Detail Jadwal";
         $data['user_details'] = $this->M_jadwal_sidang->get_data_details($id);
-        $data['dosen'] = $this->M_jadwal_sidang->show_dosen();   
+        $data['dosen'] = $this->M_jadwal_sidang->show_dosen();
         $this->load->view('koordinator/sidang/details', $data);
     }
 
@@ -51,7 +51,7 @@ public function __construct() {
             $this->M_jadwal_sidang->acc_sidang($id);
             redirect('koordinator/jadwal_sidang');
         }
-        
+
     }
 
     public function list_details()
@@ -64,16 +64,17 @@ public function __construct() {
         $start = $this->uri->segment(4);
 
         $this->pagination->initialize($config);
-        
+
         $data = array(
             'title' => "Koordinator Panel System - List Mahasiswa yang telah di tentukan jadwalnya",
             'heading' => "List Detail Jadwal",
             'user_acc' => $this->M_jadwal_sidang->acc_mhs($config['per_page'], $start),
             'no' => $start,
-            'pagination' => $this->pagination->create_links()
+            'pagination' => $this->pagination->create_links(),
+            'dosen' => $this->M_jadwal_sidang->show_dosen()
         );
         $this->load->view('koordinator/sidang/daftar', $data);
-        
+
     }
 
 
@@ -85,6 +86,7 @@ public function __construct() {
 
     public function search_details()
     {
+        $start = 1;
         $nim = $this->input->post('search');
         if (isset($nim) and !empty($nim)) {
             $data = array(
@@ -92,10 +94,29 @@ public function __construct() {
             'heading' => "List Detail Jadwal",
             'user_acc' => $this->M_jadwal_sidang->search_data($nim),
             'no' => $start,
-            'pagination' => $this->pagination->create_links()
+            'pagination' => $this->pagination->create_links(),
+            'dosen' => $this->M_jadwal_sidang->show_dosen()
         );
+        $this->load->view('koordinator/sidang/daftar', $data);
         }else {
-            redirect('koordinator/jadwal_sidang/list');
+            redirect('koordinator/jadwal_sidang/list_details');
         }
+    }
+
+    public function update_jadwal()
+    {
+        $id = $this->input->post('id');
+        $data = array(
+            'ketua'      => $this->input->post('ketua'),
+            'sekertaris' => $this->input->post('sekertaris'),
+            'anggota'    => $this->input->post('anggota'),
+            'tanggal'    => $this->input->post('tanggal'),
+            'jam'        => $this->input->post('jam'),
+            'ruangan'    => $this->input->post('ruangan'),
+            'status_sidang_id_statussidang' => $id
+        );
+        $this->M_jadwal_sidang->acc_update($id, $data);
+        $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        redirect('koordinator/jadwal_sidang/list_details');
     }
 }

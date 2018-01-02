@@ -88,7 +88,7 @@ class M_jadwal_sidang extends CI_Model {
     public function acc_mhs($limit, $start)
     {
         $this->db->select('id_statussidang as id,mahasiswa_NIM as NIM,
-        mahasiswa.nama_mahasiswa as nama,mahasiswa.judul_TA as judul, penguji.sekertaris')
+        mahasiswa.nama_mahasiswa as nama,mahasiswa.judul_TA as judul, penguji.*')
         ->from('status_sidang')
         ->join('mahasiswa','mahasiswa.NIM=status_sidang.mahasiswa_NIM')
         ->join('penguji', 'penguji.status_sidang_id_statussidang=status_sidang.id_statussidang')
@@ -163,6 +163,13 @@ class M_jadwal_sidang extends CI_Model {
         ->join('penguji', 'penguji.status_sidang_id_statussidang=status_sidang.id_statussidang')
         ->where('status_sidang.id_statussidang', $id);
         return $this->db->get()->row();
+    }
+
+    public function acc_update($id, $data)
+    {
+        $this->db->where('status_sidang_id_statussidang',$id);
+        $this->db->update('penguji', $data);
+        return TRUE;
     }
 }
 
