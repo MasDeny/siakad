@@ -38,7 +38,7 @@ var chart = Highcharts.chart('container', {
     },
 
     xAxis: {
-        categories: ['2013', '2014', '2015', '2016', '2017'],
+        categories: ['2014', '2015', '2016', '2017', '2018'],
         labels: {
             x: -10
         }

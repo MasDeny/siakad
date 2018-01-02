@@ -35,15 +35,6 @@
              $query = $this->db->get('tb_yudisium');
              $row = $query->row();
 			
-			//ubah data text yudisium
-			$data['Angkatan'] = $this->input->post('Angkatan');
-			$data['IP_SMT1'] = $this->input->post('t_ip1');
-			$data['IP_SMT2'] = $this->input->post('t_ip2');
-			$data['IP_SMT3'] = $this->input->post('t_ip3');
-			$data['IP_SMT4'] = $this->input->post('t_ip4');
-			$data['IP_SMT5'] = $this->input->post('t_ip5');
-			$data['IP_SMT6'] = $this->input->post('t_ip6');
-			$this->Yudisium_model->update_daftar_yudisium($nim,$data);
 			
             $config['upload_path'] = './assets/img/yudisium/';
             $config['allowed_types'] = 'gif|jpg|png';
@@ -439,6 +430,15 @@
                 $data['FILE_KONSEP_DAFTAR_NILAI_SEMENTARA'] = $upload_data13['upload_data13']['file_name'];
                 $data['STATUS_KONSEP_DAFTAR_NILAI_SEMENTARA'] = "MENUNGGU KONFIRMASI";
             }
+			
+			//ubah data text yudisium
+			$data['Angkatan'] = $this->input->post('Angkatan');
+			$data['IP_SMT1'] = $this->input->post('t_ip1');
+			$data['IP_SMT2'] = $this->input->post('t_ip2');
+			$data['IP_SMT3'] = $this->input->post('t_ip3');
+			$data['IP_SMT4'] = $this->input->post('t_ip4');
+			$data['IP_SMT5'] = $this->input->post('t_ip5');
+			$data['IP_SMT6'] = $this->input->post('t_ip6');
                 $this->Yudisium_model->update_daftar_yudisium($nim,$data);
             }     
         }
