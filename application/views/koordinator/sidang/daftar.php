@@ -27,7 +27,9 @@
                                     <p class="category">Pada tabel ini anda berhak melihat dan untuk mengganti jadwal sidang ataupun menghapus mahasiswa dari jadwal sidang yang ditentukan</p>
                                 </div>
                                 <div class="content table-responsive table-full-width">
-                                    <?=$this->session->flashdata('notif')?>
+                                    <div id="notifications">
+                                       <?=$this->session->flashdata('notif')?>
+                                    </div>
                                     <table class="table table-hover" id="table">
                                         <thead>
                                             <th>No</th>
@@ -51,7 +53,7 @@
                                                 <td><?php echo $data->NIM; ?></td>
                                                 <td><?php echo $data->nama; ?></td>
                                                 <td><?php echo $data->judul; ?></td>
-                                                <?php if ($data->sekertaris AND $data->anggota  === NULL ): ?>
+                                                <?php if (empty($data->sekertaris && $data->anggota)): ?>
                                                 <td class="text-danger"> Belum Lengkap</td>
                                                 <?php else: ?>
                                                 <td class="text-success"> Lengkap</td>
@@ -75,8 +77,8 @@
                                                         data-sekertaris="<?php echo $data->sekertaris ?>"
                                                         data-tanggal="<?php echo $data->tanggal ?>"
                                                         data-jam="<?php echo $data->jam ?>"
-                                                        class="btn btn-sm btn-info btn-flat" id="btn_edit" data-toggle="modal" data-target="#edit"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                                                        <a href="<?php echo base_url()."koordinator/Jadwal_sidang/unselect_mhs/".$data->id; ?>" class="btn btn-sm btn-danger btn-flat"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
+                                                        class="btn btn-sm btn-info btn-flat" data-toggle="modal" data-target="#edit"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                                                        <a data-id="<?php echo $data->id ?>" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#hapus"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
                                                     </div>
                                                 </td>
                                             </tr>

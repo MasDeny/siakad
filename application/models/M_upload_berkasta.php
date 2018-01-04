@@ -28,7 +28,7 @@ class M_upload_berkasta extends CI_Model{
     $this->db->insert ("status_sidang",$data);
     }
 
-public function cek_status()
+    public function cek_status()
     {
         $this->db->select('mahasiswa.NIM,status_sempro.status as status');
         $this->db->from('mahasiswa');
@@ -37,12 +37,6 @@ public function cek_status()
         return $this->db->get()->row();
 
     }
-
-
-    // public function __construct() {
-    //     parent::__construct();
-    //     $this->load->database();
-    // }
 
     public function view_by($nim) {
          $this->db->select("*");

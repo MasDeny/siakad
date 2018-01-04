@@ -43,7 +43,7 @@ class Karyawan_login extends CI_controller {
                 redirect('admin/c_admin');
             }
             elseif ($this->session->userdata('status')=='koordinator') {
-                redirect('koordinator/dashboard');
+                redirect('koordinator/Chart_judul');
             }
         } else {
             $this->session->set_flashdata('result_login', '<br>Username atau Password yang anda masukkan salah.');

@@ -214,7 +214,7 @@
       <?php if(!$detail_mhs->khs_semester_1=="") { echo "<a class='media' href='".base_url('upload/sidang/').$detail_mhs->khs_semester_1."'></a>"; } ?>
     </div>
   </div>
-  
+
   <div id="modal23" class="modal" style="width: 1000px !important; height: 453px !important;">
     <div class="modal-content">
       <?php if(!$detail_mhs->khs_semester_2=="") { echo "<a class='media' href='".base_url('upload/sidang/').$detail_mhs->khs_semester_2."'></a>"; } ?>
@@ -249,4 +249,3 @@
     <div class="modal-content">
       <?php if(!$detail_mhs->bukti_spp_terakhir=="") { echo "<a class='media' href='".base_url('upload/sidang/').$detail_mhs->bukti_spp_terakhir."'></a>"; } ?>
     </div>
-  

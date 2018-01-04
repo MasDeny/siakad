@@ -78,10 +78,12 @@ public function __construct() {
     }
 
 
-    public function unselect_mhs($id)
+    public function unselect_mhs()
     {
+        $id = $this->input->post('id');
         $this->M_jadwal_sidang->delete_jadwal($id);
-        redirect('koordinator/jadwal_sidang');
+        $this->session->set_flashdata('notif','<div class="alert alert-success" role="alert"> Data Berhasil dihapus <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        redirect('koordinator/jadwal_sidang/list_details');
     }
 
     public function search_details()

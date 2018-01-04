@@ -25,6 +25,7 @@ modal.find('#tanggal').attr("value",div.data('tanggal'));
 modal.find('#jam').attr("value",div.data('jam'));
 modal.find('#ruangan').attr("value",div.data('ruangan'));
 });
+
 $('#edit').on('show.bs.modal', function (event) {
 var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
 var modal          = $(this)
@@ -35,5 +36,13 @@ modal.find('#ketua').attr("value",div.data('ketua'));
 modal.find('#tanggal').attr("value",div.data('tanggal'));
 modal.find('#jam').attr("value",div.data('jam'));
 modal.find('#ruangan').attr("value",div.data('ruangan'));
+});
+
+$('#hapus').on('show.bs.modal', function (event) {
+var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+var modal          = $(this)
+
+// Isi nilai pada field
+modal.find('#id').attr("value",div.data('id'));
 });
 })(jQuery);
