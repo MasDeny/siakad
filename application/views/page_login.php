@@ -10,12 +10,12 @@
     <meta name="description" content="MDR Information Organizer">
     <meta name="author" content="Aldila">
 
- <title>Login Mahasiswa</title>  
+ <title>Login Mahasiswa</title>
 
-    
+
   <link rel="stylesheet" href="<?php echo base_url();?>assets/admin/css/bootstrap.css">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/admin/css/font-awesome.min.css">
-  
+
     <!-- Custom CSS -->
     <link href="<?php echo base_url();?>assets/admin/css/login.css" rel="stylesheet">
 
@@ -24,10 +24,10 @@
 
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/admin/dist/css/AdminLTE.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/admin/dist/css/skins/_all-skins.min.css">	
-	
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/admin/dist/css/skins/_all-skins.min.css">
+
     <link rel="stylesheet" href="<?php echo base_url();?>assets/admin/iCheck/square/blue.css">
-	
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -49,18 +49,18 @@
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to continue</p>
         <form action="<?= site_url();?>login/logon" method="post">
-		
+
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Username" name="username" required>
             <span class="fa fa-user form-control-feedback"></span>
           </div>
-		  
+
           <div class="form-group has-feedback">
             <input type="password" class="form-control" placeholder="Password" name="password" required>
             <span class="fa fa-lock form-control-feedback"></span>
           </div>
-		  
-		  
+
+
           <div class="row">
             <div class="col-xs-8">
               <div class="checkbox icheck">
@@ -75,7 +75,7 @@
           </div>
         </form>
 
-        <a href="#">I forgot my password</a>
+        <a style="color:white;" class="col-lg-offset-4" href="<?php echo base_url('karyawan_login');?>">Login Karyawan</a>
 		<?php
 		if(isset($errVar))
 		{
