@@ -38,15 +38,15 @@
                         <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php echo $detail_revisi->judul_TA; ?>">
           </div>
           <div class="form-group">
-                        <label>Status berkas pendaftaran sempro</label>
+                        <label>Status berkas revisi sempro</label>
                         <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php 
                           if (empty($detail_revisi->berkas_revisi))
                           {
-                            echo "Berkas tidak lengkap";
+                            echo "Berkas belum terupload";
                           }
                           else
                           {
-                            echo "Berkas lengkap";
+                            echo "Berkas terupload";
                           }
                          ?>">
           </div>
