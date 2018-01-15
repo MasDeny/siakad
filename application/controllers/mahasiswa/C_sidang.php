@@ -18,22 +18,46 @@ class C_sidang extends CI_Controller{
     public function index(){
         $data['username'] = $this->session->userdata('username');
         $NIM = $this->session->userdata("codeUser");
-        $where = array(
-             'NIM' => $NIM
-        );
         $data['mahasiswa'] = $this->M_upload_berkasta->view_by($NIM);
-        $cek = $this->M_upload_berkasta->check($NIM);
-        $status = $cek->revisi;
-        if ($status == !NULL) {
-            $this->load->view('mahasiswa/header', $data);
-            $this->load->view('mahasiswa/sidebar', $data);
+        $data['revisi'] = $this->M_upload_berkasta->check($NIM);
+        $data['cek'] = $this->M_upload_berkasta->check_status($NIM);
+        $notif = $this->M_upload_berkasta->check_notif($NIM);
+        $sidang = $this->M_upload_berkasta->check_status($NIM);
+        $data['notif'] = $this->M_upload_berkasta->show_notif($NIM);
+        if (!empty($data['revisi'])) {
+            if(!empty($notif) && empty($sidang)){
             $this->load->view('mahasiswa/sidang/v_sidang', $data);
-            $this->load->view('mahasiswa/footer', $data);
+            }elseif (!empty($sidang)) {
+                $check = $this->M_upload_berkasta->check_status($NIM);
+                $stat = $check->status;
+                $penguji = $this->M_upload_berkasta->view_penguji($NIM);
+                switch ($stat) {
+                    case 1:
+                    $this->load->view('mahasiswa/sidang/v_telah_acc', $data);
+                        break;
+                    case 2:
+                    $data['penguji'] = $this->M_upload_berkasta->view_penguji($NIM);
+                        if (empty($penguji->sekertaris && $penguji->anggota)) {
+                            $data['dosen'] = $this->M_upload_berkasta->show_dosen();
+                            $this->load->view('mahasiswa/sidang/v_penguji', $data);
+                        }else{
+                            $data['status'] = "Terverifikasi";
+                            $this->load->view('mahasiswa/sidang/v_jadwal', $data);
+                        }
+                        break;
+                    case 3:
+                    $this->load->view('mahasiswa/sidang/V_sukses_sidang');
+                        break;
+                    default:
+                $this->load->view('mahasiswa/sidang/V_sukses_upload', $data);
+                            break;
+                }
+                }else {
+
+                    $this->load->view('mahasiswa/sidang/v_sidang', $data);
+                }
         }else{
-            $this->load->view('mahasiswa/header', $data);
-            $this->load->view('mahasiswa/sidebar', $data);
             $this->load->view('mahasiswa/sidang/v_gagal', $data);
-            $this->load->view('mahasiswa/footer', $data);
         }
     }
 
@@ -76,12 +100,23 @@ class C_sidang extends CI_Controller{
             );
         $this->M_upload_berkasta->simpan($datastatus);
             //echo implode("<br>",$data);
-            $this->load->view('mahasiswa/header', $data);
-            $this->load->view('mahasiswa/sidebar', $data);
-            $this->load->view('mahasiswa/sidang/V_sukses_upload', $data);
-            $this->load->view('mahasiswa/footer', $data);
+            redirect('mahasiswa/C_sidang');
     }
 
+    public function update_mhs()
+    {
+        $id = $this->input->post('id');
+        $sekertaris = $this->input->post('sekertaris');
+        $anggota = $this->input->post('anggota');
+        $this->M_upload_berkasta->update_penguji($id, $sekertaris, $anggota);
+        redirect('mahasiswa/C_sidang');
+    }
+
+    public function delete_notif($id)
+    {
+        $this->M_upload_berkasta->del_notif($id);
+        redirect('mahasiswa/C_sidang');
+    }
 
     public function logout(){
         $this->session->session_destroy();

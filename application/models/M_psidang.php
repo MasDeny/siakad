@@ -48,7 +48,7 @@
         ->delete('status_sidang');
         return TRUE;
     }
-    public function view_id_berkas($id)
+    public function delete_berkas($id)
     {
         $this->db->select('berkas_id_berkas_kelengkapan')
         ->from('status_sidang')

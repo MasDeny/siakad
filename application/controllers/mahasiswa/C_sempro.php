@@ -8,14 +8,14 @@ class C_sempro extends CI_Controller {
 		//$this->load->model('m_upload');
 		$this->load->model('M_mahasiswa_sempro');
 	}
-	
+
 	function index(){
 		$this->load->database();
 		$this->load->model("Mmain");
 		$cekseminar=$this->Mmain->qRead("mahasiswa WHERE NIM='".$this->session->codeUser."' AND status=1 ","status","");
 		if($cekseminar->num_rows() >0)
 		{
-				
+
 			$cekupload=$this->Mmain->qRead("status_sempro WHERE mahasiswa_NIM='".$this->session->codeUser."' ","","");
 			if($cekupload->num_rows()==0)
 			{
@@ -25,7 +25,7 @@ class C_sempro extends CI_Controller {
 				$this->load->view('mahasiswa/header', $data);
 				$this->load->view('mahasiswa/sidebar', $data);
 				$this->load->view('mahasiswa/daftar_sempro/v_upload_file');
-				$this->load->view('mahasiswa/footer', $data);					
+				$this->load->view('mahasiswa/footer', $data);
 			}
 			else
 			{
@@ -57,9 +57,9 @@ class C_sempro extends CI_Controller {
 					$this->load->view('mahasiswa/sidebar', $data);
 					$this->load->view('mahasiswa/daftar_sempro/v_sudahmendaftar', $data);
 					$this->load->view('mahasiswa/footer', $data);
-				}				
+				}
 			}
-        
+
 		}
 		else
 		{
@@ -70,17 +70,17 @@ class C_sempro extends CI_Controller {
 		$this->load->view("mahasiswa/daftar_sempro/v_gagal");
 		$this->load->view('mahasiswa/footer', $data);
 		}
-		
-		
-		
-		
-		
+
+
+
+
+
 	}
-	
+
 	//fungsi upload untuk berkas-berkas persyaratan seminar proposal
 	function multiple_upload()
 	{
-	
+
 	//$id_pkl=$this->m_upload->getkode_pkl();
 	$config['upload_path'] 		= './upload/';
 	$config['allowed_types'] 	= 'pdf';
@@ -101,7 +101,7 @@ class C_sempro extends CI_Controller {
         //echo "</pre>";
 		$dok[]=$file_1['file_name'];
 	}
-		
+
 	$data = array(
 			'iddokumen_kelengkapan_senpro' => 0,
 			'proposal_TA' => $dok[0],
@@ -125,14 +125,14 @@ class C_sempro extends CI_Controller {
 			'status' => 0,
 			'status_revisi' => 0
 			);
-					
+
 			$this->M_mahasiswa_sempro->simpan($datastatus);
 			//echo implode("<br>",$data);
 			$this->load->view('mahasiswa/header', $data);
 			$this->load->view('mahasiswa/sidebar', $data);
 			$this->load->view('mahasiswa/daftar_sempro/v_sudahmendaftar', $data);
 			$this->load->view('mahasiswa/footer', $data);
-	
+
 	}
 
 	public function sempro_revisi()
@@ -148,18 +148,18 @@ class C_sempro extends CI_Controller {
 
 	public function edit(){
 		$data = array();
-		if($this->input->post('submit')){ 
+		if($this->input->post('submit')){
 			$upload = $this->m_upload->upload();
-			if($upload['result'] == "success"){ 
+			if($upload['result'] == "success"){
 				$this->m_upload->editberkas($upload);
 				redirect('admin');
-			}else{ 
+			}else{
 				$data['message'] = $upload['error'];
 			}
 		}
 		$this->load->view('administrasi/daftar_sempro/v_sudahmendaftar', $data);
 	}
-       
+
 	 public function uploadrevisi() {
     	$nim =  $this->session->userdata("codeUser");
         $config['upload_path']      = './upload/revisi_sempro/';
@@ -171,7 +171,7 @@ class C_sempro extends CI_Controller {
         $this->load->library('upload',$config);
 		$dok="";
 		for($i=1;$i<=1;$i++) {
-			if (!$this->upload->do_upload('file_1')) {        	
+			if (!$this->upload->do_upload('file_1')) {
 	        	echo $this->upload->display_errors();
 	        }
 	        else {
@@ -188,7 +188,7 @@ class C_sempro extends CI_Controller {
 				$this->load->view('mahasiswa/footer', $data);
 	        }
 		}
-        
+
     }
 
     public function logout() {

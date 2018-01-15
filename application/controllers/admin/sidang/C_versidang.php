@@ -39,11 +39,11 @@ class C_versidang extends CI_Controller {
     public function simpan_notifikasi($id)
     {
         $data = array(
-            'pesan'                           => $this->input->post('pesan'),
-            'pengirim'                        => "administrasi",
-            'status_sidang_id_statussidang'   => $id
+            'pesan'     => $this->input->post('pesan'),
+            'pengirim'  => "administrasi",
+            'NIM'       => $this->input->post('NIM'),
         );
-        $this->m_psidang->view_id_berkas($id);
+        $this->m_psidang->delete_berkas($id);
         $this->m_psidang->simpan_notifikasi($id, $data);
         redirect('admin/sidang/C_versidang');
     }

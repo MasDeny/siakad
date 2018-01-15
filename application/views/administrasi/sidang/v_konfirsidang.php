@@ -82,7 +82,7 @@
           </div>
         </div>
         <!-- /.content -->
-        <!-- modal -->
+        <!-- modal notifikasi -->
         <div id="tolak" class="modal fade in" style="width: 700px !important; height: 253px !important;" role="dialog">
           <div class="modal-content">
             <!-- heading modal -->
@@ -92,6 +92,7 @@
               <form method="post" action="<?= base_url()."admin/sidang/C_versidang/simpan_notifikasi/".$detail_mhs->id; ?>">
                 <!-- body modal -->
                 <div class ="form-group">
+                  <input type="hidden" class="form-control border-input" name="NIM" value="<?php echo $detail_mhs->NIM; ?>">
                   <input type="text" class="form-control" name="pesan" required>
                 </div>
                 </div>
