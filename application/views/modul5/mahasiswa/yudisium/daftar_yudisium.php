@@ -28,8 +28,9 @@
     			<?php echo form_open_multipart('modul5/Yudisium/proses_daftar_yudisium');?>
                 <br><br><b>Untuk formulir pendukung dalam pengajuan pendaftaran yudisium, download file dibawah ini :</b><br>
                 1. <a href="<?php echo base_url('assets/files/Surat Keterangan Bebas Tanggungan.docx');?>">File Surat Keterangan Bebas Tanggungan</a>
-                <br>2. <a href="<?php echo base_url('assets/files/Berita Acara Ujian Tugas Akhir.docx');?>">File Berita Acara Tugas Akhir</a>
-                <br>3. <a href="<?php echo base_url('assets/files/Bukti Penyerahan Tugas Akhir.docx');?>">File Bukti Penyerahan Tugas Akhir</a><br>
+                <br>2. <a href="<?php echo base_url('assets/files/BERITA ACARA UJIAN PKL AGUS BARIZI.docx');?>">File Berita Acara Praktik Kerja Lapang</a>
+                <br>3. <a href="<?php echo base_url('assets/files/Bukti Penyerahan Tugas Akhir.docx');?>">File Bukti Penyerahan Tugas Akhir</a>
+                <br>4. <a href="<?php echo base_url('assets/files/SURAT PENGANTAR PKL.docx');?>">File Bukti Penyerahan Praktik Kerja Lapang</a><br>
                 <hr><b>Isi data yudisium dan upload berkas untuk persyaratan pendaftaran yudisium :</b>
 				<table width="1000px">
 				<tr>
@@ -308,7 +309,7 @@
                     </td>
                     </tr>
                     <tr>
-                    <td>Foto Kopi Surat Keterangan Bebas Tanggungan</td>
+                    <td>Upload Surat Keterangan Bebas Tanggungan</td>
                     <td>
                         <?php if ($data_yudisium->STATUS_SURAT_BEBAS_TANGGUNGAN=="MENUNGGU KONFIRMASI" || $data_yudisium->STATUS_SURAT_BEBAS_TANGGUNGAN==""){
                             echo "<input type='file' name='file_surat_tanggungan'>";  
@@ -338,7 +339,7 @@
                     </td>
                     </tr>
                     <tr>
-                    <td>Foto Kopi Bukti Pembayaran SPP Semester Terakhir</td>
+                    <td>Upload Bukti Pembayaran SPP Semester Terakhir</td>
                     <td>
                         <?php if ($data_yudisium->STATUS_SPP=="MENUNGGU KONFIRMASI" || $data_yudisium->STATUS_SPP==""){
                             echo "<input type='file' name='file_bukti_spp'>";  
@@ -368,7 +369,7 @@
                     </td>
                     </tr>
                     <tr>
-                    <td>Foto Kopi Berita Acara Ujian Tugas Akhir</td>
+                    <td>Upload Berita Acara Ujian Tugas Akhir</td>
                     <td>
                         <?php if ($data_yudisium->STATUS_BERITA_ACARA_TA=="MENUNGGU KONFIRMASI" || $data_yudisium->STATUS_BERITA_ACARA_TA==""){
                             echo "<input type='file' name='file_berita_ta'>";  
@@ -398,7 +399,7 @@
                     </td>
                     </tr>
                     <tr>
-                    <td>Foto Kopi Berita Acara Ujian PKL</td>
+                    <td>Upload Berita Acara Ujian PKL</td>
                     <td>
                         <?php if ($data_yudisium->STATUS_BERITA_ACARA_PKL=="MENUNGGU KONFIRMASI" || $data_yudisium->STATUS_BERITA_ACARA_PKL==""){
                             echo "<input type='file' name='file_berita_pkl'>";  
@@ -428,7 +429,7 @@
                     </td>
                     </tr>
                     <tr>
-                    <td>Foto Kopi Bukti Penyerahan Laporan Tugas Akhir</td>
+                    <td>Upload Bukti Penyerahan Laporan Tugas Akhir</td>
                     <td>
                         <?php if ($data_yudisium->STATUS_PENYERAHAN_TA=="MENUNGGU KONFIRMASI" || $data_yudisium->STATUS_PENYERAHAN_TA==""){
                             echo "<input type='file' name='file_penyerahan_ta'>";  
@@ -458,7 +459,7 @@
                     </td>
                     </tr>
                     <tr>
-                    <td>Foto Kopi Bukti Penyerahan Laporan PKL</td>
+                    <td>Upload Bukti Penyerahan Laporan PKL</td>
                     <td>
                         <?php if ($data_yudisium->STATUS_PENYERAHAN_PKL=="MENUNGGU KONFIRMASI" || $data_yudisium->STATUS_PENYERAHAN_PKL==""){
                             echo "<input type='file' name='file_penyerahan_pkl'>";  
@@ -488,7 +489,7 @@
                     </td>
                     </tr>
                     <tr>
-                    <td>Foto Kopi Konsep Daftar Nilai Sementara</td>
+                    <td>Upload Konsep Daftar Nilai Sementara</td>
                     <td>
                         <?php if ($data_yudisium->STATUS_KONSEP_DAFTAR_NILAI_SEMENTARA=="MENUNGGU KONFIRMASI" || $data_yudisium->STATUS_KONSEP_DAFTAR_NILAI_SEMENTARA==""){
                             echo "<input type='file' name='file_daftar_nilai'>";  
