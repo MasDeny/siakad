@@ -18,6 +18,9 @@
 
                             </div>
                             <div class="content table-responsive table-full-width">
+                                <div id="notifications">
+                                       <?=$this->session->flashdata('notif')?>
+                                    </div>
                                 <table class="table table-hover table-responsive">
                                     <thead>
                                         <th>No</th>
@@ -48,8 +51,25 @@
                                             <td><?php echo $data->panelis_1; ?></td>>
                                             <td>
                                                 <div class="button-group">                
-                                                <a data-toogle="modal" data-target="#myModal" href="<?php echo base_url()."koordinator/Pendaftar_senpro/view/".$data->id; ?>" class="btn btn-md btn-info btn-flat" id="edit"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                                                <a href="<?php echo base_url()."koordinator/Pendaftar_senpro/unselect_mhs/".$data->id; ?>" class="btn btn-md btn-danger btn-flat"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
+                                                        <a
+                                                        data-id="<?php echo $data->id ?>"
+                                                        data-panelis1="<?php echo $data->panelis_1 ?>"
+                                                        data-panelis2="<?php echo $data->panelis_2 ?>"
+                                                        data-panelis3="<?php echo $data->panelis_3 ?>"
+                                                        data-tanggal="<?php echo $data->tanggal ?>"
+                                                        data-jam="<?php echo $data->jam ?>"
+                                                        data-ruangan="<?php echo $data->ruangan ?>"
+                                                        class="btn btn-sm btn-default btn-flat" data-toggle="modal" data-target="#lihat_sem">
+                                                        <i class="glyphicon glyphicon-eye-open"></i> Lihat
+                                                        </a>
+                                                        <a
+                                                        data-id="<?php echo $data->id ?>"
+                                                        data-panelis1="<?php echo $data->panelis_1 ?>"
+                                                        data-tanggal="<?php echo $data->tanggal ?>"
+                                                        data-jam="<?php echo $data->jam ?>"
+                                                        data-ruangan="<?php echo $data->ruangan ?>"
+                                                        class="btn btn-sm btn-info btn-flat" data-toggle="modal" data-target="#edit_sem"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                                               <a data-id="<?php echo $data->id ?>" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#hapus_sem"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -68,5 +88,7 @@
         </div>
 </div>
 </div>
+    <?php $this->load->view('koordinator/Pendaftar_senpro/editsempro') ?> 
+    <?php $this->load->view('koordinator/Pendaftar_senpro/tampilview') ?>
 <script>document.body.style.overflow = "hidden";</script>
     <?php $this->load->view('/koordinator/footer');

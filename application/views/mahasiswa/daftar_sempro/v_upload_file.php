@@ -13,6 +13,12 @@
   
   <div class="container">
     <div class="section">
+
+      <div class="form-group">
+                        <label>Judul Tugas Akhir</label>
+                        <input type="text" class="form-control border-input" disabled placeholder="Judul" value="<?php echo $data_judul->judul_TA; ?>">
+      </div>
+
 	<?php echo form_open("mahasiswa/C_sempro/multiple_upload", array('enctype'=>'multipart/form-data')); ?>
 			<br><br><h6>Berkas Seminar Proposal</h6>
 	<table class="bordered highlight">

@@ -1,6 +1,6 @@
 <footer class="footer">
             <div class="container-fluid">
-               
+
                 <div class="copyright pull-right">
                     copyright &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="">MIF A</a>
                 </div>
@@ -13,16 +13,16 @@
 </body>
 
     <!--   Core JS Files   -->
-    <script src="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-3.2.1.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery-1.9.1.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/eksternal/datetimepicker/js/locales.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/eksternal/datetimepicker/js/datetimepicker.js"></script>
-    
+
     <script src="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-ui.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/jQuery/jquery.autocomplete.js"></script>
 
     <!-- JS select2 -->
-    <script src="<?php echo base_url(); ?>assets/plugins/select2/select2.js"></script>    
+    <script src="<?php echo base_url(); ?>assets/plugins/select2/select2.js"></script>
 
     <!--  Checkbox, Radio & Switch Plugins -->
     <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap-checkbox-radio.js"></script>
@@ -37,7 +37,7 @@
 
     <!-- My style javascript -->
     <script src="<?php echo base_url(); ?>assets/eksternal/style.js"></script>
-	
+
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js" ></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js" ></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
@@ -49,13 +49,12 @@
 	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.js"></script>
 
-	
 	 <script type="text/javascript">
-	 
+
 		//setting datatable
 		$('.datatable').DataTable({
 			dom: 'Bfrtip',
-			buttons: 
+			buttons:
 			[
             {
                 extend:    'excelHtml5',
@@ -86,20 +85,20 @@
                         '</tr>' :
                         '';
                 } ).join('');
- 
+
                 return data ?
                     $('<table/>').append( data ) :
                     false;
             }
         }
     }
-    
+
 		});
 	</script>
 	<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.js"></script>
-    
-	
-	
+
+
+
   <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
 	<script src="<?php echo base_url();?>assets/admin/morris/morris.js" type="text/javascript"></script>
 	  <script type="text/javascript">
@@ -110,7 +109,7 @@
 				//alert(s);
 				var data=s.split("++");
 				//data.pop();  //memotong 1 data terakhir
-				
+
 				var row=data.length; //menghitung banyak data
 				//alert(data.join("\n"));
 
@@ -123,17 +122,17 @@
 					isi[i]=det[1];
 					//alert(anggota[i]);
 				}
-				
-				
+
+
 				//var anggota=Array('aldi','amicong','tole','amicong','tole','amicong','tole','amicong','tole');
 				var datatemp=Array({x: '0','a': 0});
-						
+
 				for(var i=0;i<anggota.length;i++)
-				{			  
+				{
 					datatemp[i]={x: anggota[i],'a': isi[i]};
 				}
-				  
-					
+
+
 				// Use Morris.Bar
 				Morris.Bar({
 				  element: 'graph',
@@ -144,11 +143,11 @@
 				}).on('click', function(i, row){
 				  console.log(i, row);
 				});
-				
+
 			}
 		  });
-			
-	  
+
+
     </script>
 
 </html>

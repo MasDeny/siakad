@@ -7,13 +7,13 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="<?php echo base_url(); ?>koordinator/dashboard" class="simple-text">
+                <a href="<?php echo base_url(); ?>koordinator/Chart_judul" class="simple-text">
                    <strong>Koordinator Panel</strong>
                 </a>
             </div>
             <ul class="nav">
                 <li>
-                    <a href="<?php echo base_url(); ?>koordinator/dashboard">
+                    <a href="<?php echo base_url(); ?>koordinator/Chart_judul">
                         <i class="glyphicon glyphicon-home"></i>
                         <p>Dashboard</p>
                     </a>

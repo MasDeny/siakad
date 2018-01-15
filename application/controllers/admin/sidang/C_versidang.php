@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_versidang extends CI_Controller {
     function __construct(){
-		parent::__construct();	
+		parent::__construct();
         $this->load->model('m_psidang');
         $this->load->database();
         if ($this->session->userdata('status')=="") {
@@ -36,11 +36,15 @@ class C_versidang extends CI_Controller {
         $this->load->view('administrasi/sidang/v_pascasidang', $data);
     }
 
-    public function simpan_notifikasi()
+    public function simpan_notifikasi($id)
     {
-       $isi=$this->input->post('isi');
-        
-        $this->m_psidang->simpan_notifikasi($isi);
+        $data = array(
+            'pesan'                           => $this->input->post('pesan'),
+            'pengirim'                        => "administrasi",
+            'status_sidang_id_statussidang'   => $id
+        );
+        $this->m_psidang->view_id_berkas($id);
+        $this->m_psidang->simpan_notifikasi($id, $data);
         redirect('admin/sidang/C_versidang');
     }
  public function simpan_nilai()
@@ -65,23 +69,23 @@ class C_versidang extends CI_Controller {
         ($nilai_bimbingan_dp1,$nilai_bimbingan_dp2,$nilai_ujian,$nilai_total,$status);
         */
 
-        
+
     }
 
-    function print_pdf() 
-    {       
+    function print_pdf()
+    {
           $data['data_mahasiswa'] = $this->mahasiswa_model->data();
- 
+
     //     //load the view and saved it into $html variable
     //     $html=$this->load->view('mahasiswa/mahasiswa', $data, true);
- 
+
     //     //this the the PDF filename that user will get to download
     //     $pdfFilePath = "mahasiswa.pdf";
- 
+
     //    //generate the PDF from the given html
     //     $this->m_pdf->pdf->WriteHTML($html);
- 
+
     //     //download it.
-    //     $this->m_pdf->pdf->Output($pdfFilePath, "D");  
+    //     $this->m_pdf->pdf->Output($pdfFilePath, "D");
     }
 }

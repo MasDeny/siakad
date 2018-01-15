@@ -77,7 +77,7 @@ class M_pendaftaran_senpro extends CI_Model {
     public function acc_mhs($limit, $start)//untuk mahasiswa yang telah diberi jadwal
     {
         $this->db->select('status_sempro.idStatus_Sempro as id,status_sempro.mahasiswa_NIM as NIM,
-        nama_mahasiswa as nama,jadwal.panelis_1,jadwal.jam,jadwal.tanggal,jadwal.ruangan')
+        nama_mahasiswa as nama,jadwal.*')
         ->from('status_sempro')
         ->join('mahasiswa','mahasiswa.NIM=status_sempro.mahasiswa_NIM')
         ->join('jadwal', 'jadwal.idStatus_Sempro=status_sempro.idStatus_Sempro')
@@ -92,16 +92,23 @@ class M_pendaftaran_senpro extends CI_Model {
         return $this->db->get('status_sempro')->num_rows();
     }
 
-    public function delete_jadwal($id)
+    public function delete_jadwal($id) // menghapus jadwal
     {
         $this->db->set('status', 1)
-        ->where('idStatus_Sempro', $id)
+        ->where('status_sempro.idStatus_Sempro', $id)
         ->update('status_sempro');
 
-        $this->db->where('idStatus_Sempro', $id)
+        $this->db->where('jadwal.idStatus_Sempro', $id)
         ->delete('jadwal');
 
         return TRUE;
     }
 
+    public function acc_update($id, $data) //memperbarui jadwal
+    {
+        $this->db->where('idStatus_Sempro',$id);
+        $this->db->update('jadwal', $data);
+        return TRUE;
+    }
+   
 }

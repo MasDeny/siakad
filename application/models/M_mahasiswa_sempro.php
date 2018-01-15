@@ -34,6 +34,14 @@ class M_mahasiswa_sempro extends CI_Model{
         $this->db->update('status_sempro');
 	}
 
+	public function ambil_jadwal()
+	{
+		$this->db->select('judul_TA');
+		$this->db->from('mahasiswa');
+		$this->db->where('NIM', $this->session->userdata("codeUser"));
+		return $this->db->get()->row();
+	}
+
 	public function cek_status()
 	{
 		$this->db->select('mahasiswa.NIM,status_sempro.status as status');

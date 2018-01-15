@@ -21,6 +21,7 @@ class C_sempro extends CI_Controller {
 			{
 				$nim =  $this->session->userdata("codeUser");
 				$data['username'] = $this->session->userdata('username');
+				$data['data_judul'] = $this->M_mahasiswa_sempro->ambil_jadwal();
 				$this->load->view('mahasiswa/header', $data);
 				$this->load->view('mahasiswa/sidebar', $data);
 				$this->load->view('mahasiswa/daftar_sempro/v_upload_file');
