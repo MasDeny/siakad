@@ -3,6 +3,7 @@
     	function __construct(){
         parent::__construct();
         $this->load->model('yudisium/Yudisium_model');
+        $this->load->model('yudisium/text_yudisium');
         }
 
         /*=== DAFTAR YUDISIUM ===*/
@@ -42,7 +43,7 @@
             $config['max_height'] = '1536';
             
             $this->load->library('upload', $config);
-
+			
             $error1=NULL;
             $error2=NULL;
             $error3=NULL;
@@ -56,9 +57,20 @@
             $error11=NULL;
             $error12=NULL;
             $error13=NULL;
-
+			
             //error=0 (kalo input kosong) , error=1 (kalo format input salah) , error=2 (kalo mau upload)
-            
+			
+			//ubah data text yudisium
+			
+			$data['Angkatan'] = $this->input->post('Angkatan');
+			$data['IP_SMT1'] = $this->input->post('t_ip1');
+			$data['IP_SMT2'] = $this->input->post('t_ip2');
+			$data['IP_SMT3'] = $this->input->post('t_ip3');
+			$data['IP_SMT4'] = $this->input->post('t_ip4');
+			$data['IP_SMT5'] = $this->input->post('t_ip5');
+			$data['IP_SMT6'] = $this->input->post('t_ip6');
+			
+			
             if (!$this->upload->do_upload('file_khs1')){
                 
                 $file_khs1= $_FILES['file_khs1']['name'] ;  //nama array [kolom] [type format]
@@ -145,7 +157,6 @@
                 
                     $error4=2;
                     unlink("./assets/img/yudisium/$file_khs4");
-                
             }
 
             
@@ -336,10 +347,12 @@
                     unlink("./assets/img/yudisium/$file_daftar_nilai");
                 
             }
-
+			
+			
+			
 
             if($error1==0 && $error2==0 && $error3==0 && $error4==0 && $error5==0 && $error6==0 && $error7==0 && $error8==0 && $error9==0 && $error10==0 && $error11==0 && $error12==0 && $error13==0){
-                redirect(site_url('Yudisium/daftar_yudisium'));
+				redirect(site_url('Yudisium/daftar_yudisium'));
             }else if ($error1==1 || $error2==1 || $error3==1 || $error4==1 || $error5==1 || $error6==1 || $error7==1 || $error8==1 || $error9==1 || $error10==1 || $error11==1 || $error12==1 || $error13==1){
                 $data['NIM']=$_SESSION['codeUser'];
                 $data['data_yudisium']  = $this->Yudisium_model->check_status_upload($data)->row();
@@ -430,15 +443,10 @@
                 $data['STATUS_KONSEP_DAFTAR_NILAI_SEMENTARA'] = "MENUNGGU KONFIRMASI";
             }
 			
+            //error=0 (kalo input kosong) , error=1 (kalo format input salah) , error=2 (kalo mau upload)
+			
 			//ubah data text yudisium
-			$data['Angkatan'] = $this->input->post('Angkatan');
-			$data['IP_SMT1'] = $this->input->post('t_ip1');
-			$data['IP_SMT2'] = $this->input->post('t_ip2');
-			$data['IP_SMT3'] = $this->input->post('t_ip3');
-			$data['IP_SMT4'] = $this->input->post('t_ip4');
-			$data['IP_SMT5'] = $this->input->post('t_ip5');
-			$data['IP_SMT6'] = $this->input->post('t_ip6');
-                $this->Yudisium_model->update_daftar_yudisium($nim,$data);
+            $this->Yudisium_model->update_daftar_yudisium($nim,$data);
             }     
         }
 
