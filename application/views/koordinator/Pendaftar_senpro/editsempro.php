@@ -34,7 +34,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Panelis3</label>
-                                        <select name="Panelis_3" class="form-control border-input text-center" required>
+                                        <select name="panelis_3" class="form-control border-input text-center" required>
                                             <option disabled selected>Pilih Dosen</option>
                                             <?php foreach($dosen as $row) { ?>
                                             <option value="<?php echo $row->nm_dosen;?>"><?php echo $row->nm_dosen;?></option>

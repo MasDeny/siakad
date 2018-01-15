@@ -77,7 +77,7 @@ class M_pendaftaran_senpro extends CI_Model {
     public function acc_mhs($limit, $start)//untuk mahasiswa yang telah diberi jadwal
     {
         $this->db->select('status_sempro.idStatus_Sempro as id,status_sempro.mahasiswa_NIM as NIM,
-        nama_mahasiswa as nama,jadwal.panelis_1,jadwal.jam,jadwal.tanggal,jadwal.ruangan')
+        nama_mahasiswa as nama,jadwal.*')
         ->from('status_sempro')
         ->join('mahasiswa','mahasiswa.NIM=status_sempro.mahasiswa_NIM')
         ->join('jadwal', 'jadwal.idStatus_Sempro=status_sempro.idStatus_Sempro')
