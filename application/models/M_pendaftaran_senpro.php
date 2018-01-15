@@ -92,16 +92,23 @@ class M_pendaftaran_senpro extends CI_Model {
         return $this->db->get('status_sempro')->num_rows();
     }
 
-    public function delete_jadwal($id)
+    public function delete_jadwal($id) // menghapus jadwal
     {
         $this->db->set('status', 1)
-        ->where('idStatus_Sempro', $id)
+        ->where('status_sempro.idStatus_Sempro', $id)
         ->update('status_sempro');
 
-        $this->db->where('idStatus_Sempro', $id)
+        $this->db->where('jadwal.idStatus_Sempro', $id)
         ->delete('jadwal');
 
         return TRUE;
     }
 
+    public function acc_update($id, $data) //memperbarui jadwal
+    {
+        $this->db->where('idStatus_Sempro',$id);
+        $this->db->update('jadwal', $data);
+        return TRUE;
+    }
+   
 }

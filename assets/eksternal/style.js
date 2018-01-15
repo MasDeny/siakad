@@ -45,4 +45,24 @@ var modal          = $(this)
 // Isi nilai pada field
 modal.find('#id').attr("value",div.data('id'));
 });
+
+$('#edit_sem').on('show.bs.modal', function (event) {
+var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+var modal          = $(this)
+
+// Isi nilai pada field
+modal.find('#id').attr("value",div.data('id'));
+modal.find('#panelis1').attr("value",div.data('panelis1'));
+modal.find('#tanggal').attr("value",div.data('tanggal'));
+modal.find('#jam').attr("value",div.data('jam'));
+modal.find('#ruangan').attr("value",div.data('ruangan'));
+});
+
+$('#hapus_sem').on('show.bs.modal', function (event) {
+var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+var modal          = $(this)
+
+// Isi nilai pada field
+modal.find('#id').attr("value",div.data('id'));
+});
 })(jQuery);
