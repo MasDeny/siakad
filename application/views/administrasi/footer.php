@@ -249,3 +249,58 @@
     <div class="modal-content">
       <?php if(!$detail_mhs->bukti_spp_terakhir=="") { echo "<a class='media' href='".base_url('upload/sidang/').$detail_mhs->bukti_spp_terakhir."'></a>"; } ?>
     </div>
+
+    <div id="modal29" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_sempro->proposal_TA=="") { echo "<a class='media' href='".base_url('upload/').$detail_sempro->proposal_TA."'></a>"; } ?>
+    </div>
+
+    <div id="modal30" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_sempro->kartu_kendali=="") { echo "<a class='media' href='".base_url('upload/').$detail_sempro->kartu_kendali."'></a>"; } ?>
+    </div>
+
+    <div id="modal31" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_sempro->kk_senpro_lalu=="") { echo "<a class='media' href='".base_url('upload/').$detail_sempro->kk_senpro_lalu."'></a>"; } ?>
+    </div>
+
+    <div id="modal32" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_sempro->makalah=="") { echo "<a class='media' href='".base_url('upload/').$detail_sempro->makalah."'></a>"; } ?>
+    </div>
+
+    <div id="modal33" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_sempro->lembar_berita_acara=="") { echo "<a class='media' href='".base_url('upload/').$detail_sempro->lembar_berita_acara."'></a>"; } ?>
+    </div>
+
+    <div id="modal34" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_sempro->lembar_pengusulan=="") { echo "<a class='media' href='".base_url('upload/').$detail_sempro->lembar_pengusulan."'></a>"; } ?>
+    </div>
+
+    <div id="modal35" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_sempro->lembar_revisi=="") { echo "<a class='media' href='".base_url('upload/').$detail_sempro->lembar_revisi."'></a>"; } ?>
+    </div>
+
+    <div id="modal36" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_sempro->lembar_hasil_senpro=="") { echo "<a class='media' href='".base_url('upload/').$detail_sempro->lembar_hasil_senpro."'></a>"; } ?>
+    </div>
+
+    <div id="modal37" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_sempro->lembar_daftar_hadir=="") { echo "<a class='media' href='".base_url('upload/').$detail_sempro->lembar_daftar_hadir."'></a>"; } ?>
+    </div>
+
+    <div id="modal38" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_sempro->lembar_pengesahan=="") { echo "<a class='media' href='".base_url('upload/').$detail_sempro->lembar_pengesahan."'></a>"; } ?>
+    </div>
+
+    <div id="modal39" class="modal" style="width: 1000px !important; height: 453px !important;">
+    <div class="modal-content">
+      <?php if(!$detail_sempro->kartu_kontrak_DP=="") { echo "<a class='media' href='".base_url('upload/').$detail_sempro->kartu_kontrak_DP."'></a>"; } ?>
+    </div>

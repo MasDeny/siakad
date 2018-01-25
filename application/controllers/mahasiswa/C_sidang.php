@@ -46,7 +46,7 @@ class C_sidang extends CI_Controller{
                         }
                         break;
                     case 3:
-                    $this->load->view('mahasiswa/sidang/V_sukses_sidang');
+                    $this->load->view('mahasiswa/sidang/v_sukses_sidang');
                         break;
                     default:
                 $this->load->view('mahasiswa/sidang/V_sukses_upload', $data);

@@ -20,8 +20,9 @@ class C_versempro extends CI_Controller {
     }
 
     public function konfirmasi($NIM = NULL) {
-        $data['detail_mhs'] = $this->m_psmpro->tampil_regsempro($NIM);   
+        $data['detail_sempro'] = $this->m_psmpro->tampil_regsempro($NIM);   
         $this->load->view('administrasi/daftar_sempro/v_konfirsempro', $data);
+        $this->load->view('administrasi/footer', $data);
     }
 
     public function knfr_revsempro($NIM = NULL)
